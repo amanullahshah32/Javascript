@@ -27,3 +27,24 @@ let myCurrentJob = "Software developer";
 
 console.log(myFirstJob);
 console.log(myCurrentJob);
+
+let javaScriptIsFun = true;
+console.log(javaScriptIsFun);
+
+console.log(typeof true);
+console.log(typeof myFirstJob);
+console.log(typeof javaScriptIsFun);
+console.log(typeof 'aman');
+console.log(typeof 345);
+
+javaScriptIsFun = 'Yes';
+console.log(typeof javaScriptIsFun);
+
+let year;
+console.log(year);
+console.log(typeof year);
+
+year = 20021;
+console.log(typeof year);
+
+console.log(typeof null);
