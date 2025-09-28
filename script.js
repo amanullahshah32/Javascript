@@ -81,3 +81,7 @@ console.log(ageG >= 18);
 
 const isFullAge = ageG >= 18; 
 console.log(isFullAge);
+
+
+const myName = "Aman";
+console.log(myName.length);
