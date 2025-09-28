@@ -85,3 +85,11 @@ console.log(isFullAge);
 
 const myName = "Aman";
 console.log(myName.length);
+
+const avgAge = (ageAman + ageG) / 2;
+console.log("average age is:  "+ avgAge);
+
+// precedence 
+let xx, y;
+xx = y = 25-10-5; 
+console.log(xx, y); 
