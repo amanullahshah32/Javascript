@@ -180,3 +180,34 @@ console.log('23' - '10' - 3);
 let n = '10' + 1;
 n = n -1; 
 console.log(n); 
+
+
+
+// truthy and falsy values
+console.log(`truthy and falsy values`);
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean({})); // true
+console.log(Boolean("jonas")); // true
+
+
+const money = 0; // money is 0 is a falsy value. thus the else block will be executed
+if (money)
+{
+    console.log("dont spend it all");
+}
+else
+{
+    console.log("you should get a job");
+}
+
+let height ;  // height is undefined which is a falsy value
+if (height)
+{
+    console.log("height is defined");
+
+}
+else
+{
+    console.log("height is undefined");
+}
