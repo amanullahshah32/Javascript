@@ -111,3 +111,72 @@ console.log("johns bmi is; "+ johns_bmi);
 
 console.log("is marks bmi is higher than johns bmi: " + (marks_bmi > johns_bmi));
 console.log("is johns bmi is higher than marks bmi: " + (marks_bmi < johns_bmi));
+
+
+
+// new topic
+const firstName2 = 'Amanullah Shah';
+const job = 'Oracle Apex Developer';
+const birthYear = 2001;
+const currentYear = 2025;
+
+const aman = "Im " + firstName2 + " " + " I am a " + (currentYear - birthYear)  + " years old"; 
+console.log(aman); 
+
+const amanNew = `I am ${firstName2}, I am a ${job}, and i am currently ${currentYear - birthYear} year old. `; 
+console.log(amanNew);
+
+// multiple line string
+console.log("string \n\
+    multiple \n\
+    lines");
+
+console.log(`string
+    with 
+    multiplw lines`);
+
+
+// conditonal statemetns
+const age = 17;
+
+if (age >= 18)
+    {
+        console.log('aman can start driving , he has a license to drive. ');
+    }
+else
+    {
+        console.log('Aman is too young to drive, heis not allowed to drive. ');
+        console.log(`wait until u are: ${18 - age} years`);
+    }
+
+const birthYear2 = 1999; 
+let century ;
+if (birthYear2 <= 2000)
+{
+    century = 20;
+}
+else
+{
+    century = 21;
+}
+console.log(`Aman was born in the ${century}th century`);
+
+// type conversion
+const inputYear  = '2001';
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+console.log(Number('aman'));
+console.log(typeof NaN);
+
+console.log(String(23), 23); 
+
+
+console.log(`-----------------
+    ----------------`);
+// type coercion
+console.log('I am ' + 25 + ' years old'); 
+console.log('23' - '10' - 3);
+
+let n = '10' + 1;
+n = n -1; 
+console.log(n); 
