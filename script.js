@@ -211,3 +211,43 @@ else
 {
     console.log("height is undefined");
 }
+
+// equality operators "==" vs "==="
+const age2 = '1' + 8;  // loose
+console.log(typeof(age2));
+if (age2 == 18)
+{
+    console.log("you are an adult (==) (loose)"); // this is type coercion
+}
+
+const age3 = 20;
+if (age3 === 20) //strong
+{
+    console.log("you are an adult (===) (strong )"); // this is more strict
+}
+
+let input = Number(prompt("what is your favourite numebr?"));
+console.log(input);
+console.log(typeof (input));
+
+if (input === 23)
+{
+    console.log("you 23 is an amazing number(strong)");
+}
+else if (input === 7)
+    {
+        console.log (`${input} is also a cool number`);
+    }
+else
+{
+    console.log("number is not 23 or 7");
+}
+// if (input == 23)
+// {
+//     console.log("you 23 is an amazing number(loose)");
+// }
+
+
+if(input !== 23) 
+    console.log("why not 23");
+
