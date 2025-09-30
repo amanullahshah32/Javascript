@@ -253,27 +253,62 @@ if (age3 === 20) //strong
 
 
 // logical operators
-console.log(`logical operator
-    `);
-const hasDriverLicense = true;
-const hasGoodVision = !true;
 
-console.log(hasDriverLicense && hasGoodVision);
-console.log(hasDriverLicense || hasGoodVision);
-console.log(!hasDriverLicense);
 
-// if(hasDriverLicense && hasGoodVision)
+// console.log(`logical operator
+//     `);
+// const hasDriverLicense = true;
+// const hasGoodVision = !true;
+
+// console.log(hasDriverLicense && hasGoodVision);
+// console.log(hasDriverLicense || hasGoodVision);
+// console.log(!hasDriverLicense);
+
+// // if(hasDriverLicense && hasGoodVision)
+// // {
+// //     console.log("Aman is able to drive");
+// // }
+// // else console.log("Someone else should drive"); 
+
+
+// const isTired= false; 
+// console.log(hasDriverLicense && hasGoodVision && !isTired);
+
+// if(hasDriverLicense && hasGoodVision && isTired)
 // {
 //     console.log("Aman is able to drive");
 // }
 // else console.log("Someone else should drive"); 
 
 
-const isTired= false; 
-console.log(hasDriverLicense && hasGoodVision && !isTired);
+console.log(`coding challenge 3`);
+//coding challenge 3
 
-if(hasDriverLicense && hasGoodVision && isTired)
+let dolphinsScore = (96 + 108 + 89);
+let kolasScore = (88 + 91 + 110);
+
+if ( (dolphinsScore/3) > (kolasScore/3) )
 {
-    console.log("Aman is able to drive");
+    console.log("dolphins win the trophy");
 }
-else console.log("Someone else should drive"); 
+else if( (dolphinsScore/3) < (kolasScore/3) )
+{
+    console.log("kolas win the trophy");
+}
+else console.log("both win the trophy and its a draw");
+
+// bonus 2
+console.log(` bonus 2 and use contstraints of 100 points`);
+if ( ((dolphinsScore/3) > (kolasScore/3)) && (dolphinsScore/3 >=100) )
+{
+    console.log("dolphins win the trophy");
+}
+else if(((dolphinsScore/3) < (kolasScore/3) ) && (kolasScore/3 >=100))
+{
+    console.log("kolas win the trophy");
+}
+else if( (dolphinsScore/3) === (kolasScore/3) || (dolphinsScore/3 && kolasScore/3) >= 100 )
+{
+    console.log("both win the trophy and its a draw");
+}
+else console.log("no teams wins the trophy");
