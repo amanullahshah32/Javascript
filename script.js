@@ -348,3 +348,31 @@ switch(day)
         console.log("not a valid day");
         
 }
+
+
+
+// conditional ternary operator
+console.log("conditional ternary operator");
+
+const age4 = 15;
+// age >= 18 ? console.log('i like to drink wine') 
+// : console.log(' i like to drink water'); 
+
+const drink = age4 >= 18 ? 'wine' : 'water';
+console.log(drink);
+
+let drink2; 
+if (age4>= 18)
+{
+    drink2 = 'wine';
+
+}
+else
+{
+    drink2 = 'water'; 
+}
+console.log(drink2); 
+
+// prompt('what do you want to drink '); 
+
+console.log(`i like to drink ${age4>= 18 ?  'wine khabo' : 'water kahbo'}`);
