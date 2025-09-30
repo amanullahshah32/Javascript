@@ -312,3 +312,39 @@ else if( (dolphinsScore/3) === (kolasScore/3) || (dolphinsScore/3 && kolasScore/
     console.log("both win the trophy and its a draw");
 }
 else console.log("no teams wins the trophy");
+
+
+
+// switch case statemetns
+console.log(`switch case statements`);
+
+const day = 'thursday';
+switch(day)
+{
+    case 'monday':
+        console.log("play cricket");
+        console.log("go to coding class");
+        break;
+    
+    case 'tuesday':
+        console.log("prepare for interviews");
+        break;
+    case 'wednesday':
+        console.log("go to school");
+        break;
+    case 'thursday':
+        console.log("go to college");
+        // break;
+    case 'friday':
+        console.log("party");
+        break;
+    case 'satuday':
+        console.log('go to dhaka');
+        break;
+    case 'sunday':
+        console.log('rest and relax');
+        break;
+    default:
+        console.log("not a valid day");
+        
+}
