@@ -226,28 +226,54 @@ if (age3 === 20) //strong
     console.log("you are an adult (===) (strong )"); // this is more strict
 }
 
-let input = Number(prompt("what is your favourite numebr?"));
-console.log(input);
-console.log(typeof (input));
+// let input = Number(prompt("what is your favourite numebr?"));
+// console.log(input);
+// console.log(typeof (input));
 
-if (input === 23)
-{
-    console.log("you 23 is an amazing number(strong)");
-}
-else if (input === 7)
-    {
-        console.log (`${input} is also a cool number`);
-    }
-else
-{
-    console.log("number is not 23 or 7");
-}
-// if (input == 23)
+// if (input === 23)
 // {
-//     console.log("you 23 is an amazing number(loose)");
+//     console.log("you 23 is an amazing number(strong)");
 // }
+// else if (input === 7)
+//     {
+//         console.log (`${input} is also a cool number`);
+//     }
+// else
+// {
+//     console.log("number is not 23 or 7");
+// }
+// // if (input == 23)
+// // {
+// //     console.log("you 23 is an amazing number(loose)");
+// // }
 
 
-if(input !== 23) 
-    console.log("why not 23");
+// if(input !== 23) 
+//     console.log("why not 23");
 
+
+// logical operators
+console.log(`logical operator
+    `);
+const hasDriverLicense = true;
+const hasGoodVision = !true;
+
+console.log(hasDriverLicense && hasGoodVision);
+console.log(hasDriverLicense || hasGoodVision);
+console.log(!hasDriverLicense);
+
+// if(hasDriverLicense && hasGoodVision)
+// {
+//     console.log("Aman is able to drive");
+// }
+// else console.log("Someone else should drive"); 
+
+
+const isTired= false; 
+console.log(hasDriverLicense && hasGoodVision && !isTired);
+
+if(hasDriverLicense && hasGoodVision && isTired)
+{
+    console.log("Aman is able to drive");
+}
+else console.log("Someone else should drive"); 
