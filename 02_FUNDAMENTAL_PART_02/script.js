@@ -148,3 +148,41 @@ let avgDolphins = calcAverage(85, 54, 41);
 let avgKoalas = calcAverage(23, 34, 27);
 
 console.log(`winner is ${checkWinner(avgDolphins, avgKoalas)}`);
+
+
+// arrays
+console.log('arrays');
+
+const friends = ['aman', 'jaman', 'rakib']; 
+console.log(friends);
+console.log(friends[2]);
+console.log(`length of the friends array is : ${friends.length}`);
+console.log(`last element of the friends array is : ${friends[friends.length - 1]}`);
+
+//change the element of the array; 
+friends[1] = 'rakibul'; // previosuly jaman
+console.log(friends);
+
+// friends  = ['a', 'b']; // not allowed because friends is a constant variable
+
+const firstName = 'Aman';
+const Aman = [firstName, 'Shah', 2025- 2001, 'student', 'developer', friends];
+console.log(Aman);
+console.log(Aman.length);
+console.log(typeof(Aman));
+console.log(Aman[5][0]); // accessing friends array within Aman array
+
+const years = new Array(2001, 2004, 2005);
+console.log(years); 
+console.log(friends[0]);
+
+
+
+// exercise
+const calcAge5 = function(birthYear)
+{
+    return 2025 - birthYear;
+}
+const years1 = new Array (2001, 2004, 2006, 2009, 2011);
+const ages = [calcAge5(years1[0]), calcAge5(years1[1]), calcAge5(years1[2]), calcAge5(years1[3]), calcAge5(years1[years1.length -1])];
+console.log(ages); 
