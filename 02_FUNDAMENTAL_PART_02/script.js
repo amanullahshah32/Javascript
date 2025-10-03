@@ -22,20 +22,20 @@ function logger()
 // calling / running / invoking function
 logger();
 
-function fruitProcessor( apples, oranges)
-{
-    console.log(apples, oranges);
-    const juice = `juice with ${apples} apples and ${oranges} orange `;
-    return juice;
-}
+// function fruitProcessor( apples, oranges)
+// {
+//     console.log(apples, oranges);
+//     const juice = `juice with ${apples} apples and ${oranges} orange `;
+//     return juice;
+// }
 
-const juice = fruitProcessor(5,2); 
-console.log(juice); 
-console.log(fruitProcessor(3,4)); 
+// const juice = fruitProcessor(5,2); 
+// console.log(juice); 
+// console.log(fruitProcessor(3,4)); 
 
 
-const appleOrangeJuice = fruitProcessor(2,4); 
-console.log(appleOrangeJuice);
+// const appleOrangeJuice = fruitProcessor(2,4); 
+// console.log(appleOrangeJuice);
 
 // function declaration
 
@@ -75,3 +75,25 @@ const yearUntilRetirement2 = (birthYear, firstName) => {
     return `${birthYear} retires in ${retirement} years and name is ${firstName}`;   
 }
 console.log(yearUntilRetirement2(2001, 'Aman'  ));
+
+
+
+// function within a function
+console.log('function within a function');
+
+function cutFruitPieces(fruit){
+    return fruit * 4;
+}
+
+
+function fruitProcessor( apples, oranges)
+{
+    const applePiece = cutFruitPieces(apples);
+    const orangePiece = cutFruitPieces(oranges);
+    console.log(apples, oranges);
+    const juice = `juice with ${applePiece} apple pieces and ${orangePiece} orange pieces`;
+    return juice;
+}
+
+const juice = fruitProcessor(5,2); 
+console.log(juice);
