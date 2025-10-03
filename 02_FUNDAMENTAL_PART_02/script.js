@@ -121,3 +121,30 @@ const yearUntilRetirement3 = function (birthYear, firstName) {
     }
 }
 console.log(yearUntilRetirement3(1950, 'Aman'  ));
+
+// coding challeng of Fundamental part 2
+console.log('coding challenge of Fundamental part 2');
+
+
+const checkWinner = (avgDolphins, avgKoalas) =>
+{
+    console.log(`points of dolphi is ${avgDolphins} and points of koalas is ${avgKoalas}`);
+    if(avgDolphins > 2*avgKoalas)
+    {
+        return `Dolphins win (${avgDolphins} vs ${avgKoalas})`;
+    }
+    else if(avgKoalas > 2*avgDolphins)
+    {
+        return `Koalas win (${avgKoalas} vs ${avgDolphins})`;
+    }
+    else return `no team wins...`;
+}
+const calcAverage = (score1, score2, score3) =>
+{
+    return (score1 + score2 + score3) / 3;
+}
+
+let avgDolphins = calcAverage(85, 54, 41);
+let avgKoalas = calcAverage(23, 34, 27);
+
+console.log(`winner is ${checkWinner(avgDolphins, avgKoalas)}`);
