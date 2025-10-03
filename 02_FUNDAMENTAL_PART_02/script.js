@@ -56,3 +56,22 @@ const calcAge2 = function (birthyear)
 
 const age2 = calcAge2(2000);
 console.log(age1, age2);
+
+// arrow function
+const calcAge3 = birthYear  => 2037 - birthYear; // we dont need to write return keyword and {} if there is only one line of code
+const age3 = calcAge3(2011);
+console.log(age3);
+
+const yearUntilRetirement = birthYear => {
+    const age = 2025 - birthYear;
+    const retirement = 65 - age; 
+    return retirement;
+}
+console.log(yearUntilRetirement(2001));
+
+const yearUntilRetirement2 = (birthYear, firstName) => {
+    const age = 2025 - birthYear;
+    const retirement = 65 - age; 
+    return `${birthYear} retires in ${retirement} years and name is ${firstName}`;   
+}
+console.log(yearUntilRetirement2(2001, 'Aman'  ));
