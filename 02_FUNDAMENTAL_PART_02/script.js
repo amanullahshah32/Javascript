@@ -276,3 +276,44 @@ const aman = {
 console.log(aman);
 console.log(typeof(aman));
 
+// dot vs bracket notation
+console.log(aman.lastName);
+console.log(aman['lastName']);
+
+const nameKey = 'Name';
+console.log('first name is: '+ (aman['first' + nameKey]));
+
+console.log(aman.firstName.length);
+console.log(aman['last' + nameKey].length);
+
+
+aman.location = 'Bangladesh';
+console.log(aman);
+
+aman['twitter'] = 'amanullahshah32'; 
+console.log(aman);
+
+
+const interestedIn = prompt('What do you want to know about Aman? Choose between firstName, lastName, age, job, and friends');
+console.log(interestedIn);
+console.log(typeof(interestedIn));
+
+if(aman.interestedIn)
+{
+    console.log('dot notaion workes');
+}
+else console.log('dot notation doesnt worked');
+
+if(aman[interestedIn])
+{
+    console.log('bracket notation worked here: '+aman[interestedIn]);
+}
+else{
+    console.log('wrong request! choose between firstName, lastName, age, job, and friends');
+}
+
+
+// aman has 3 friends, and his best friend is called Michael
+console.log(`${aman.firstName} has ${aman.friends.length} friends, and his best friend is called ${aman.friends[0]}`); 
+
+
