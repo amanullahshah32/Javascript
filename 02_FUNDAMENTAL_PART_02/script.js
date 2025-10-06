@@ -200,6 +200,9 @@ console.log(friends);
 const newLength = friends.push('shahriar');
 console.log(friends);
 console.log(newLength);
+//unshift element
+friends.unshift('Noshin');
+console.log(friends);
 
 // remove elements
 friends.pop();
