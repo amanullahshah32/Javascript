@@ -188,30 +188,69 @@
 // console.log(ages); 
 
 
-// array methods
-console.log('array methods from here: '); 
-const friends = ['aman', 'jaman', 'rakib']; 
-console.log(friends);
+// // array methods
+// console.log('array methods from here: '); 
+// const friends = ['aman', 'jaman', 'rakib']; 
+// console.log(friends);
 
-// add elements
-friends.push('sabbir rahman');
-console.log(friends);
+// // add elements
+// friends.push('sabbir rahman');
+// console.log(friends);
 
-const newLength = friends.push('shahriar');
-console.log(friends);
-console.log(newLength);
-//unshift element
-friends.unshift('Noshin');
-console.log(friends);
+// const newLength = friends.push('shahriar');
+// console.log(friends);
+// console.log(newLength);
+// //unshift element
+// friends.unshift('Noshin');
+// console.log(friends);
 
-// remove elements
-friends.pop();
-console.log('last element removed and new element are: ' +friends);
+// // remove elements
+// friends.pop();
+// console.log('last element removed and new element are: ' +friends);
 
-const popped_element = friends.pop(); 
-console.log('popped element is: ' + popped_element);
-console.log('current existing elements in the arrays are; '+friends);
+// const popped_element = friends.pop(); 
+// console.log('popped element is: ' + popped_element);
+// console.log('current existing elements in the arrays are; '+friends);
 
-//shift element (this will remove the first element from the array, opsite of the pop)
-friends.shift();
-console.log('current element after using the shfit function: '+friends); // shift removes the first element of the array
+// //shift element (this will remove the first element from the array, opsite of the pop)
+// friends.shift();
+// console.log('current element after using the shfit function: '+friends); // shift removes the first element of the array
+
+//coding challenge 2
+console.log('coding challenge 2');
+
+const calcTrip = (bills) =>
+{
+    let tips = []; 
+    let total = [];
+    const length = bills.length;
+    if(0 <= length)
+    {
+        for(let i = 0; i < length; i++)
+        {
+            if (bills[i] >= 50 && bills[i] <= 300)
+            {
+                const tip = bills[i] * 0.15;
+                tips.push(tip); 
+                total.push(tip + bills[i]); 
+            }
+            else
+            {
+                const tip = bills[i] * 0.20;
+                tips.push(tip);
+                total.push(tip + bills[i]);
+            }
+        }
+    }
+    return [tips, total]; // Return an array containing both tips and total arrays
+}
+
+const bills = [125, 555, 44];
+const [tips, total] = calcTrip(bills); // Destructure both arrays from the returned result
+
+
+
+console.log('given bill are: ' +bills);
+console.log('given tips are: ' +tips);
+console.log('given total are: ' +total);
+
