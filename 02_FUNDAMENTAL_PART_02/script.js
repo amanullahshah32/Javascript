@@ -254,3 +254,25 @@ console.log('given bill are: ' +bills);
 console.log('given tips are: ' +tips);
 console.log('given total are: ' +total);
 
+
+
+// objects
+console.log('objects');
+
+const amanArray = [
+    'Aman', 'Shah', 2025 - 2001, 'Employee', ['Michael', 'Peter', 'Steven']
+];
+
+console.log(amanArray);
+
+const aman = {
+    firstName : 'Aman',
+    lastName : 'Shah',
+    age: 2025 - 2001, 
+    job: 'Employee',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+console.log(aman);
+console.log(typeof(aman));
+
