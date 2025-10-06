@@ -211,3 +211,7 @@ console.log('last element removed and new element are: ' +friends);
 const popped_element = friends.pop(); 
 console.log('popped element is: ' + popped_element);
 console.log('current existing elements in the arrays are; '+friends);
+
+//shift element (this will remove the first element from the array, opsite of the pop)
+friends.shift();
+console.log('current element after using the shfit function: '+friends); // shift removes the first element of the array
