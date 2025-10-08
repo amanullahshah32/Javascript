@@ -324,25 +324,40 @@ console.log('object methods');
 const aman = {
     firstName : 'Aman',
     lastName : 'Shah',
-    age: 2025 - 2001, 
+    // age: 2025 - 2001, 
     job: 'Employee',
     friends: ['Michael', 'Peter', 'Steven'],
     birthYear : 2001,
     hasDriverLicense: true,
 
-    calcAge: function(birthYear)
-    {
-        return `call by parameter ${2025 - birthYear}`;
-    },
-    calcAge2: function()
+    // calcAge: function(birthYear)
+    // {
+    //     return `call by parameter ${2025 - birthYear}`;
+    // },
+    calcAge: function()
     {
         // this.age = 2025 - this.birthYear;
-        console.log(this);
-        return `call by 'this' keyword: ${this.age = Number(2025 - this.birthYear) }`;
+        // console.log(this);
+        this.age = 2025 - this.birthYear;
+        console.log(this.age);
+        return this.age;
+        // return `call by 'this' keyword: ${this.age = Number(2025 - this.birthYear) }`;
     },
+    getSummary: function()
+    {
+            return `${this.firstName} is a ${this.calcAge()} year old ${this.job} , and he has ${this.hasDriverLicense ? 'a' : 'no'} driver license`;
+    }
 };
 
-console.log(aman.calcAge(2001));
-console.log(aman['calcAge2'](2004));
+// console.log(aman.calcAge(2001));
+// console.log(aman['calcAge2'](2004));
 console.log(typeof(aman.calcAge));
+// Call the method so it sets `this.age` on the object before we log it
+aman.calcAge();
+console.log(aman.age);
 console.log(typeof(aman));
+
+
+// challenge: Aman is a 46 year old employee, and he has a driver license
+console.log(`${aman.firstName} is a ${aman.age} year old ${aman.job} , and he has ${aman.hasDriverLicense ? 'a' : 'no'} driver license`);
+console.log(aman.getSummary());
