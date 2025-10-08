@@ -216,104 +216,133 @@
 // friends.shift();
 // console.log('current element after using the shfit function: '+friends); // shift removes the first element of the array
 
-//coding challenge 2
-console.log('coding challenge 2');
+// //coding challenge 2
+// console.log('coding challenge 2');
 
-const calcTrip = (bills) =>
-{
-    let tips = []; 
-    let total = [];
-    const length = bills.length;
-    if(0 <= length)
-    {
-        for(let i = 0; i < length; i++)
-        {
-            if (bills[i] >= 50 && bills[i] <= 300)
-            {
-                const tip = bills[i] * 0.15;
-                tips.push(tip); 
-                total.push(tip + bills[i]); 
-            }
-            else
-            {
-                const tip = bills[i] * 0.20;
-                tips.push(tip);
-                total.push(tip + bills[i]);
-            }
-        }
-    }
-    return [tips, total]; // Return an array containing both tips and total arrays
-}
+// const calcTrip = (bills) =>
+// {
+//     let tips = []; 
+//     let total = [];
+//     const length = bills.length;
+//     if(0 <= length)
+//     {
+//         for(let i = 0; i < length; i++)
+//         {
+//             if (bills[i] >= 50 && bills[i] <= 300)
+//             {
+//                 const tip = bills[i] * 0.15;
+//                 tips.push(tip); 
+//                 total.push(tip + bills[i]); 
+//             }
+//             else
+//             {
+//                 const tip = bills[i] * 0.20;
+//                 tips.push(tip);
+//                 total.push(tip + bills[i]);
+//             }
+//         }
+//     }
+//     return [tips, total]; // Return an array containing both tips and total arrays
+// }
 
-const bills = [125, 555, 44];
-const [tips, total] = calcTrip(bills); // Destructure both arrays from the returned result
-
-
-
-console.log('given bill are: ' +bills);
-console.log('given tips are: ' +tips);
-console.log('given total are: ' +total);
+// const bills = [125, 555, 44];
+// const [tips, total] = calcTrip(bills); // Destructure both arrays from the returned result
 
 
 
-// objects
-console.log('objects');
+// console.log('given bill are: ' +bills);
+// console.log('given tips are: ' +tips);
+// console.log('given total are: ' +total);
 
-const amanArray = [
-    'Aman', 'Shah', 2025 - 2001, 'Employee', ['Michael', 'Peter', 'Steven']
-];
 
-console.log(amanArray);
+
+// // objects
+// console.log('objects');
+
+// const amanArray = [
+//     'Aman', 'Shah', 2025 - 2001, 'Employee', ['Michael', 'Peter', 'Steven']
+// ];
+
+// console.log(amanArray);
+
+// const aman = {
+//     firstName : 'Aman',
+//     lastName : 'Shah',
+//     age: 2025 - 2001, 
+//     job: 'Employee',
+//     friends: ['Michael', 'Peter', 'Steven']
+// };
+
+// console.log(aman);
+// console.log(typeof(aman));
+
+// // dot vs bracket notation
+// console.log(aman.lastName);
+// console.log(aman['lastName']);
+
+// const nameKey = 'Name';
+// console.log('first name is: '+ (aman['first' + nameKey]));
+
+// console.log(aman.firstName.length);
+// console.log(aman['last' + nameKey].length);
+
+
+// aman.location = 'Bangladesh';
+// console.log(aman);
+
+// aman['twitter'] = 'amanullahshah32'; 
+// console.log(aman);
+
+
+// const interestedIn = prompt('What do you want to know about Aman? Choose between firstName, lastName, age, job, and friends');
+// console.log(interestedIn);
+// console.log(typeof(interestedIn));
+
+// if(aman.interestedIn)
+// {
+//     console.log('dot notaion workes');
+// }
+// else console.log('dot notation doesnt worked');
+
+// if(aman[interestedIn])
+// {
+//     console.log('bracket notation worked here: '+aman[interestedIn]);
+// }
+// else{
+//     console.log('wrong request! choose between firstName, lastName, age, job, and friends');
+// }
+
+
+// // aman has 3 friends, and his best friend is called Michael
+// console.log(`${aman.firstName} has ${aman.friends.length} friends, and his best friend is called ${aman.friends[0]}`); 
+// console.log(`${aman.firstName} has ${aman.friends.length} friends, and his best friend is called ${aman.friends[0]}`); 
+
+
+// object methods
+console.log('object methods');
 
 const aman = {
     firstName : 'Aman',
     lastName : 'Shah',
     age: 2025 - 2001, 
     job: 'Employee',
-    friends: ['Michael', 'Peter', 'Steven']
+    friends: ['Michael', 'Peter', 'Steven'],
+    birthYear : 2001,
+    hasDriverLicense: true,
+
+    calcAge: function(birthYear)
+    {
+        return `call by parameter ${2025 - birthYear}`;
+    },
+    calcAge2: function()
+    {
+        // this.age = 2025 - this.birthYear;
+        console.log(this);
+        return `call by 'this' keyword: ${this.age = Number(2025 - this.birthYear) }`;
+    },
 };
 
-console.log(aman);
+console.log(aman.calcAge(2001));
+console.log(aman['calcAge2'](2004));
+console.log(typeof(aman.calcAge));
 console.log(typeof(aman));
-
-// dot vs bracket notation
-console.log(aman.lastName);
-console.log(aman['lastName']);
-
-const nameKey = 'Name';
-console.log('first name is: '+ (aman['first' + nameKey]));
-
-console.log(aman.firstName.length);
-console.log(aman['last' + nameKey].length);
-
-
-aman.location = 'Bangladesh';
-console.log(aman);
-
-aman['twitter'] = 'amanullahshah32'; 
-console.log(aman);
-
-
-const interestedIn = prompt('What do you want to know about Aman? Choose between firstName, lastName, age, job, and friends');
-console.log(interestedIn);
-console.log(typeof(interestedIn));
-
-if(aman.interestedIn)
-{
-    console.log('dot notaion workes');
-}
-else console.log('dot notation doesnt worked');
-
-if(aman[interestedIn])
-{
-    console.log('bracket notation worked here: '+aman[interestedIn]);
-}
-else{
-    console.log('wrong request! choose between firstName, lastName, age, job, and friends');
-}
-
-
-// aman has 3 friends, and his best friend is called Michael
-console.log(`${aman.firstName} has ${aman.friends.length} friends, and his best friend is called ${aman.friends[0]}`); 
-
-
