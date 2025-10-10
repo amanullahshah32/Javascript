@@ -404,3 +404,35 @@ for(let rep = 1; rep <= 10; rep++)
 {
     console.log('aman repition no: ' +rep);
 }
+
+// looping arrays, breaking and continuing
+console.log('looping arrays, breaking and continuing');
+
+const aman = [
+    'Aman',
+    'Shah',
+    2025 - 2001, 
+    'Employee',
+    ['Michael', 'Peter', 'Steven']
+];
+
+const types = []; 
+for (let i = 0; i<aman.length; i++ )
+{
+    console.log(aman[i], typeof(aman[i]));
+    types.push(typeof(aman[i])); 
+}
+
+
+console.log(typeof(aman));
+console.log(types);
+
+const years = [2001, 2004, 2006, 2009, 2012];;
+const ages = [];
+
+for (let i = 0; i<years.length; i++)
+{
+    ages.push(2026-years[i]);
+}
+console.log(ages);
+
