@@ -491,3 +491,45 @@ while(dice !== 6)
     dice = Math.trunc(Math.random() * 6) + 1; ;
     if(dice === 6) console.log(`loop is about to end.. and rooled a ${dice} finally`); 
 }
+
+
+// coding challenge 4
+console.log('\ncoding challenge 4\n\n');
+
+let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86 ,52]; 
+let tips = [];
+let total = [];
+
+const calcTrip = (bills ) =>
+{
+    for (let i = 0; i< bills.length; i++)
+    {
+        if(bills[i] >= 50 && bills[i] <= 300)
+        {
+            tips.push(bills[i] & 0.15);
+        }
+        else
+        {
+            tips.push(bills[i] * 0.20);
+        }
+        total.push(tips[i] + bills[i]);
+    }
+}
+
+calcTrip(bills);
+console.log('bills are: ' + bills);
+console.log('tips are: ' + tips);
+console.log('total are: ' + total);
+
+const calcAverage = (total) =>
+{
+    let sum = 0; 
+    for(let i = 0; i<total.length; i++)
+    {
+        sum = sum + total[i];
+
+    }
+    return sum/ total.length;
+}
+
+console.log('average of total is: ' + calcAverage(total));
