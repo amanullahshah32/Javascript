@@ -453,3 +453,20 @@ for(let i = 0; i<aman.length; i++)
     if(typeof(aman[i]) === 'number') break;
     console.log(aman[i], typeof(aman[i]));
 }
+
+// looping backwards and loops in loops (nested looping )
+console.log('looping backwards and loops in loops (nested looping )');
+
+for(let i = aman.length -1; i>=0; i--)
+{
+    console.log( i, aman[i], typeof(aman[i]));
+}
+
+for(let exercise = 1; exercise <4; exercise++)
+{
+    console.log(`----- start exercise no: ${exercise} -------`);
+    for(let rep = 1; rep<5; rep ++)
+    {
+        console.log(`--- Lifitng weight : ${rep}---`);
+    }
+}
