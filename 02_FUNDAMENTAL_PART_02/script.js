@@ -395,3 +395,12 @@ const johnBMI = john.calcBMI();
 // Build a readable message using a ternary expression
 const higher = markBMI > johnBMI ? `${mark.fullName}'s BMI (${markBMI.toFixed(2)}) is higher than ${john.fullName}'s BMI (${johnBMI.toFixed(2)})` : `${john.fullName}'s BMI (${johnBMI.toFixed(2)}) is higher than ${mark.fullName}'s BMI (${markBMI.toFixed(2)})`;
 console.log(higher);
+
+
+// iteration: the for loop
+console.log('iteration: the for loop');
+
+for(let rep = 1; rep <= 10; rep++)
+{
+    console.log('aman repition no: ' +rep);
+}
