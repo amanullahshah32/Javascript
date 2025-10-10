@@ -318,46 +318,80 @@
 // console.log(`${aman.firstName} has ${aman.friends.length} friends, and his best friend is called ${aman.friends[0]}`); 
 
 
-// object methods
-console.log('object methods');
+// // object methods
+// console.log('object methods');
 
-const aman = {
-    firstName : 'Aman',
-    lastName : 'Shah',
-    // age: 2025 - 2001, 
-    job: 'Employee',
-    friends: ['Michael', 'Peter', 'Steven'],
-    birthYear : 2001,
-    hasDriverLicense: true,
+// const aman = {
+//     firstName : 'Aman',
+//     lastName : 'Shah',
+//     // age: 2025 - 2001, 
+//     job: 'Employee',
+//     friends: ['Michael', 'Peter', 'Steven'],
+//     birthYear : 2001,
+//     hasDriverLicense: true,
 
-    // calcAge: function(birthYear)
-    // {
-    //     return `call by parameter ${2025 - birthYear}`;
-    // },
-    calcAge: function()
+//     // calcAge: function(birthYear)
+//     // {
+//     //     return `call by parameter ${2025 - birthYear}`;
+//     // },
+//     calcAge: function()
+//     {
+//         // this.age = 2025 - this.birthYear;
+//         // console.log(this);
+//         this.age = 2025 - this.birthYear;
+//         console.log(this.age);
+//         return this.age;
+//         // return `call by 'this' keyword: ${this.age = Number(2025 - this.birthYear) }`;
+//     },
+//     getSummary: function()
+//     {
+//             return `${this.firstName} is a ${this.calcAge()} year old ${this.job} , and he has ${this.hasDriverLicense ? 'a' : 'no'} driver license`;
+//     }
+// };
+
+// // console.log(aman.calcAge(2001));
+// // console.log(aman['calcAge2'](2004));
+// console.log(typeof(aman.calcAge));
+// // Call the method so it sets `this.age` on the object before we log it
+// aman.calcAge();
+// console.log(aman.age);
+// console.log(typeof(aman));
+
+
+// // challenge: Aman is a 46 year old employee, and he has a driver license
+// console.log(`${aman.firstName} is a ${aman.age} year old ${aman.job} , and he has ${aman.hasDriverLicense ? 'a' : 'no'} driver license`);
+// console.log(aman.getSummary());
+
+
+// coding challenge 3
+console.log(`coding challenge 3 of part 2`);
+
+const mark = {
+    fullName : 'mark amanu',
+    mass : 80,
+    height: 1.69,
+    calcBMI: function()
     {
-        // this.age = 2025 - this.birthYear;
-        // console.log(this);
-        this.age = 2025 - this.birthYear;
-        console.log(this.age);
-        return this.age;
-        // return `call by 'this' keyword: ${this.age = Number(2025 - this.birthYear) }`;
-    },
-    getSummary: function()
-    {
-            return `${this.firstName} is a ${this.calcAge()} year old ${this.job} , and he has ${this.hasDriverLicense ? 'a' : 'no'} driver license`;
+        let bmi = this.mass / (this.height * this.height);
+        return bmi; 
     }
 };
 
-// console.log(aman.calcAge(2001));
-// console.log(aman['calcAge2'](2004));
-console.log(typeof(aman.calcAge));
-// Call the method so it sets `this.age` on the object before we log it
-aman.calcAge();
-console.log(aman.age);
-console.log(typeof(aman));
+const john = {
+    fullName: 'john smith', 
+    mass: 92,
+    height : 1.95,
+    calcBMI: function()
+    {
+        let bmi = this.mass / (this.height * this.height);
+        return bmi; 
+    }
+};
 
+// Compute BMIs once so we don't call the methods repeatedly and to avoid inconsistent results
+const markBMI = mark.calcBMI();
+const johnBMI = john.calcBMI();
 
-// challenge: Aman is a 46 year old employee, and he has a driver license
-console.log(`${aman.firstName} is a ${aman.age} year old ${aman.job} , and he has ${aman.hasDriverLicense ? 'a' : 'no'} driver license`);
-console.log(aman.getSummary());
+// Build a readable message using a ternary expression
+const higher = markBMI > johnBMI ? `${mark.fullName}'s BMI (${markBMI.toFixed(2)}) is higher than ${john.fullName}'s BMI (${johnBMI.toFixed(2)})` : `${john.fullName}'s BMI (${johnBMI.toFixed(2)}) is higher than ${mark.fullName}'s BMI (${markBMI.toFixed(2)})`;
+console.log(higher);
