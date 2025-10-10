@@ -436,3 +436,20 @@ for (let i = 0; i<years.length; i++)
 }
 console.log(ages);
 
+// continue and break
+console.log('continue and breal statement');
+
+console.log('------ string only ------- ');
+for (let i = 0; i<aman.length; i++  )
+{
+    if(typeof(aman[i]) !== 'string' ) continue;
+
+    console.log(aman[i], typeof(aman[i]));
+}
+
+console.log('------ break with number ------- ');
+for(let i = 0; i<aman.length; i++)
+{
+    if(typeof(aman[i]) === 'number') break;
+    console.log(aman[i], typeof(aman[i]));
+}
