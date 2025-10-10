@@ -470,3 +470,24 @@ for(let exercise = 1; exercise <4; exercise++)
         console.log(`--- Lifitng weight : ${rep}---`);
     }
 }
+
+// the while loop
+console.log('the while loop\n');
+
+// let rep = 1;
+// while(rep <= 5)
+// {
+//     console.log(`while: lifting weight usign while loop ${rep}`);
+//     rep++;
+// }
+
+let dice = Math.trunc(Math.random() * 6) + 1; ;
+console.log(dice);
+
+if(dice === 6) console.log(`loop is about to end.. and rooled a ${dice} finally`);
+while(dice !== 6)
+{
+    console.log(`you rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1; ;
+    if(dice === 6) console.log(`loop is about to end.. and rooled a ${dice} finally`); 
+}
