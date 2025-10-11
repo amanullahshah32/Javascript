@@ -12,3 +12,10 @@ const calcAge = (birthYear) =>
 console.log(calcAge(2003));
 
 console.log(calcAge(23));
+console.log(calcAge(23));
+
+const aman = ['Aman', 'Kumar', 2024 - 2003, 'student', ['Ankit', 'Anshul', 'Anurag'], true];
+console.log(aman);
+console.log(aman.length);
+console.log(aman[0]);
+console.log(typeof(aman));
