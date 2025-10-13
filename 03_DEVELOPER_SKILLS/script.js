@@ -68,8 +68,8 @@
 // console.log(`problem 2:`);
 // //funciton should now receive 2 arrays of temps
 // // and i have to merge two arrays first, then i will find out the amplitude
-// const temperature1 = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
-// const temperature2 = [3, -2, -6, -64, 'error', 9, 32, 98, 102, 14, 9, 5];
+const temperature1 = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
+const temperature2 = [3, -2, -6, -64, 'error', 9, 32, 98, 102, 14, 9, 5];
 
 // const calcTempAmplitude2 = function (temps1, temps2) 
 // {
@@ -112,7 +112,8 @@ const measureKelvin = function ()
   const measurement = {
     type: 'temp', 
     unit: 'celsius', 
-    value: Number(prompt('Degrees celsius: '))
+    // value: Number(prompt('Degrees celsius: '))
+    value: 10
   }
   console.log(measurement);
   console.table(measurement);
@@ -125,3 +126,42 @@ const measureKelvin = function ()
 }
 
 console.log(measureKelvin());
+
+
+
+// another bug finding approach
+console.log(`another bug finding approach\n`);
+
+const calcTempAmplitudeBug = function (temps1) 
+{
+  // const mergedArray = temps1.concat(temps2);
+  // console.log(`merged array: ${mergedArray} and its length is: ${mergedArray.length}`);
+
+  // let max = mergedArray[0]; 
+  // let min = mergedArray [0];
+  let max = 0; 
+  let min = 0;
+  for(let i = 0; i< temps1.length; i++)
+  {
+    if(typeof temps1[i] !== 'number') continue;
+
+    if(temps1[i] > max)
+    {
+      max = temps1[i];
+    }
+    if(temps1[i] < min)
+    {
+      min  = temps1[i]; 
+    }
+  }
+  const amplitude = max - min;
+  console.log(max); 
+  console.log(min); 
+  return amplitude;
+  // console.log(max);
+
+}
+
+let temp = [3, 5, 1, 8, -7];
+const ampplitudeBug = calcTempAmplitudeBug(temp);
+console.log(ampplitudeBug);
