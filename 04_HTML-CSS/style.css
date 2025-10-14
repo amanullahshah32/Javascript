@@ -1,0 +1,30 @@
+body
+{
+    background-color: rgb(227, 255, 171);
+    font-family: Arial;
+    font-size: 20px;
+}
+
+h1
+{
+    color: blue;
+    text-align:left ;
+    font-size: 30px;
+}
+
+.heading1
+{
+    color: red;
+}
+.heading2
+{
+    color: green;
+    font-size: 40px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#my-name{
+    color: purple;
+    font-size: 20px;
+    border: 5px solid #000034;
+}
