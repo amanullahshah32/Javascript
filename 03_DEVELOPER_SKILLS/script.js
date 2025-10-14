@@ -105,63 +105,81 @@ const temperature2 = [3, -2, -6, -64, 'error', 9, 32, 98, 102, 14, 9, 5];
 
 // debugging
 
-console.log(`debugging`);
+// console.log(`debugging`);
 
-const measureKelvin = function ()
+// const measureKelvin = function ()
+// {
+//   const measurement = {
+//     type: 'temp', 
+//     unit: 'celsius', 
+//     // value: Number(prompt('Degrees celsius: '))
+//     value: 10
+//   }
+//   console.log(measurement);
+//   console.table(measurement);
+//   console.log(measurement.value);
+//   // console.warn(measurement.value);
+//   // console.error(measurement.value);
+//   const kelvin = measurement.value + 273;
+//   return kelvin;
+
+// }
+
+// console.log(measureKelvin());
+
+
+
+// // another bug finding approach
+// console.log(`another bug finding approach\n`);
+
+// const calcTempAmplitudeBug = function (temps1) 
+// {
+//   // const mergedArray = temps1.concat(temps2);
+//   // console.log(`merged array: ${mergedArray} and its length is: ${mergedArray.length}`);
+
+//   // let max = mergedArray[0]; 
+//   // let min = mergedArray [0];
+//   let max = 0; 
+//   let min = 0;
+//   for(let i = 0; i< temps1.length; i++)
+//   {
+//     if(typeof temps1[i] !== 'number') continue;
+
+//     if(temps1[i] > max)
+//     {
+//       max = temps1[i];
+//     }
+//     if(temps1[i] < min)
+//     {
+//       min  = temps1[i]; 
+//     }
+//   }
+//   const amplitude = max - min;
+//   console.log(max); 
+//   console.log(min); 
+//   return amplitude;
+//   // console.log(max);
+
+// }
+
+// let temp = [3, 5, 1, 8, -7];
+// const ampplitudeBug = calcTempAmplitudeBug(temp);
+// console.log(ampplitudeBug);
+
+
+
+// coding challenge 1
+console.log(`coding challenge 1\n`);
+
+// Given an array of forcasted maximum temperatures, the thermometer displays a string with these temperatures. 
+
+const printForecast = (arr) =>
 {
-  const measurement = {
-    type: 'temp', 
-    unit: 'celsius', 
-    // value: Number(prompt('Degrees celsius: '))
-    value: 10
-  }
-  console.log(measurement);
-  console.table(measurement);
-  console.log(measurement.value);
-  // console.warn(measurement.value);
-  // console.error(measurement.value);
-  const kelvin = measurement.value + 273;
-  return kelvin;
-
-}
-
-console.log(measureKelvin());
-
-
-
-// another bug finding approach
-console.log(`another bug finding approach\n`);
-
-const calcTempAmplitudeBug = function (temps1) 
-{
-  // const mergedArray = temps1.concat(temps2);
-  // console.log(`merged array: ${mergedArray} and its length is: ${mergedArray.length}`);
-
-  // let max = mergedArray[0]; 
-  // let min = mergedArray [0];
-  let max = 0; 
-  let min = 0;
-  for(let i = 0; i< temps1.length; i++)
+  for(let i = 0; i< arr.length; i++)
   {
-    if(typeof temps1[i] !== 'number') continue;
-
-    if(temps1[i] > max)
-    {
-      max = temps1[i];
-    }
-    if(temps1[i] < min)
-    {
-      min  = temps1[i]; 
-    }
+    console.log(`${arr[i]} degree in ${i+1} days... \n`);
   }
-  const amplitude = max - min;
-  console.log(max); 
-  console.log(min); 
-  return amplitude;
-  // console.log(max);
-
 }
 
-let temp = [3, 5, 1, 8, -7];
-const ampplitudeBug = calcTempAmplitudeBug(temp);
-console.log(ampplitudeBug);
+const maxTemp = [17 , 21, 24];
+console.log(printForecast(maxTemp));
