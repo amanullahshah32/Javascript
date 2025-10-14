@@ -32,19 +32,37 @@ This repository documents my journey learning JavaScript from the ground up. I'v
   - Function parameters and return values
 - **Arrays**:
   - Creating and accessing arrays
-  - Basic array methods (`push`, `pop`)
+  - Array methods (`push`, `pop`, `shift`, `unshift`)
   - Arrays with different data types
+  - Array destructuring
+- **Objects**:
+  - Object creation and structure
+  - Dot notation vs. bracket notation
+  - Adding and modifying object properties
+  - Object methods and the `this` keyword
+  - Dynamic property access
+- **Loops and Iteration**:
+  - For loops (standard, nested loops)
+  - While loops
+  - Looping through arrays
+  - `continue` and `break` statements
+  - Looping backwards
+- **Advanced Concepts**:
+  - Destructuring assignment
+  - Mathematical operations (`Math.random()`, `Math.trunc()`)
+  - Template literals for complex string building
+  - Practical coding challenges and problem-solving
 
 ## Next Steps in My Learning Journey
 
 As I continue my JavaScript learning, I plan to explore:
 
-- More array methods (map, filter, reduce)
-- Objects and object-oriented programming
-- DOM manipulation
+- More array methods (map, filter, reduce, forEach)
+- Advanced object concepts and prototypes
+- DOM manipulation and events
 - Asynchronous JavaScript (callbacks, promises, async/await)
-- Error handling
-- Modern JavaScript features (ES6+)
+- Error handling and debugging
+- Modern JavaScript features (ES6+ modules, classes)
 
 ## Resources Used
 
