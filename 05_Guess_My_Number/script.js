@@ -26,3 +26,5 @@ console.log(document.querySelector('.score').textContent = 25);
 // console.log(document.querySelector('.guess').textContent=14);
 console.log(document.querySelector('.guess').value);
 console.log(document.querySelector('.guess').value = 90);
+
+
