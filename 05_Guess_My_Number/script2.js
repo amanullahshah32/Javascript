@@ -2,13 +2,34 @@
 document.querySelector('body').style.backgroundColor = '#ce8c8cff';
 
 
-console.log(document.querySelector('.check').textContent);
+// console.log(document.querySelector('.check').textContent);
 
 let score =20;
-const secretNumber = Math.trunc(Math.random() * 20 +1);
+let secretNumber = Math.trunc(Math.random() * 20 +1);
 console.log(secretNumber);
 // document.querySelector('.number').textContent = secretNumber;
 document.querySelector('.number').value = secretNumber;
+document.querySelector('.number').value ;
+
+
+// coding challenge
+console.log('-------------------    coding challenge -------------------    \n');
+// the again button should reset the game
+document.querySelector('.again').addEventListener('click', function()
+{
+    score = 20; 
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.number').textContent = '?';
+    document.querySelector('.number').value = location.reload;
+    document.querySelector('.guess').value = ''; // to clear the input field;
+    document.querySelector('body').style.backgroundColor = '#ce8c8cff';
+    document.querySelector('.number').style.width = '15rem';
+    secretNumber = Math.trunc(Math.random() * 20 + 1);
+    console.log('secret number : ' + secretNumber);
+    // document.querySelector('.number').value = secretNumber;
+    // location.reload();
+})
 
 
 document.querySelector('.check').addEventListener('click', function()
@@ -20,12 +41,13 @@ document.querySelector('.check').addEventListener('click', function()
    {
     document.querySelector('.message').textContent = 'No Number isnterted';
    }
-
+// when player wins
    else if(guess === secretNumber)
    {
     document.querySelector('.message').textContent = ' 👍 Number Matched 👍';
     document.querySelector('body').style.backgroundColor = '#57e52cff';
     document.querySelector('.number').textContent = secretNumber;
+    document.querySelector('.number').style.width = '30rem';
     
    }
    else if(guess > secretNumber)
@@ -40,6 +62,9 @@ document.querySelector('.check').addEventListener('click', function()
         document.querySelector('.message').textContent = '😔 You lost the game 😔';
         score--;
         document.querySelector('.score').textContent = score;
+        document.querySelector('body').style.backgroundColor = '#ff0000';
+        alert('You lost the game');
+
     }
 
     }
@@ -55,6 +80,8 @@ document.querySelector('.check').addEventListener('click', function()
         document.querySelector('.message').textContent = '😔 You lost the game 😔';
         score--;
         document.querySelector('.score').textContent = score;
+        document.querySelector('body').style.backgroundColor = '#ff0000';
+        alert('You lost the game');
     }
  
    }
