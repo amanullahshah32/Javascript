@@ -3,7 +3,7 @@ document.querySelector('body').style.backgroundColor = '#ce8c8cff';
 
 
 // console.log(document.querySelector('.check').textContent);
-
+let highScore = 0;
 let score =20;
 let secretNumber = Math.trunc(Math.random() * 20 +1);
 console.log(secretNumber);
@@ -28,7 +28,7 @@ document.querySelector('.again').addEventListener('click', function()
     secretNumber = Math.trunc(Math.random() * 20 + 1);
     console.log('secret number : ' + secretNumber);
     // document.querySelector('.number').value = secretNumber;
-    // location.reload();
+    location.reload();
 })
 
 
@@ -48,7 +48,11 @@ document.querySelector('.check').addEventListener('click', function()
     document.querySelector('body').style.backgroundColor = '#57e52cff';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('.number').style.width = '30rem';
-    
+    if(score > highScore)
+    {
+        highScore = score;
+            document.querySelector('.highscore').textContent = highScore;
+    } 
    }
    else if(guess > secretNumber)
    {
