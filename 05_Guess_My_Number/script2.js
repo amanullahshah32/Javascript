@@ -18,17 +18,18 @@ console.log('-------------------    coding challenge -------------------    \n')
 document.querySelector('.again').addEventListener('click', function()
 {
     score = 20; 
+    secretNumber = Math.trunc(Math.random() * 20 + 1); // Generate new secret number
+    console.log('new secret number: ' + secretNumber);
+    
+    // Reset all game elements (but keep highscore as is)
     document.querySelector('.score').textContent = score;
     document.querySelector('.message').textContent = 'Start guessing...';
     document.querySelector('.number').textContent = '?';
-    document.querySelector('.number').value = location.reload;
-    document.querySelector('.guess').value = ''; // to clear the input field;
+    document.querySelector('.guess').value = ''; // Clear input field
     document.querySelector('body').style.backgroundColor = '#ce8c8cff';
     document.querySelector('.number').style.width = '15rem';
-    secretNumber = Math.trunc(Math.random() * 20 + 1);
-    console.log('secret number : ' + secretNumber);
-    // document.querySelector('.number').value = secretNumber;
-    location.reload();
+    
+    // Note: highscore is NOT reset here, so it persists!
 })
 
 
