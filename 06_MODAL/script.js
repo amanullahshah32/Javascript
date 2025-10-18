@@ -26,3 +26,16 @@ const closeModal = () =>
 }
 
 btnCloseModal.addEventListener('click', closeModal);
+
+
+// keyboard event
+document.addEventListener('keydown', function(event)
+{
+    // closeModal();
+    // console.log('a key was pressed: ', event);
+    console.log('a key was pressed: ', event.key);
+    if(event.key === 'Escape' && !modal.classList.contains('hidden'))
+    {
+        closeModal();
+    }
+})
