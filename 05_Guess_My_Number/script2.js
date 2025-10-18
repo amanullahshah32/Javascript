@@ -55,11 +55,14 @@ document.querySelector('.check').addEventListener('click', function()
             document.querySelector('.highscore').textContent = highScore;
     } 
    }
-   else if(guess > secretNumber)
+
+   // when guess is wrong
+   else if(guess !== secretNumber)
    {
-    if(score>1)
+     if(score>1)
     {
-        document.querySelector('.message').textContent = 'Number is higher';
+        document.querySelector('.message').textContent = 
+        guess > secretNumber ? 'Number is High' : "Number is Low";
         score--;
         document.querySelector('.score').textContent = score; 
     }
@@ -71,25 +74,42 @@ document.querySelector('.check').addEventListener('click', function()
         alert('You lost the game');
 
     }
-
-    }
-   else if(guess < secretNumber)
-   {
-    if(score>1)
-    {
-        document.querySelector('.message').textContent = 'Number is lower';
-        score--;
-        document.querySelector('.score').textContent = score;
-    }
-    else{
-        document.querySelector('.message').textContent = '😔 You lost the game 😔';
-        score--;
-        document.querySelector('.score').textContent = score;
-        document.querySelector('body').style.backgroundColor = '#ff0000';
-        alert('You lost the game');
-    }
- 
    }
+//    else if(guess > secretNumber)
+//    {
+//     if(score>1)
+//     {
+//         document.querySelector('.message').textContent = 'Number is higher';
+//         score--;
+//         document.querySelector('.score').textContent = score; 
+//     }
+//     else{
+//         document.querySelector('.message').textContent = '😔 You lost the game 😔';
+//         score--;
+//         document.querySelector('.score').textContent = score;
+//         document.querySelector('body').style.backgroundColor = '#ff0000';
+//         alert('You lost the game');
+
+//     }
+
+//     }
+//    else if(guess < secretNumber)
+//    {
+//     if(score>1)
+//     {
+//         document.querySelector('.message').textContent = 'Number is lower';
+//         score--;
+//         document.querySelector('.score').textContent = score;
+//     }
+//     else{
+//         document.querySelector('.message').textContent = '😔 You lost the game 😔';
+//         score--;
+//         document.querySelector('.score').textContent = score;
+//         document.querySelector('body').style.backgroundColor = '#ff0000';
+//         alert('You lost the game');
+//     }
+ 
+//    }
 
 })
 
