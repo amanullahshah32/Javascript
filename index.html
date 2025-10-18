@@ -1,72 +1,177 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Amanullah's JavaScript Learning Projects</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        .project-card {
-            background: white;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .project-card h3 {
-            color: #333;
-            margin-top: 0;
-        }
-        .project-card a {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .project-card a:hover {
-            background-color: #0056b3;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-        .description {
-            color: #666;
-            line-height: 1.6;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      .project-card {
+        background: white;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .project-card h3 {
+        color: #333;
+        margin-top: 0;
+      }
+      .project-card a {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 8px 16px;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 5px 5px 5px 0;
+        font-size: 14px;
+      }
+      .project-card a:hover {
+        background-color: #0056b3;
+      }
+      .practice-link {
+        background-color: #28a745 !important;
+      }
+      .practice-link:hover {
+        background-color: #1e7e34 !important;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      .description {
+        color: #666;
+        line-height: 1.6;
+      }
+      .concepts {
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+        font-size: 14px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>🚀 Amanullah's JavaScript Learning Journey</h1>
-    <p class="description">Welcome to my JavaScript learning projects! Here you can see my progress and play the games I've built while learning JavaScript.</p>
-    
+    <p class="description">
+      Welcome to my JavaScript learning projects! Here you can see my progress
+      and play the games I've built while learning JavaScript.
+    </p>
+
     <div class="project-card">
-        <h3>🎯 Guess My Number Game</h3>
-        <p>A fun number guessing game where you try to guess a secret number between 1 and 20. Features scoring system and highscore tracking!</p>
-        <p><strong>Concepts learned:</strong> DOM manipulation, Event listeners, Random numbers, Conditional logic</p>
-        <a href="05_Guess_My_Number/index.html">Play Game</a>
+      <h3>📖 Part 1: JavaScript Fundamentals</h3>
+      <p>
+        Basic JavaScript concepts - variables, data types, operators, and
+        control structures.
+      </p>
+      <div class="concepts">
+        <strong>Concepts:</strong> Variables, Data types, Operators, if/else
+        statements, Boolean logic
+      </div>
+      <a href="01_FUNDAMENTAL_PART_01/index.html">View Project</a>
+      <a href="01_FUNDAMENTAL_PART_01/script.js" class="practice-link"
+        >View Code</a
+      >
     </div>
-    
+
     <div class="project-card">
-        <h3>📚 My Learning Progress</h3>
-        <p>Check out my README and revision guide to see what JavaScript concepts I've learned so far.</p>
-        <a href="README.md">View README</a>
-        <a href="REVISION_GUIDE.md">View Revision Guide</a>
+      <h3>🔧 Part 2: Functions & Arrays</h3>
+      <p>
+        Functions, arrays, objects, and more advanced JavaScript fundamentals.
+      </p>
+      <div class="concepts">
+        <strong>Concepts:</strong> Functions, Arrays, Objects, Loops, Methods
+      </div>
+      <a href="02_FUNDAMENTAL_PART_02/index.html">View Project</a>
+      <a href="02_FUNDAMENTAL_PART_02/script.js" class="practice-link"
+        >View Code</a
+      >
     </div>
-    
+
     <div class="project-card">
-        <h3>💻 Source Code</h3>
-        <p>View the complete source code and follow my learning journey on GitHub.</p>
-        <a href="https://github.com/amanullahshah32/Javascript" target="_blank">View on GitHub</a>
+      <h3>🛠️ Developer Skills & Debugging</h3>
+      <p>
+        Learning how to debug code, problem-solving approaches, and developer
+        tools.
+      </p>
+      <div class="concepts">
+        <strong>Concepts:</strong> Debugging, Problem solving, Developer tools,
+        Error handling
+      </div>
+      <a href="03_DEVELOPER_SKILLS/index.html">View Project</a>
+      <a href="03_DEVELOPER_SKILLS/script.js" class="practice-link"
+        >View Code</a
+      >
     </div>
-</body>
-</html> -->
+
+    <div class="project-card">
+      <h3>🎨 HTML & CSS Basics</h3>
+      <p>Basic HTML and CSS to support JavaScript projects.</p>
+      <div class="concepts">
+        <strong>Concepts:</strong> HTML structure, CSS styling, Layout basics
+      </div>
+      <a href="04_HTML-CSS/index.html">View Project</a>
+      <a href="04_HTML-CSS/style.css" class="practice-link">View CSS</a>
+    </div>
+
+    <div class="project-card">
+      <h3>🎯 Guess My Number Game</h3>
+      <p>
+        A fun number guessing game where you try to guess a secret number
+        between 1 and 20. Features scoring system and highscore tracking!
+      </p>
+      <div class="concepts">
+        <strong>Concepts:</strong> DOM manipulation, Event listeners, Random
+        numbers, Conditional logic
+      </div>
+      <a href="05_Guess_My_Number/index.html">Play Game</a>
+      <a href="05_Guess_My_Number/script.js" class="practice-link">View Code</a>
+      <a href="05_Guess_My_Number/script2.js" class="practice-link"
+        >View Code 2</a
+      >
+    </div>
+
+    <div class="project-card">
+      <h3>🪟 Modal Window Project</h3>
+      <p>
+        Interactive modal windows with JavaScript - learn about DOM manipulation
+        and event handling.
+      </p>
+      <div class="concepts">
+        <strong>Concepts:</strong> DOM manipulation, Event listeners, Classes,
+        Modal windows
+      </div>
+      <a href="06_MODAL/index.html">View Project</a>
+      <a href="06_MODAL/script.js" class="practice-link">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>📚 Documentation & Learning Resources</h3>
+      <p>
+        Check out my README and revision guide to see what JavaScript concepts
+        I've learned so far.
+      </p>
+      <a href="README.md">View README</a>
+      <a href="REVISION_GUIDE.md">View Revision Guide</a>
+    </div>
+
+    <div class="project-card">
+      <h3>💻 Source Code & GitHub</h3>
+      <p>
+        View the complete source code and follow my learning journey on GitHub.
+      </p>
+      <a href="https://github.com/amanullahshah32/Javascript" target="_blank"
+        >View on GitHub</a
+      >
+      <a href="docs/index.html" class="practice-link">Docs Folder</a>
+    </div>
+  </body>
+</html>
