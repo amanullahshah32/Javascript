@@ -6,8 +6,12 @@ document.querySelector('body').style.backgroundColor = '#ce8c8cff';
 let highScore = 0;
 let score =20;
 let secretNumber = Math.trunc(Math.random() * 20 +1);
+
+const displayMessage = function(message)
+{
+    document.querySelector('.message').textContent = message;
+}
 console.log(secretNumber);
-// document.querySelector('.number').textContent = secretNumber;
 document.querySelector('.number').value = secretNumber;
 document.querySelector('.number').value ;
 
@@ -23,7 +27,8 @@ document.querySelector('.again').addEventListener('click', function()
     
     // Reset all game elements (but keep highscore as is)
     document.querySelector('.score').textContent = score;
-    document.querySelector('.message').textContent = 'Start guessing...';
+    displayMessage('Start Guessing....');
+    // document.querySelector('.message').textContent = 'Start guessing...';
     document.querySelector('.number').textContent = '?';
     document.querySelector('.guess').value = ''; // Clear input field
     document.querySelector('body').style.backgroundColor = '#ce8c8cff';
@@ -40,12 +45,13 @@ document.querySelector('.check').addEventListener('click', function()
 
    if(!guess)
    {
-    document.querySelector('.message').textContent = 'No Number isnterted';
+    displayMessage('No Number isnterted');
+    // document.querySelector('.message').textContent = 'No Number isnterted';
    }
 // when player wins
    else if(guess === secretNumber)
    {
-    document.querySelector('.message').textContent = ' 👍 Number Matched 👍';
+    displayMessage(' 👍 Number Matched 👍');
     document.querySelector('body').style.backgroundColor = '#57e52cff';
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('.number').style.width = '30rem';
@@ -61,13 +67,13 @@ document.querySelector('.check').addEventListener('click', function()
    {
      if(score>1)
     {
-        document.querySelector('.message').textContent = 
-        guess > secretNumber ? 'Number is High' : "Number is Low";
+        displayMessage(guess > secretNumber ? 'Number is High' : "Number is Low");
+        // guess > secretNumber ? 'Number is High' : "Number is Low";
         score--;
         document.querySelector('.score').textContent = score; 
     }
     else{
-        document.querySelector('.message').textContent = '😔 You lost the game 😔';
+        displayMessage('😔 You lost the game 😔');
         score--;
         document.querySelector('.score').textContent = score;
         document.querySelector('body').style.backgroundColor = '#ff0000';
