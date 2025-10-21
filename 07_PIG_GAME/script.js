@@ -40,6 +40,35 @@ btnRoll.addEventListener('click', function()
         // switch to next player
         current0EL.textContent = 0; 
         currentScore = 0;
+        switchPlayer();
 
     }
 })
+
+const switchPlayer = function()
+{
+    btnRoll.addEventListener('click', function()
+{
+    // 1. generating a renadom dice roll
+    const dice = Number(Math.trunc(Math.random() *6) + 1); 
+    //2. display dice
+    diceEL.src = 'dice_images/dice-' + dice + '.png';
+    // console.log(`pressed ${dice}`);
+    diceEL.classList.remove('hidden');
+    //. 3. check for rolled 1: if ture, switch to next palyer
+    if(dice !==1)
+    {
+        // add dice to current score
+        currentScore = currentScore + dice;
+        current1EL.textContent = currentScore; // change later
+
+    }
+    else{
+        // switch to next player
+        current1EL.textContent = 0; 
+        currentScore = 0;
+
+    }
+})
+
+}
