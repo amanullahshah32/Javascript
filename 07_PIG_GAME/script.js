@@ -12,6 +12,7 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold =document.querySelector('.btn--hold');
 
+
 //starting conditions
 score0EL.textContent = 0;
 score1EL.textContent = 0;
@@ -40,16 +41,58 @@ btnRoll.addEventListener('click', function()
         // add dice to current score
         currentScore = currentScore + dice;
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        // scores[activePlayer]  =  currentScore;
+
+        // winner check
+        if(scores[activePlayer] + currentScore >= 10)
+        {
+            document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer] + currentScore;
+            diceEL.classList.add('hidden');
+            alert(`Player ${activePlayer + 1} has won the game!`);
+        }
 
     }
     else{
         // switch to next player
         document.getElementById(`current--${activePlayer}`).textContent = 0;
-        currentScore = 0;
+        scores[activePlayer] = 0;
+        document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+
+        //toggle the player highlight
         document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
         activePlayer = activePlayer === 0 ? 1 : 0; 
         document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
-
+        currentScore = 0;
     }
 })
 
+console.log(currentScore);
+// hold the score of each player
+btnHold.addEventListener('click', function()
+{
+    // 1. add current score to active players score;
+    scores[activePlayer] = Number(scores[activePlayer] + currentScore);
+    document.getElementById('current--' +activePlayer).textContent = scores[activePlayer];
+    //update the score of players
+    document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
+    // make the current score to zero
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    //toggle the player highlight
+    document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
+    diceEL.classList.add('hidden');
+    // make the current score for the other player to zero
+    currentScore = 0;
+})
+
+
+ // refresh the page. 
+btnNew.addEventListener('click', function()
+{
+
+    
+    // reset all the scores and states
+    window.location.reload();
+
+})
