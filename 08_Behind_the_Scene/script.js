@@ -6,5 +6,5 @@ function calcAge(birthYear) {
   return age;
 }
 
-const firstName = "Aman";
+const firstName = "AmanUllah";
 calcAge(2001);
