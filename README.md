@@ -6,6 +6,12 @@ This repository documents my journey learning JavaScript from the ground up. I'v
 
 - **01_FUNDAMENTAL_PART_01**: Basic JavaScript concepts and syntax
 - **02_FUNDAMENTAL_PART_02**: More advanced JavaScript concepts including functions and arrays
+- **03_DEVELOPER_SKILLS**: Developer tools and debugging techniques
+- **04_HTML-CSS**: HTML and CSS fundamentals
+- **05_Guess_My_Number**: Interactive number guessing game project
+- **06_MODAL**: Modal dialog implementation
+- **07_PIG_GAME**: Dice game project
+- **08_Behind_the_Scene**: JavaScript engine internals and how JavaScript works under the hood
 
 ## What I've Learned So Far
 
@@ -63,6 +69,18 @@ As I continue my JavaScript learning, I plan to explore:
 - Asynchronous JavaScript (callbacks, promises, async/await)
 - Error handling and debugging
 - Modern JavaScript features (ES6+ modules, classes)
+
+## How to Open Modules in the Browser Console
+
+To explore any of the modules and see console output:
+
+1. Navigate to the module folder (e.g., `08_Behind_the_Scene`)
+2. Open the `index.html` file in your web browser
+3. Right-click on the page and select **"Inspect"** or **"Inspect Element"**
+4. Click on the **"Console"** tab to view JavaScript console output
+5. The scripts will execute and display output, errors, and logs in the console
+
+**For 08_Behind_the_Scene**: This module demonstrates how JavaScript works behind the scenes. Open `08_Behind_the_Scene/index.html` in your browser, open the console (F12 or Ctrl+Shift+I), and explore the execution context, variable scope, and how the JavaScript engine processes code.
 
 ## Resources Used
 
