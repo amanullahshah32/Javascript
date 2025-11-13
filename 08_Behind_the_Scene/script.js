@@ -52,13 +52,12 @@ const year = 1986;
 // const addArrow = (a, b) => a + b;
 
 //example
-console.log(typeof(undefined));
+console.log(typeof undefined);
 console.log(undefined);
-if(!numProducts) deleteShoppingCart();
+if (!numProducts) deleteShoppingCart();
 var numProducts = 10;
 
-function deleteShoppingCart()
-{
+function deleteShoppingCart() {
   console.log("All products deleted!");
 }
 
@@ -70,3 +69,45 @@ console.log(x === window.x);
 console.log(y === window.x);
 console.log(z === window.x);
 
+
+// this keyword
+console.log('--- this keyword ---');
+// // console.log(this);
+
+// const calAge = function(birthYear){
+//   console.log(2025 - birthYear);
+//   console.log(this);
+// }
+// calAge(1998)
+
+// const calAgeArrow = (birthYear) => {
+//   console.log(2025 - birthYear);
+//   console.log(this);
+// }
+// calAgeArrow(2001);
+
+const aman = {
+  year: 2001,
+  name: 'Aman Ullah Shah',
+  calcAge: function()
+  {
+    console.log(this);
+    console.log(2025 - this.year);
+    console.log(this.name);
+  }
+}
+
+console.log(aman);
+aman.calcAge();
+
+const matilda = {
+  year: 2017,
+
+};
+matilda.calcAge = aman.calcAge; // here i can copy a method from one object to another object
+
+matilda.calcAge();
+
+const f  = aman.calcAge;
+console.log(f);
+// f();
