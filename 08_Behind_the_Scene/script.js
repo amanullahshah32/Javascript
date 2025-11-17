@@ -158,25 +158,48 @@
 // }
 // console.log(addArrow(2,5,4));
 
-const aman = {
-  year: 1990,
-  name: 'Aman Ullah Shah',
-  calcAge: function()
-  {
-    console.log(this);
-    console.log(2025 - this.year);
-    console.log(this.name);
+// const aman = {
+//   year: 1990,
+//   name: 'Aman Ullah Shah',
+//   calcAge: function()
+//   {
+//     console.log(this);
+//     console.log(2025 - this.year);
+//     console.log(this.name);
 
-    const self  = this; // workaround
-    const isMillenial = function() {
-      console.log(self.year >= 1981 && self.year <= 1996);
+//     const self  = this; // workaround
+//     const isMillenial = function() {
+//       console.log(self.year >= 1981 && self.year <= 1996);
 
-    };
-    isMillenial();
-  },
-  great: function() {
-    console.log(`hey ${this.name}!`);
-  }
+//     };
+//     isMillenial();
+//   },
+//   great: function() {
+//     console.log(`hey ${this.name}!`);
+//   }
+// }
+// aman.great();
+// console.log(this.name);
+
+// primitive vs reference values
+console.log('--- primitive vs reference values ---');
+console.log(`primitive values example: \n`);
+let age  = 25;
+let oldAge = age;
+
+age = 30;
+console.log(age);
+console.log(oldAge);
+
+console.log(`\nreference values example: \n`);
+const amanullah = {
+  name: 'Md. Amanullah Shah',
+  year: 2001,
+  age: Number(2025 - this.year)
 }
-aman.great();
-console.log(this.name);
+
+const friend = amanullah;
+friend.year = 2004;
+
+console.log(friend);
+console.log(amanullah);
