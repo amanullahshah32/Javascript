@@ -69,7 +69,6 @@
 // console.log(y === window.x);
 // console.log(z === window.x);
 
-
 // // this keyword
 // console.log('--- this keyword ---');
 // // // console.log(this);
@@ -181,25 +180,53 @@
 // aman.great();
 // console.log(this.name);
 
-// primitive vs reference values
-console.log('--- primitive vs reference values ---');
-console.log(`primitive values example: \n`);
-let age  = 25;
-let oldAge = age;
+// // primitive vs reference values
+// console.log('--- primitive vs reference values ---');
+// console.log(`primitive values example: \n`);
+// let age  = 25;
+// let oldAge = age;
 
-age = 30;
-console.log(age);
-console.log(oldAge);
+// age = 30;
+// console.log(age);
+// console.log(oldAge);
 
-console.log(`\nreference values example: \n`);
-const amanullah = {
-  name: 'Md. Amanullah Shah',
+// console.log(`\nreference values example: \n`);
+// const amanullah = {
+//   name: 'Md. Amanullah Shah',
+//   year: 2001,
+//   age: Number(2025 - this.year)
+// }
+
+// const friend = amanullah;
+// friend.year = 2004;
+
+// console.log(friend);
+// console.log(amanullah);
+
+let lastName = "Shah";
+let oldLastName = lastName;
+lastName = "Noshin";
+
+console.log(lastName + " " + oldLastName);
+console.log(oldLastName);
+
+console.log(`reference values example: \n`);
+
+// copying objects
+const amanullah2 = {
+  name: "Md. Amanullah Shah",
   year: 2001,
-  age: Number(2025 - this.year)
-}
+  age: Number(2025 - 2001),
+  family : ['Aman', 'Noshin'],
+};
+console.log(amanullah2);
 
-const friend = amanullah;
-friend.year = 2004;
+const friend2 = Object.assign({}, amanullah2);
+friend2.year = 2005;
+friend2.name = "Md. Noshin Sharmila";
+friend2.city = "Dhaka"; // ✅ Add new property to friend2 only
+friend2.family.push('Baby Noshin'); // ❌ Mutate nested array property of amanullah2
 
-console.log(friend);
-console.log(amanullah);
+
+console.log("before modifying the object:", amanullah2);
+console.log("after modifying the object:", friend2);
