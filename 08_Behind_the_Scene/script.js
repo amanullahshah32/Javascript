@@ -112,6 +112,52 @@
 // console.log(f);
 // // f();
 
+// const aman = {
+//   year: 1990,
+//   name: 'Aman Ullah Shah',
+//   calcAge: function()
+//   {
+//     console.log(this);
+//     console.log(2025 - this.year);
+//     console.log(this.name);
+
+//     const self  = this; // workaround
+//     const isMillenial = function() {
+//       console.log(self.year >= 1981 && self.year <= 1996);
+
+//     };
+//     isMillenial();
+//   },
+//   great: () => {
+//     console.log(`hey ${this.name}`);
+//   }
+// }
+// // aman.great();
+// aman.calcAge();
+// // console.log(this.name);
+
+// // arguments keyword
+// const addExpr = function (a, b )
+// {
+//   let sum = 0;
+//   console.log(arguments);
+//   for(let i=0; i<arguments.length; i++)
+//   {
+//     sum = sum + arguments[i];
+//   }
+//   return sum;
+// }
+
+// console.log(addExpr(2,5,4,5,5));
+// addExpr(2,5,4,5,5);
+
+// // arguments not available in arrow functions
+// const addArrow = (a,b) => {
+//   console.log(arguments);
+//   return a + b;
+// }
+// console.log(addArrow(2,5,4));
+
 const aman = {
   year: 1990,
   name: 'Aman Ullah Shah',
@@ -128,32 +174,9 @@ const aman = {
     };
     isMillenial();
   },
-  great: () => {
-    console.log(`hey ${this.name}`);
+  great: function() {
+    console.log(`hey ${this.name}!`);
   }
 }
-// aman.great();
-aman.calcAge();
-// console.log(this.name);
-
-// arguments keyword
-const addExpr = function (a, b )
-{
-  let sum = 0;
-  console.log(arguments);
-  for(let i=0; i<arguments.length; i++)
-  {
-    sum = sum + arguments[i];
-  }
-  return sum;
-}
-
-console.log(addExpr(2,5,4,5,5));
-addExpr(2,5,4,5,5);
-
-// arguments not available in arrow functions
-const addArrow = (a,b) => {
-  console.log(arguments);
-  return a + b;
-}
-console.log(addArrow(2,5,4));
+aman.great();
+console.log(this.name);
