@@ -47,9 +47,34 @@ const restaurant = {
   order: function( starterIndex, mainIndex)
   {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery: function({starterIndex = 1,  mainIndex= 0, time= '22.23', address= 'Dhaka'})
+  {
+    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]
+      } will be delivered to you at ${time } to the address ${address}
+    }`);
+
   }
 };
 
+// calling the oderDelivery method under the restaurant object
+restaurant.orderDelivery(
+  {
+    time: '22.30',
+    address: 'Bashundhara R/A, Dhaka',
+    starterIndex: 2, // garlic bread
+    mainIndex: 2 // risotto
+  }
+);
+
+//calling the oderDelivery method without passing all the arguments
+restaurant.orderDelivery(
+  {
+    address: 'Uttara, Dhaka',
+    starterIndex: 1, // bruschetta
+  }
+);
 
 const arr = [2,3,4];
 const a = arr[0];
@@ -87,3 +112,30 @@ console.log(i, j);
 // [8,9]
 const [p=2, q, r=1] = [,9];
 console.log(p, q, r);
+
+
+// destructuring objects
+console.log(`destructuring objects:`);
+
+const {name, openingHours, categories} = restaurant;
+console.log(name, openingHours, categories);
+
+const{name: restaurantName, openingHours: hours, categories: tags} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// default values
+const {menu = ['default menu'], starterMenu: starters = ['default starter']} = restaurant;
+console.log(menu, starters);
+
+// mutating variables
+let aa = 111;
+let bb = 999;
+console.log(aa, bb);
+const obj = {a: 23, b: 7, c: 14};
+
+({a: aa, b: bb} = obj);
+console.log(aa, bb);
+
+// nested objects
+const {fri : {open: o, close: cc}} = openingHours;
+console.log(o, cc);
