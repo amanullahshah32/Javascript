@@ -4,7 +4,7 @@ This repository documents my journey learning JavaScript from the ground up. I'v
 
 ## Repository Structure
 
-- **01_FUNDAMENTAL_PART_01**: Basic JavaScript concepts and syntax..
+- **01_FUNDAMENTAL_PART_01**: Basic JavaScript concepts and syntax....
 - **02_FUNDAMENTAL_PART_02**: More advanced JavaScript concepts including functions and arrays
 - **03_DEVELOPER_SKILLS**: Developer tools and debugging techniques
 - **04_HTML-CSS**: HTML and CSS fundamentals
