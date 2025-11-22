@@ -76,3 +76,10 @@ if(restaurant.orderPizza)
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+// nullish coalescing operator
+console.log('--- nullish coalescing operator ---\n');
+// nullish: null and undefined (not 0 and emplty string )
+
+const guest4 = restaurant.numGuests ?? 10;
+console.log(guest4);
