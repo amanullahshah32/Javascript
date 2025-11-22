@@ -83,3 +83,35 @@ console.log('--- nullish coalescing operator ---\n');
 
 const guest4 = restaurant.numGuests ?? 10;
 console.log(guest4);
+
+// logical assignemnt oeparator
+console.log(`--- logical assignment operator ---\n`);
+const rest1 = {
+    name: 'Chillox',
+    numGuests: 0,
+}
+
+// making rest2 object by spread operator
+const rest2 = { ...rest1, owner: 'Aman', name: 'Hakaluku' };
+console.log(rest2);
+console.log(rest1);
+
+// rest2.numGuests = rest2.numGuests || 10;
+// rest1.numGuests = rest1.numGuests || 10;
+
+// or assignment operator
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+
+// nullish assignment operator
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+// 
+rest2.owner = rest2.owner &&= '<ANONYMOUS>'; // rest2. owner is a truty value
+rest1.owner = rest1.owner &&= '<ANONYMOUS>'; // rest1. owner is a truty value
+rest1.owner &&= '<ANONYMOUS>'; 
+rest2.owner &&= '<ANONYMOUS>'; 
+
+console.log(rest1);
+console.log(rest2);
