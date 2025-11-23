@@ -43,8 +43,9 @@ const game = {
 
 // 1. player array for each team
 
-let players1 = [];
-let players2 = [];
+let players1 = game.players[0];
+let players2 = game.players[1];
+console.log(players1, players2);
 
 // 2. first player of each team is goalkeeper , others are field players
 const [gk1, ...fieldPlayers1] = game.players[0]; // i used rest operator to collect remaining players

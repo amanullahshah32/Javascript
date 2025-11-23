@@ -46,6 +46,22 @@ const restaurant = {
   },
 };
 
+// for of loop
+const menus = [...restaurant.starterMenu, ...restaurant.mainMenu];  
+// for(const item of menus) console.log(item);
+
+for(const item of menus.entries())
+{
+  console.log(`${item[0] + 1}: ${item[1]}`); // item is an array [index, element]
+}
+for(const [index, element] of menus.entries())
+{
+  console.log(`${index + 1}: ${element}`); // item is an array [index, element]
+}
+
+// console.log([...menus.entries()]);
+// console.log(item);
+
 // logical operators
 // use any data type, return any data type, short-circuiting
 console.log('--- or ---');
