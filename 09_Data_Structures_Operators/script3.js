@@ -88,3 +88,16 @@ for(const day of days)
     console.log(day);
     console.log(restaurant.openingHours?.[day]?.open ?? 'closed'); // using optional chaining in bracket notation
 }
+
+// Methods
+console.log(restaurant.order?. (0,1) ?? 'Method Does not exist');
+console.log(restaurant.orderPasta?. (0,1) ?? 'Method Does not exist');
+
+// optional chaining on arrays
+const users = [
+    {name: 'Aman',
+        email: 'aman@gmail.com'
+    }
+]
+console.log(users[0]?.name ?? 'User array empty');
+console.log(users[1]?.name ?? 'User array empty');
