@@ -128,3 +128,44 @@ for(const [key, {open, close}] of entries)
 {
     console.log(`on ${key} we open at ${open} and close at ${close}`);
 }
+
+
+// sets
+console.log(`Sets:\n`);
+
+const orderSet = new Set([
+  
+    'pasta',
+    'pitha',
+    'halua',
+    'pasta',
+    'burger',
+    'pitha'
+  
+])
+console.log(orderSet);
+console.log(new Set('Amanullah'));
+
+console.log(orderSet.size);
+console.log(orderSet.has('bread'));
+console.log(orderSet.has('burger'));
+orderSet.add('garlic bread');
+orderSet.add('garlic bread');
+orderSet.add('garlic bread');
+console.log(orderSet);
+orderSet.delete('pitha');
+console.log(orderSet);
+
+// retrieve values from set
+console.log(`-- Retrieving values from set --`);
+for(const order of orderSet)
+{
+    console.log(order);
+}
+
+// orderSet.clear();
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)]; // converting set to array using spread operator
+console.log(staffUnique.length);
+
+console.log(new Set('Amanullah Shah').size);
