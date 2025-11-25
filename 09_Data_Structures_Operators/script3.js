@@ -101,3 +101,30 @@ const users = [
 ]
 console.log(users[0]?.name ?? 'User array empty');
 console.log(users[1]?.name ?? 'User array empty');
+
+// loop over objects
+// loop over properties names
+
+const properties = Object.keys(restaurant.openingHours);
+console.log(properties);
+
+console.log(`we are oepn on ${properties.length} days`);
+
+for(const day of Object.keys(restaurant.openingHours))
+{
+    console.log(day);
+}
+
+// property values
+const values = Object.values(restaurant.openingHours);
+console.log(values);
+
+// entire object
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+
+// [key, value]
+for(const [key, {open, close}] of entries)
+{
+    console.log(`on ${key} we open at ${open} and close at ${close}`);
+}
