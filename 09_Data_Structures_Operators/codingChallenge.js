@@ -105,3 +105,34 @@ const win =
   (team1 < team2 && `${game.team1} is more likely to win`) ||
   `${game.team2} is more likely to win`;
 console.log(win);
+
+
+// coding challenge 2
+console.log(`\n--- coding challenge 2 ---\n`);
+
+// task
+// 1. loop over game.scored array and print each player name to the console with goal number
+
+console.log(`Task 1:\n`);
+for(const [index , player] of game.scored.entries())
+{
+  console.log(`Goal ${index + 1} : player: ${player}`); //(Example: "Goal 1: Lewandowski")
+}
+
+console.log(`Task 2:\n`);
+// 2. calculate average odd and log to the console
+
+const avgOdds = function(...oddsValues)
+{
+  let sum = 0;
+  for (const add of oddsValues)
+  {
+    sum += add;
+  }
+  console.log(`Average odd is: ${sum / oddsValues.length}`);
+}
+
+avgOdds(...Object.values(game.odds));
+console.log(...Object.values(game.odds));
+console.log(...Object.keys(game.odds));
+
