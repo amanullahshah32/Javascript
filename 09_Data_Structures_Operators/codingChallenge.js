@@ -136,3 +136,37 @@ avgOdds(...Object.values(game.odds));
 console.log(...Object.values(game.odds));
 console.log(...Object.keys(game.odds));
 
+console.log(`Task 3:\n`);
+// 3. print the 3 odds to the console, but in a nice formatted way
+// i cat get the name from the game object,
+
+for (const [team, odd] of Object.entries(game.odds))
+{
+  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+  console.log(' Odd of ' + teamStr + ' : ' + odd);
+}
+
+console.log(`Task 4:\n`);
+// 4. create an object called 'scorers' which contains the names of the players who scored as properties, and the number of goals as the value
+const scorers = {};
+  
+for(const player of game.scored)
+// check if player already exists in scores
+  {
+    if (scorers[player])
+    {
+      scorers[player]+=1;
+    }
+    else{
+      // if no, add them with 1 goal
+      scorers[player] = 1;
+    }
+  }
+  
+console.log(scorers);
+
+for(const [player, goals] of Object.entries(scorers))
+{
+  console.log(`${player} scored ${goals} goals`);
+}
+
