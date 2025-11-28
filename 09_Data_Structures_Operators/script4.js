@@ -104,3 +104,43 @@ console.log(rest.get(arr));
 
 rest.set(document.querySelector('h1'), 'Heading');
 console.log(rest);
+
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'c'],
+  [2, 'java'],
+  [3, 'javascript'],
+  ['correct', 3],
+  [true, 'Correct 🎉' ],
+  [false, 'Try again!']
+  
+])
+console.log(question);
+
+// convert object to map
+console.log(Object.entries(restaurant.openingHours));
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+
+console.log(hoursMap);
+
+// Quiz app
+console.log(question.get('question'));
+for(const [key, value] of question)
+{
+  if(typeof key === 'number') 
+    console.log(`Anwer ${key} : ${value}`);
+}
+
+let answer = 3;
+// const answer = Number(prompt('Enter your answer'));
+console.log(`your answer is: ${answer}`);
+
+console.log(question.get(question.get('correct') === answer));
+
+// convert map to array
+console.log([...question]); // using spread operator
+
+console.log(question.entries());
+console.log(...question.keys());
+console.log(...question.values());
