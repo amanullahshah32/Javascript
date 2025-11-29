@@ -170,3 +170,7 @@ for(const [player, goals] of Object.entries(scorers))
   console.log(`${player} scored ${goals} goals`);
 }
 
+// coding challenge 3
+console.log(`\n--- coding challenge 3 ---\n`);
+
+
