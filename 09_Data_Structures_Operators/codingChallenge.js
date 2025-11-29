@@ -174,3 +174,45 @@ for(const [player, goals] of Object.entries(scorers))
 console.log(`\n--- coding challenge 3 ---\n`);
 
 
+const gameEvents = new Map([
+ [17, '⚽ GOAL'],
+ [36, '🔁 Substitution'],
+ [47, '⚽ GOAL'],
+ [61, '🔁 Substitution'],
+ [64, '🔶 Yellow card'],
+ [69, '🔴 Red card'],
+ [70, '🔁 Substitution'],
+ [72, '🔁 Substitution'],
+ [76, '⚽ GOAL'],
+ [80, '⚽ GOAL'],
+ [92, '🔶 Yellow card'],
+ ]);
+
+
+ // 1. create an array of events without duplciates
+
+ const events = new Set([...gameEvents.values()]); // using spread operator to get values from map and set to remove duplicates
+ console.log(events);
+
+ // 2. delete yellow card from minute 64
+ gameEvents.delete(64);
+ console.log(`after deleting yellow card at minute 64: \n`, gameEvents);
+
+ // 3. print the following string to the console: "An event happened, on average, every 9 minutes"
+ eventLength = gameEvents.size;
+  console.log(`An event happened, on average, every ${90 / eventLength} minutes`);
+
+// 4. print the events with the time indicating whether it's in first half or second half
+
+for( const [key, value] of gameEvents.entries())
+{
+
+  key <= 45? console.log(`[First Half]: ${key} : ${value}`) : console.log(`[Second Half]: ${key} : ${value}`);
+  // if(key <=45)
+  // {
+  //   console.log(`[First Half]: ${key} : ${value}`);
+  // }
+  // else{
+  //   console.log(`[Second Half]: ${key} : ${value}`);
+  // }
+}
