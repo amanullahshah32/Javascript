@@ -144,3 +144,46 @@ console.log([...question]); // using spread operator
 console.log(question.entries());
 console.log(...question.keys());
 console.log(...question.values());
+
+
+// working with string
+console.log(`--- Working with String ---`);
+
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+
+console.log(airline.toUpperCase());
+
+console.log(airline[1]);
+console.log(airline[2]);
+console.log(airline[3]);
+
+console.log('aman'[2]);
+console.log('aman'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7)); // start and end index
+console.log(airline.slice(0, airline.indexOf(' '))); // first word
+console.log(airline.slice(airline.lastIndexOf(' ')));
+
+console.log(airline.slice(-2)); // last two characters
+console.log(airline.slice(1, -1)); // remove first and last character
+
+const checkMiddleSeat = function(seat)
+{
+  // B and E are middle seats
+  const s = seat.slice(-1);
+  s === 'B' || s === 'E'? 
+  console.log(`You got the middle seat 😥`): console.log('You are lucky');
+}
+
+checkMiddleSeat('11B');
+checkMiddleSeat('23C');
+checkMiddleSeat('3E');
+
+console.log(new String('aman')); // returns object
+console.log(typeof new String('aman')); // returns object
+console.log(typeof new String('aman').slice(1)); // returns primitive string
