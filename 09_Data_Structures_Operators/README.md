@@ -1,1119 +1,476 @@
-# Section 9: Data Structures & Operators - Quick Reference Guide
+# Section 9: Data Structures & Operators - Complete Revision Guide
 
-This guide explains destructuring, spread operator, and rest parameters in JavaScript with examples and outputs.
+A comprehensive reference guide covering all concepts from script1, script2, script3, script4, and coding challenges.
 
 ---
 
-## 1. Array Destructuring
+## 📋 Table of Contents
 
-**What it does:** Extract values from arrays and assign them to variables in a single line.
+1. [Destructuring](#destructuring)
+2. [Spread Operator](#spread-operator)
+3. [Rest Parameters](#rest-parameters)
+4. [For-Of Loop](#for-of-loop)
+5. [Logical Operators](#logical-operators)
+6. [Nullish Coalescing & Assignment](#nullish-coalescing--assignment)
+7. [Optional Chaining](#optional-chaining)
+8. [Object Methods](#object-methods)
+9. [Sets](#sets)
+10. [Maps](#maps)
+11. [String Methods](#string-methods)
 
-### Basic Example:
+---
+
+# DESTRUCTURING
+
+## Array Destructuring
+
+### Basic Pattern
 
 ```javascript
 const arr = [1, 2, 3];
-const [a, b, c] = arr;
-console.log(a, b, c);
-// Output: 1 2 3
+const [a, b, c] = arr; // a=1, b=2, c=3
 ```
 
-### Skipping Elements:
+### Skipping Elements
 
 ```javascript
-const arr = [1, 2, 3, 4, 5];
-const [first, , third] = arr; // Skip the 2nd element
-console.log(first, third);
-// Output: 1 3
+const [first, , third] = [1, 2, 3]; // first=1, third=3
 ```
 
-### Nested Destructuring:
+### Nested Destructuring
 
 ```javascript
-const nested = [1, [2, 3], 4];
-const [a, [b, c], d] = nested;
-console.log(a, b, c, d);
-// Output: 1 2 3 4
+const nested = [2, 4, [5, 6]];
+const [i, , [j, k]] = nested; // i=2, j=5, k=6
 ```
 
-### Default Values:
+### Default Values
 
 ```javascript
-const arr = [1, , 3];
-const [x = 10, y = 20, z = 30] = arr;
-console.log(x, y, z);
-// Output: 1 20 3
+const [x = 10, y = 20, z = 30] = [, 9]; // x=10, y=9, z=30
 ```
 
-### Swapping Variables (without temp variable):
+### Variable Swapping
 
 ```javascript
-let a = 5;
-let b = 10;
-[a, b] = [b, a];
-console.log(a, b);
-// Output: 10 5
+let a = 5,
+  b = 10;
+[a, b] = [b, a]; // a=10, b=5
+```
+
+### From Function Return
+
+```javascript
+const [starter, main] = restaurant.order(2, 0);
 ```
 
 ---
 
-## 2. Object Destructuring
+## Object Destructuring
 
-**What it does:** Extract properties from objects and assign them to variables.
-
-### Basic Example:
+### Basic Pattern
 
 ```javascript
-const person = {
-  name: "Aman",
-  age: 24,
-  city: "Dhaka",
-};
-
-const { name, age, city } = person;
-console.log(name, age, city);
-// Output: Aman 24 Dhaka
+const { name, age } = { name: "Aman", age: 24, city: "Dhaka" };
 ```
 
-### Renaming Properties:
+### Renaming Properties
 
 ```javascript
-const person = {
-  name: "Aman",
-  age: 24,
-};
-
 const { name: fullName, age: years } = person;
-console.log(fullName, years);
-// Output: Aman 24
 ```
 
-### Default Values:
+### Default Values
 
 ```javascript
-const person = { name: "Aman" };
 const { name, age = 30, city = "Unknown" } = person;
-console.log(name, age, city);
-// Output: Aman 30 Unknown
 ```
 
-### Nested Object Destructuring:
+### Nested Objects
 
 ```javascript
-const restaurant = {
-  name: "Italiano",
-  hours: {
-    fri: { open: 11, close: 23 },
-    sat: { open: 0, close: 24 },
-  },
-};
-
 const {
-  hours: {
-    fri: { open, close },
-  },
-} = restaurant;
-console.log(open, close);
-// Output: 11 23
+  fri: { open: o, close: cc },
+} = restaurant.openingHours;
 ```
 
-### Mutating Existing Variables:
+### Mutating Variables
 
 ```javascript
-let x = 100;
-let y = 200;
-const obj = { x: 1, y: 2 };
+let x = 100,
+  y = 200;
+({ x, y } = { x: 1, y: 2 }); // NOTE: Parentheses required!
+```
 
-({ x, y } = obj); // Note: Parentheses required!
-console.log(x, y);
-// Output: 1 2
+### Rest in Objects
+
+```javascript
+const { name, age, ...details } = person; // details contains remaining properties
 ```
 
 ---
 
-## 3. Destructuring in Function Parameters
+# SPREAD OPERATOR (...)
 
-### Array Destructuring in Functions:
+## Array Spreading
 
-```javascript
-function getFood(idx) {
-  const menu = ["Pizza", "Pasta", "Risotto"];
-  return menu[idx];
-}
-
-// Without destructuring
-const [item1, item2] = [getFood(0), getFood(1)];
-console.log(item1, item2);
-// Output: Pizza Pasta
-```
-
-### Object Destructuring in Functions:
-
-```javascript
-const order = {
-  item: "Pizza",
-  quantity: 2,
-  address: "Dhaka",
-};
-
-function deliverOrder({ item, quantity, address }) {
-  console.log(`Delivering ${quantity} ${item} to ${address}`);
-}
-
-deliverOrder(order);
-// Output: Delivering 2 Pizza to Dhaka
-```
-
-### With Default Values:
-
-```javascript
-function deliverOrder({ item, quantity = 1, address = "City" } = {}) {
-  console.log(`Delivering ${quantity} ${item} to ${address}`);
-}
-
-deliverOrder({ item: "Pasta" });
-// Output: Delivering 1 Pasta to City
-```
-
----
-
-## 4. Spread Operator (...)
-
-**What it does:** Spread elements of an array or object across multiple values.
-
-### Array Spreading:
+### Basic Usage
 
 ```javascript
 const arr1 = [1, 2, 3];
 const arr2 = [4, 5, 6];
-const combined = [...arr1, ...arr2];
-console.log(combined);
-// Output: [1, 2, 3, 4, 5, 6]
+const combined = [...arr1, ...arr2]; // [1,2,3,4,5,6]
 ```
 
-### Adding Elements:
+### Adding Elements
 
 ```javascript
-const menu = ["Pizza", "Pasta"];
-const newMenu = ["Risotto", ...menu, "Salad"];
-console.log(newMenu);
-// Output: ['Risotto', 'Pizza', 'Pasta', 'Salad']
+const newMenu = ["Risotto", ...restaurant.mainMenu, "Salad"];
 ```
 
-### Copying Arrays (Shallow Copy):
+### Copy Array (Shallow)
 
 ```javascript
-const original = [1, 2, 3];
-const copy = [...original];
-copy[0] = 999;
-console.log(original, copy);
-// Output: [1, 2, 3] [999, 2, 3]
+const copy = [...original]; // Original is not affected
 ```
 
-### Object Spreading:
+### Spread Strings
 
 ```javascript
-const person = { name: "Aman", age: 24 };
-const newPerson = { ...person, city: "Dhaka" };
-console.log(newPerson);
-// Output: {name: 'Aman', age: 24, city: 'Dhaka'}
+const letters = [..."AmanUllah", " ", "S."]; // Converts string to array of chars
+console.log(..."Aman"); // Prints: A m a n (without array brackets)
 ```
 
-### Merging Objects:
+---
+
+## Object Spreading
+
+### Copying Objects
 
 ```javascript
-const obj1 = { a: 1, b: 2 };
-const obj2 = { c: 3, d: 4 };
+const newRestaurant = { ...restaurant };
+```
+
+### Adding/Overriding Properties
+
+```javascript
+const updated = { ...person, age: 25 }; // Override age
+const extended = { ...restaurant, founder: "Aman", foundedIn: 2024 };
+```
+
+### Merging Objects
+
+```javascript
 const merged = { ...obj1, ...obj2 };
-console.log(merged);
-// Output: {a: 1, b: 2, c: 3, d: 4}
-```
-
-### Overriding Properties:
-
-```javascript
-const person = { name: "Aman", age: 24 };
-const updated = { ...person, age: 25 };
-console.log(updated);
-// Output: {name: 'Aman', age: 25}
 ```
 
 ---
 
-## 5. Rest Parameters (...)
+# REST PARAMETERS (...)
 
-**What it does:** Collect multiple function arguments into an array.
-
-### Collecting Arguments:
+## Rest in Functions
 
 ```javascript
-function sum(...numbers) {
-  console.log(numbers); // It's an array!
-  return numbers.reduce((a, b) => a + b, 0);
-}
-
-console.log(sum(2, 3, 4, 5));
-// Output:
-// [2, 3, 4, 5]
-// 14
-```
-
-### Rest with Other Parameters:
-
-```javascript
-function printInfo(firstName, lastName, ...hobbies) {
-  console.log(`${firstName} ${lastName} likes: ${hobbies.join(", ")}`);
-}
-
-printInfo("Aman", "Shah", "coding", "gaming", "reading");
-// Output: Aman Shah likes: coding, gaming, reading
-```
-
-### Rest in Destructuring:
-
-```javascript
-const [first, second, ...rest] = [1, 2, 3, 4, 5];
-console.log(first, second, rest);
-// Output: 1 2 [3, 4, 5]
-```
-
-### Rest in Object Destructuring:
-
-```javascript
-const person = { name: "Aman", age: 24, city: "Dhaka", job: "Developer" };
-const { name, age, ...details } = person;
-console.log(name, age, details);
-// Output: Aman 24 {city: 'Dhaka', job: 'Developer'}
-```
-
----
-
-## Key Differences: Spread vs Rest
-
-| Spread                            | Rest                                              |
-| --------------------------------- | ------------------------------------------------- |
-| Used to **expand** elements       | Used to **collect** elements                      |
-| Appears on right side: `[...arr]` | Appears on left side: `function(...args)`         |
-| Works with arrays and objects     | Mainly with function parameters and destructuring |
-| Creates a new array/object        | Gathers values into an array                      |
-
-### Side-by-Side Comparison:
-
-```javascript
-// SPREAD - Expanding
-const arr = [1, 2, 3];
-const expanded = [...arr, 4, 5];
-console.log(expanded);
-// Output: [1, 2, 3, 4, 5]
-
-// REST - Collecting
-function collectAll(a, b, ...rest) {
-  console.log(a, b, rest);
-}
-collectAll(1, 2, 3, 4, 5);
-// Output: 1 2 [3, 4, 5]
-```
-
----
-
-## Quick Cheat Sheet
-
-```javascript
-// ARRAY DESTRUCTURING
-const [a, b] = [1, 2];
-const [x, , z] = [1, 2, 3]; // Skip element
-const [p = 10] = []; // Default value
-
-// OBJECT DESTRUCTURING
-const { name, age } = { name: "Aman", age: 24 };
-const { name: n, age: a } = obj; // Rename
-const { x = 5 } = {}; // Default value
-
-// SPREAD OPERATOR
-const arr2 = [...arr1, 4, 5]; // Expand array
-const obj2 = { ...obj1, x: 10 }; // Expand object
-
-// REST PARAMETERS
-function func(a, b, ...rest) {}
-const [first, ...others] = [1, 2, 3];
-
-// IN FUNCTION PARAMETERS
-function func({ name, age }) {}
-function func(...args) {}
-```
-
----
-
-## Real-World Examples
-
-### Example 1: Extracting restaurant menu
-
-```javascript
-const restaurant = {
-  categories: ["Italian", "Pizzeria"],
-  starterMenu: ["Focaccia", "Bruschetta"],
-  mainMenu: ["Pizza", "Pasta"],
-};
-
-const { categories, starterMenu } = restaurant;
-console.log(categories, starterMenu);
-// Output: ['Italian', 'Pizzeria'] ['Focaccia', 'Bruschetta']
-```
-
-### Example 2: Combining arrays
-
-```javascript
-const italianFoods = ["pasta", "pizza"];
-const mexicanFoods = ["tacos", "burrito"];
-const allFoods = [...italianFoods, ...mexicanFoods];
-console.log(allFoods);
-// Output: ['pasta', 'pizza', 'tacos', 'burrito']
-```
-
-### Example 3: Function with flexible parameters
-
-```javascript
-function orderFood(mainItem, ...sides) {
-  console.log(`Main: ${mainItem}, Sides: ${sides.join(", ")}`);
-}
-
-orderFood("Pizza", "Salad", "Fries", "Drink");
-// Output: Main: Pizza, Sides: Salad, Fries, Drink
-```
-
----
-
-## Common Mistakes to Avoid
-
-❌ **Wrong:** Trying to use object destructuring with array notation
-
-```javascript
-const {[0]} = [1, 2, 3];  // This won't work as expected
-```
-
-✅ **Right:** Use array destructuring for arrays
-
-```javascript
-const [first] = [1, 2, 3]; // Correct
-```
-
----
-
-❌ **Wrong:** Forgetting parentheses when mutating existing variables
-
-```javascript
-let x = 1;
-{x} = {x: 5};  // Error: Invalid syntax
-```
-
-✅ **Right:** Use parentheses
-
-```javascript
-let x = 1;
-({ x } = { x: 5 }); // Correct
-```
-
----
-
-This guide should help you understand and recall these concepts whenever you need them! 📚
-
----
-
-# Complete Script Files Reference
-
-## Script 1: Destructuring & Spread Operator Basics (script.js)
-
-Covers destructuring arrays and objects, spread operator usage, and rest parameters.
-
-```javascript
-"use strict";
-
-// Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
-
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
-
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
-
-// Data needed for first part of the section
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = "22.23",
-    address = "Dhaka",
-  }) {
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to you at ${time} to the address ${address}
-    }`);
-  },
-
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
-
-restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
-
-// calling the oderDelivery method under the restaurant object
-restaurant.orderDelivery({
-  time: "22.30",
-  address: "Bashundhara R/A, Dhaka",
-  starterIndex: 2, // garlic bread
-  mainIndex: 2, // risotto
-});
-
-//calling the oderDelivery method without passing all the arguments
-restaurant.orderDelivery({
-  address: "Uttara, Dhaka",
-  starterIndex: 1, // bruschetta
-});
-
-const arr = [2, 3, 4];
-const a = arr[0];
-const b = arr[1];
-const c = arr[2];
-
-const [x, y, z] = arr;
-console.log(x, y, z);
-console.log(a, b, c);
-
-let [main, , secondary] = restaurant.categories;
-console.log(main, secondary);
-
-// switching variables
-const temp = main;
-main = secondary;
-secondary = temp;
-console.log(main, secondary);
-
-//swapping using destructuring
-[main, secondary] = [secondary, main];
-console.log(main, secondary);
-
-console.log(restaurant.order(2, 0));
-// destructuring the returned array
-const [starter, mainCourse] = restaurant.order(2, 0);
-console.log(starter, mainCourse);
-
-//nested destructuring
-const nested = [2, 4, [5, 6]];
-const [i, , [j, k]] = nested;
-console.log(i, j);
-
-// default values
-// [8,9]
-const [p = 2, q, r = 1] = [, 9];
-console.log(p, q, r);
-
-// destructuring objects
-console.log(`destructuring objects:`);
-
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
-
-const {
-  name: restaurantName,
-  openingHours: hours,
-  categories: tags,
-} = restaurant;
-console.log(restaurantName, hours, tags);
-
-// default values
-const { menu = ["default menu"], starterMenu: starters = ["default starter"] } =
-  restaurant;
-console.log(menu, starters);
-
-// mutating variables
-let aa = 111;
-let bb = 999;
-console.log(aa, bb);
-const obj = { a: 23, b: 7, c: 14 };
-
-({ a: aa, b: bb } = obj);
-console.log(aa, bb);
-
-// nested objects
-const {
-  fri: { open: o, close: cc },
-} = openingHours;
-console.log(o, cc);
-
-// the spread operator ()
-
-const arr2 = [7, 8, 9];
-const badNewArr = [1, 2, arr2[0], arr2[1], arr2[2]];
-console.log(badNewArr);
-
-// WITH SPREAD OPERATOR
-const newArr = [1, 2, ...arr2];
-console.log(newArr);
-
-// print using spread operator
-console.log(...newArr); // it just print the numbers without the array brackets
-
-const newMenu = [...restaurant.mainMenu, "Gnocci"];
-console.log(newMenu);
-console.log(...newMenu);
-
-// copy array
-const mainMenyCopy = [...restaurant.mainMenu];
-
-// join 2 arrays
-const menuAll = [...restaurant.starterMenu, ...restaurant.mainMenu];
-console.log(...menuAll);
-
-// iterables are arrays, string , maps, sets but not the objects.
-const str = "AmanUllahShah";
-const letters = [...str, " ", "S."];
-console.log(letters);
-
-console.log(...str);
-
-// real world example
-// multiple arguments in function call
-
-// const ingredients = [prompt("let's make pasta!Ingredients 1"),
-//   prompt("Ingredients 2"),
-//   prompt("Ingredients 3")];
-
-//   restaurant.orderPasta(...ingredients);
-
-// objects
-const newRestaurant = {
-  ...restaurant,
-  founder: "AmanUllah Shah",
-  foundedIn: 2024,
-};
-console.log(newRestaurant);
-
-newRestaurant.name = "AMAN Restaurant";
-console.log(newRestaurant.name);
-console.log(restaurant.name); // original object is not changed
-
-// rest pattern and parameters
-console.log(`rest pattern and parameters:\n`);
-
-// destructuring
-// spread, because on right side of = opearator
-const arr3 = [1, 2, ...[3, 4]];
-console.log(arr3);
-
-const [aaa, bbbb, ...others] = [1, 2, 3, 4, 5];
-console.log(aaa, bbbb, others);
-
-const [pizza, , risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
-];
-console.log(pizza, risotto, otherFood);
-
-// for objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(sat, weekdays);
-
-// functions
 const add = function (...numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
     sum += numbers[i];
   }
-  console.log(sum);
+  return sum;
 };
 
-add(2, 3);
-add(5, 3, 7, 2);
-add(8, 2, 5, 3, 2, 1, 4);
+add(2, 3); // Works
+add(5, 3, 7, 2); // Works
+add(...[23, 5, 7]); // Spread converts array to individual arguments
+```
 
-const x1 = [23, 5, 7];
-console.log(...x1);
-add(...x1);
-restaurant.orderPizza("mushrooms", "onion", "olives", "spinach");
-restaurant.orderPizza("mushrooms");
+## Rest in Destructuring
+
+```javascript
+const [first, second, ...rest] = [1, 2, 3, 4, 5];
+// first=1, second=2, rest=[3,4,5]
+```
+
+## Rest in Object Destructuring
+
+```javascript
+const { name, age, ...details } = person;
+// Details contains all remaining properties
 ```
 
 ---
 
-## Script 2: Logical Operators & For-Of Loop (script2.js)
+# FOR-OF LOOP
 
-Covers for-of loop, logical operators (||, &&), nullish coalescing (??), and logical assignment operators.
+## Basic For-Of
 
 ```javascript
-"use strict";
+for (const item of menus) {
+  console.log(item);
+}
+```
 
-// Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+## For-Of with .entries()
 
-const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
-
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
-
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
-// opening hours object
-const openingHours = {
-  [weekDays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  fri: {
-    open: 11,
-    close: 23,
-  },
-  sat: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
-};
-
-// Data needed for first part of the section
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
-  openingHours,
-};
-
-// for of loop
-const menus = [...restaurant.starterMenu, ...restaurant.mainMenu];
-// for(const item of menus) console.log(item);
-
+```javascript
 for (const item of menus.entries()) {
-  console.log(`${item[0] + 1}: ${item[1]}`); // item is an array [index, element]
+  console.log(item[0] + 1, item[1]); // item is [index, element]
 }
+```
+
+## For-Of with Destructuring
+
+```javascript
 for (const [index, element] of menus.entries()) {
-  console.log(`${index + 1}: ${element}`); // item is an array [index, element]
+  console.log(`${index + 1}: ${element}`);
 }
-
-// console.log([...menus.entries()]);
-// console.log(item);
-
-// logical operators
-// use any data type, return any data type, short-circuiting
-console.log("--- or ---");
-console.log(undefined || "Aman ");
-console.log(3 || "Aman ");
-console.log(true || 0);
-
-const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
-console.log(guest1);
-
-// restaurant.numGuests = 40;
-const guest2 = restaurant.numGuests ? restaurant.numGuests : 20;
-console.log(guest2);
-
-const guest3 = restaurant.numGuests || 15;
-console.log(guest3);
-
-console.log("--- and ---\n");
-
-console.log(0 && "Aman"); // falsy value will return in case of and
-console.log(7 && "Aman"); // truthy value will return in case of and
-
-console.log("hello  " && 23 && null && "Aman"); // null will return
-
-if (restaurant.orderPizza) {
-  restaurant.orderPizza("mushrooms", "spinach", "olives");
-}
-
-restaurant.orderPizza && restaurant.orderPizza("mushrooms", "spinach");
-
-// nullish coalescing operator
-console.log("--- nullish coalescing operator ---\n");
-// nullish: null and undefined (not 0 and emplty string )
-
-const guest4 = restaurant.numGuests ?? 10;
-console.log(guest4);
-
-// logical assignemnt oeparator
-console.log(`--- logical assignment operator ---\n`);
-const rest1 = {
-  name: "Chillox",
-  numGuests: 0,
-};
-
-// making rest2 object by spread operator
-const rest2 = { ...rest1, owner: "Aman", name: "Hakaluku" };
-console.log(rest2);
-console.log(rest1);
-
-// rest2.numGuests = rest2.numGuests || 10;
-// rest1.numGuests = rest1.numGuests || 10;
-
-// or assignment operator
-rest1.numGuests ||= 10;
-rest2.numGuests ||= 10;
-
-// nullish assignment operator
-rest1.numGuests ??= 10;
-rest2.numGuests ??= 10;
-
-//
-rest2.owner = rest2.owner &&= "<ANONYMOUS>"; // rest2. owner is a truty value
-rest1.owner = rest1.owner &&= "<ANONYMOUS>"; // rest1. owner is a truty value
-rest1.owner &&= "<ANONYMOUS>";
-rest2.owner &&= "<ANONYMOUS>";
-
-console.log(rest1);
-console.log(rest2);
-
-// enhanced object literals
-console.log(restaurant.openingHours);
 ```
 
 ---
 
-## Script 3: Optional Chaining, Object Methods & Sets (script3.js)
+# LOGICAL OPERATORS
 
-Covers optional chaining (?.), looping over objects, and Sets data structure.
+## OR Operator (||)
+
+- Returns first **truthy** value
+- Returns last value if all falsy
 
 ```javascript
-"use strict";
+console.log(undefined || "Aman"); // "Aman"
+console.log(3 || "Aman"); // 3
+console.log(0 || 5); // 5
 
-// Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+const guest = numGuests || 10; // Default value pattern
+```
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
+**Falsy values:** `false, 0, "", null, undefined, NaN`
 
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
+---
 
-// Data needed for first part of the section
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+## AND Operator (&&)
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+- Returns first **falsy** value
+- Returns last value if all truthy
 
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = "22.23",
-    address = "Dhaka",
-  }) {
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to you at ${time} to the address ${address}
-    }`);
-  },
+```javascript
+console.log(0 && "Aman"); // 0
+console.log(7 && "Aman"); // "Aman"
+console.log("hello" && 23 && "Aman"); // "Aman"
 
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
-
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
-
-if (restaurant.openingHours && restaurant.openingHours.mon) {
-  console.log(restaurant.openingHours.mon.open);
+// Conditional execution
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mushrooms");
 }
-// with optoinal chaining
 
-console.log(restaurant.openingHours?.thu?.open); // the "?" checks if "thu" exists or not
-console.log(restaurant.openingHours?.mon?.open); // mon does not exist
+// Shorter way:
+restaurant.orderPizza && restaurant.orderPizza("mushrooms");
+```
 
-// example
-const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+---
 
+# NULLISH COALESCING & ASSIGNMENT
+
+## Nullish Coalescing Operator (??)
+
+- Only considers `null` and `undefined` as nullish
+- Treats `0` and `""` as valid values (unlike ||)
+
+```javascript
+const guest1 = 0 ?? 10; // 0 (not replaced)
+const guest2 = undefined ?? 10; // 10
+const guest3 = null ?? 10; // 10
+```
+
+---
+
+## Logical Assignment Operators
+
+### OR Assignment (||=)
+
+```javascript
+rest1.numGuests ||= 10; // Assigns only if value is falsy
+// rest1.numGuests = rest1.numGuests || 10
+```
+
+### Nullish Assignment (??=)
+
+```javascript
+rest1.numGuests ??= 10; // Assigns only if null or undefined
+```
+
+### AND Assignment (&&=)
+
+```javascript
+rest1.owner &&= "<ANONYMOUS>"; // Assigns only if truthy
+```
+
+---
+
+# OPTIONAL CHAINING (?)
+
+## Property Access
+
+```javascript
+console.log(restaurant.openingHours?.thu?.open); // Safe access
+console.log(restaurant.openingHours?.mon?.open); // Returns undefined (no error)
+```
+
+## Bracket Notation
+
+```javascript
 for (const day of days) {
-  console.log(day);
-  console.log(restaurant.openingHours?.[day]?.open ?? "closed"); // using optional chaining in bracket notation
+  const open = restaurant.openingHours?.[day]?.open ?? "closed";
+  console.log(`${day}: ${open}`);
 }
+```
 
-// Methods
-console.log(restaurant.order?.(0, 1) ?? "Method Does not exist");
-console.log(restaurant.orderPasta?.(0, 1) ?? "Method Does not exist");
+## Method Calls
 
-// optional chaining on arrays
-const users = [{ name: "Aman", email: "aman@gmail.com" }];
-console.log(users[0]?.name ?? "User array empty");
-console.log(users[1]?.name ?? "User array empty");
+```javascript
+console.log(restaurant.order?.(0, 1)); // Checks if method exists
+console.log(restaurant.wrongMethod?.()); // Returns undefined (no error)
+```
 
-// loop over objects
-// loop over properties names
+## Array/Object Checking
 
-const properties = Object.keys(restaurant.openingHours);
-console.log(properties);
+```javascript
+const users = [{ name: "Aman" }];
+console.log(users[0]?.name); // "Aman"
+console.log(users[1]?.name); // undefined (safe, no error)
+```
 
-console.log(`we are oepn on ${properties.length} days`);
+---
 
+# OBJECT METHODS
+
+## Object.keys()
+
+- Returns array of property names
+
+```javascript
+const keys = Object.keys(restaurant.openingHours);
+// ['thu', 'fri', 'sat']
+```
+
+## Object.values()
+
+- Returns array of property values
+
+```javascript
+const values = Object.values(restaurant.openingHours);
+// [{ open: 12, close: 22 }, ...]
+```
+
+## Object.entries()
+
+- Returns array of [key, value] pairs
+
+```javascript
+const entries = Object.entries(restaurant.openingHours);
+// [['thu', {...}], ['fri', {...}], ...]
+
+for (const [day, hours] of entries) {
+  console.log(`${day}: ${hours.open}-${hours.close}`);
+}
+```
+
+## Looping Over Objects
+
+```javascript
+// Property names
 for (const day of Object.keys(restaurant.openingHours)) {
   console.log(day);
 }
 
-// property values
-const values = Object.values(restaurant.openingHours);
-console.log(values);
-
-// entire object
-const entries = Object.entries(restaurant.openingHours);
-console.log(entries);
-
-// [key, value]
-for (const [key, { open, close }] of entries) {
-  console.log(`on ${key} we open at ${open} and close at ${close}`);
+// [key, value] pairs
+for (const [key, { open, close }] of Object.entries(restaurant.openingHours)) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
 }
-
-// sets
-console.log(`Sets:\n`);
-
-const orderSet = new Set([
-  "pasta",
-  "pitha",
-  "halua",
-  "pasta",
-  "burger",
-  "pitha",
-]);
-console.log(orderSet);
-console.log(new Set("Amanullah"));
-
-console.log(orderSet.size);
-console.log(orderSet.has("bread"));
-console.log(orderSet.has("burger"));
-orderSet.add("garlic bread");
-orderSet.add("garlic bread");
-orderSet.add("garlic bread");
-console.log(orderSet);
-orderSet.delete("pitha");
-console.log(orderSet);
-
-// retrieve values from set
-console.log(`-- Retrieving values from set --`);
-for (const order of orderSet) {
-  console.log(order);
-}
-
-// orderSet.clear();
-const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef", "Waiter"];
-const staffUnique = [...new Set(staff)]; // converting set to array using spread operator
-console.log(staffUnique.length);
-
-console.log(new Set("Amanullah Shah").size);
 ```
 
 ---
 
-## Script 4: Maps Data Structure (script4.js)
+# SETS
 
-Covers Maps, including creation, setting values, getting values, and converting objects to Maps.
+## Creating Sets
 
 ```javascript
-"use strict";
+const orderSet = new Set(["pasta", "pitha", "pasta", "burger"]);
+// Set(3) { 'pasta', 'pitha', 'burger' } - duplicates removed!
 
-// Data needed for a later exercise
-const flights =
-  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
+const charSet = new Set("Amanullah");
+// Set(7) { 'A', 'm', 'a', 'n', 'u', 'l', 'h' }
+```
 
-const italianFoods = new Set([
-  "pasta",
-  "gnocchi",
-  "tomatoes",
-  "olive oil",
-  "garlic",
-  "basil",
-]);
+## Set Methods
 
-const mexicanFoods = new Set([
-  "tortillas",
-  "beans",
-  "rice",
-  "tomatoes",
-  "avocado",
-  "garlic",
-]);
+### .size
 
-// Data needed for first part of the section
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+```javascript
+console.log(orderSet.size); // 3
+```
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
+### .has()
 
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 0,
-    time = "22.23",
-    address = "Dhaka",
-  }) {
-    console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to you at ${time} to the address ${address}
-    }`);
-  },
+```javascript
+console.log(orderSet.has("burger")); // true
+console.log(orderSet.has("pizza")); // false
+```
 
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
-    );
-  },
+### .add()
 
-  orderPizza: function (mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
+```javascript
+orderSet.add("garlic bread");
+orderSet.add("garlic bread"); // No change (already exists)
+```
 
+### .delete()
+
+```javascript
+orderSet.delete("pitha");
+```
+
+### .clear()
+
+```javascript
+orderSet.clear(); // Removes all items
+```
+
+## Iterating Over Set
+
+```javascript
+for (const order of orderSet) {
+  console.log(order);
+}
+```
+
+## Converting Set to Array
+
+```javascript
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef"];
+const staffUnique = [...new Set(staff)];
+// ['Waiter', 'Chef', 'Manager']
+
+console.log(staffUnique.length); // 3
+```
+
+---
+
+# MAPS
+
+## Creating Maps
+
+### Empty Map
+
+```javascript
 const rest = new Map();
-rest.set("name", "Classico Italiano");
-rest.set(1, "Firenze, Italy");
-console.log(rest.set(2, "Lisbon, Portugal"));
+```
 
-rest
-  .set(
-    "categories",
-    new Set([
-      "Italian",
-      "Pizzeria",
-      "Vegetarian",
-      "Organic",
-      "Vegetarian",
-      "Organic",
-    ])
-  )
-  .set("Open", 11)
-  .set("Close", 23)
-  .set(true, "We are open")
-  .set(false, "We are closed");
+### Map with Data
 
-console.log(rest.get("name"));
-console.log(rest.get("Open"));
-console.log(rest.get("categories"));
-console.log(rest.get("categories").size);
-
-const time = 1;
-console.log(rest.get(time > rest.get("Open") && time < rest.get("Close")));
-
-console.log(rest.has("categories"));
-rest.delete(2);
-console.log(rest);
-console.log(rest.size);
-//rest.clear(); // removees all the properties
-
-const arr = [1, 2];
-rest.set(arr, "Test");
-console.log(rest);
-
-console.log(rest.get(arr));
-
-rest.set(document.querySelector("h1"), "Heading");
-console.log(rest);
-
+```javascript
 const question = new Map([
-  ["question", "What is the best programming language in the world?"],
+  ["question", "What is the best language?"],
   [1, "c"],
   [2, "java"],
   [3, "javascript"],
@@ -1121,34 +478,429 @@ const question = new Map([
   [true, "Correct 🎉"],
   [false, "Try again!"],
 ]);
-console.log(question);
+```
 
-// convert object to map
-console.log(Object.entries(restaurant.openingHours));
-const hoursMap = new Map(Object.entries(restaurant.openingHours));
+---
 
-console.log(hoursMap);
+## Map Methods
 
-// Quiz app
-console.log(question.get("question"));
+### .set(key, value)
+
+```javascript
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
+rest.set(true, "We are open");
+
+// Chaining
+rest
+  .set("categories", new Set(["Italian", "Pizzeria"]))
+  .set("Open", 11)
+  .set("Close", 23);
+```
+
+### .get(key)
+
+```javascript
+console.log(rest.get("name")); // 'Classico Italiano'
+console.log(rest.get(true)); // 'We are open'
+console.log(rest.get("missing")); // undefined
+```
+
+### .has(key)
+
+```javascript
+console.log(rest.has("name")); // true
+console.log(rest.has(1)); // true
+```
+
+### .delete(key)
+
+```javascript
+rest.delete(2);
+```
+
+### .size
+
+```javascript
+console.log(rest.size); // Number of entries
+```
+
+### .clear()
+
+```javascript
+rest.clear(); // Removes all entries
+```
+
+---
+
+## Map with Any Type of Key
+
+```javascript
+const arr = [1, 2];
+rest.set(arr, "Test");
+console.log(rest.get(arr)); // 'Test'
+
+rest.set(document.querySelector("h1"), "Heading");
+```
+
+---
+
+## Iterating Over Maps
+
+### For-Of Loop
+
+```javascript
 for (const [key, value] of question) {
-  if (typeof key === "number") console.log(`Anwer ${key} : ${value}`);
+  console.log(`${key}: ${value}`);
 }
+```
 
-let answer = 3;
-// const answer = Number(prompt('Enter your answer'));
-console.log(`your answer is: ${answer}`);
+### Filtering
 
-console.log(question.get(question.get("correct") === answer));
+```javascript
+for (const [key, value] of question) {
+  if (typeof key === "number") {
+    console.log(`Answer ${key}: ${value}`);
+  }
+}
+```
 
-// convert map to array
-console.log([...question]); // using spread operator
+### .entries()
 
-console.log(question.entries());
+```javascript
+console.log(...question.entries());
+```
+
+### .keys()
+
+```javascript
 console.log(...question.keys());
+```
+
+### .values()
+
+```javascript
 console.log(...question.values());
 ```
 
 ---
 
-This complete reference guide includes theory, practical examples, and all four script implementations for comprehensive learning! 📚
+## Converting Objects to Maps
+
+```javascript
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+```
+
+## Converting Maps to Arrays
+
+```javascript
+const arr = [...question]; // Using spread operator
+```
+
+---
+
+# STRING METHODS
+
+## Case Conversion
+
+### .toLowerCase()
+
+```javascript
+"HELLO".toLowerCase(); // 'hello'
+```
+
+### .toUpperCase()
+
+```javascript
+"hello".toUpperCase(); // 'HELLO'
+```
+
+---
+
+## Accessing Characters
+
+### Index Access
+
+```javascript
+const str = "Hello";
+console.log(str[0]); // 'H'
+console.log(str[1]); // 'e'
+console.log(str.length); // 5
+```
+
+---
+
+## Finding Substrings
+
+### .indexOf(substring)
+
+```javascript
+"JavaScript".indexOf("Script"); // 4
+"JavaScript".indexOf("Python"); // -1 (not found)
+```
+
+### .lastIndexOf(substring)
+
+```javascript
+"hello hello".lastIndexOf("hello"); // 6 (last occurrence)
+```
+
+### .includes(substring)
+
+```javascript
+"JavaScript".includes("Script"); // true
+"JavaScript".includes("Python"); // false
+```
+
+### .startsWith(substring)
+
+```javascript
+"JavaScript".startsWith("Java"); // true
+```
+
+### .endsWith(substring)
+
+```javascript
+"JavaScript".endsWith("Script"); // true
+```
+
+---
+
+## Extracting Parts
+
+### .slice(start, end)
+
+```javascript
+const str = "JavaScript";
+str.slice(0, 4); // 'Java'
+str.slice(4); // 'Script'
+str.slice(-6); // 'Script' (last 6 chars)
+str.slice(1, -1); // 'avaScrip' (remove first and last)
+str.slice(-2); // 'pt' (last 2 chars)
+```
+
+---
+
+## Splitting & Joining
+
+### .split(separator)
+
+```javascript
+"hello world".split(" "); // ['hello', 'world']
+"Aman Ullah".split(" "); // ['Aman', 'Ullah']
+"a-b-c".split("-"); // ['a', 'b', 'c']
+"abc".split(""); // ['a', 'b', 'c']
+```
+
+### .join(separator)
+
+```javascript
+["Mr.", "Aman", "Shah"].join(" "); // 'Mr. Aman Shah'
+["a", "b", "c"].join("-"); // 'a-b-c'
+```
+
+### Combined: Destructuring from Split
+
+```javascript
+const [firstName, lastName] = "Amanullah Shah".split(" ");
+```
+
+---
+
+## Padding
+
+### .padStart(length, fill)
+
+- Pads string at the **start**
+
+```javascript
+"5".padStart(3, "0"); // '005'
+"hello".padStart(10, "*"); // '*****hello'
+"go to gate 23!".padStart(25, "+"); // '++++++++++++go to gate 23!'
+```
+
+### .padEnd(length, fill)
+
+- Pads string at the **end**
+
+```javascript
+"hello".padEnd(10, "*"); // 'hello*****'
+"go to gate 23!".padEnd(35, "+"); // 'go to gate 23!+++++++++++++++++++'
+```
+
+### Use Case: Masking Credit Card
+
+```javascript
+const maskedCard = function (num) {
+  const str = String(num);
+  const last = str.slice(-4);
+  const hidden = last.padStart(str.length, "*");
+  console.log(hidden); // '****3456' for 16-digit card
+};
+```
+
+---
+
+## Repeating
+
+### .repeat(count)
+
+```javascript
+"Ha".repeat(3); // 'HaHaHa'
+"✈".repeat(5); // '✈✈✈✈✈'
+("Bad weather... "); // Repeat message multiple times
+```
+
+---
+
+## Replacing
+
+### .replace(old, new)
+
+- Replaces **first** occurrence only
+
+```javascript
+"288,97£".replace("£", "$"); // '288,97$'
+"hello hello".replace("hello", "hi"); // 'hi hello'
+```
+
+### .replaceAll(old, new)
+
+- Replaces **all** occurrences
+
+```javascript
+"All passengers come to boarding door 23. Boarding door 23!".replaceAll(
+  "door",
+  "gate"
+);
+// 'All passengers come to boarding gate 23. Boarding gate 23!'
+```
+
+---
+
+## Trimming
+
+### .trim()
+
+- Removes whitespace from both ends
+
+```javascript
+"  hello world  ".trim(); // 'hello world'
+```
+
+---
+
+## Advanced: String Processing
+
+### Fixing Capitalization
+
+```javascript
+const passenger = "aMaNuLlaH sHaH";
+const fixed = passenger[0].toUpperCase() + passenger.slice(1).toLowerCase();
+// 'Amanullah shah'
+```
+
+### Email Normalization
+
+```javascript
+const email = "AmanUllah@GMAIL.com";
+const normalized = email.toLowerCase().trim();
+// 'amanullah@gmail.com'
+```
+
+### Flight Data Parsing
+
+```javascript
+for (const flight of flightData.split("+")) {
+  let [type, from, to, time] = flight.split(";");
+
+  type = type.replaceAll("_", " ").trim();
+  from = from.slice(0, 3).toUpperCase();
+  to = to.slice(0, 3).toUpperCase();
+
+  console.log(
+    `${type.startsWith("Delayed") ? "🔴 Delayed" : type}
+     from ${from} to ${to.padStart(4)} at ${time.replace(":", "h")}`
+  );
+}
+```
+
+---
+
+# QUICK REFERENCE CHEAT SHEET
+
+## Spread vs Rest
+
+| Spread                   | Rest                            |
+| ------------------------ | ------------------------------- |
+| Expands elements         | Collects elements               |
+| Right side: `[...arr]`   | Left side: `function(...args)`  |
+| Arrays/Objects           | Function params & destructuring |
+| Creates new array/object | Gathers into array              |
+
+## Operators Comparison
+
+| Operator | Use Case                       | Example              |
+| -------- | ------------------------------ | -------------------- |
+| `\|\|`   | Any data, returns truthy       | `value \|\| 10`      |
+| `&&`     | All truthy?, returns last      | `value && execute()` |
+| `??`     | Nullish only (null, undefined) | `value ?? 10`        |
+| `\|\|=`  | Assign if falsy                | `x \|\|= 10`         |
+| `??=`    | Assign if nullish              | `x ??= 10`           |
+| `&&=`    | Assign if truthy               | `x &&= 5`            |
+
+## String Methods Summary
+
+| Method                  | Purpose              | Example                                |
+| ----------------------- | -------------------- | -------------------------------------- |
+| `.toLowerCase()`        | Convert to lowercase | `'HELLO'.toLowerCase()` → 'hello'      |
+| `.toUpperCase()`        | Convert to uppercase | `'hello'.toUpperCase()` → 'HELLO'      |
+| `.slice(a, b)`          | Extract substring    | `'hello'.slice(1, 4)` → 'ell'          |
+| `.split(sep)`           | Split into array     | `'a-b-c'.split('-')` → `['a','b','c']` |
+| `.join(sep)`            | Join array to string | `['a','b'].join('-')` → 'a-b'          |
+| `.includes(str)`        | Check if contains    | `'hello'.includes('ell')` → true       |
+| `.startsWith(str)`      | Check start          | `'hello'.startsWith('he')` → true      |
+| `.endsWith(str)`        | Check end            | `'hello'.endsWith('lo')` → true        |
+| `.padStart(len, fill)`  | Pad at start         | `'5'.padStart(3, '0')` → '005'         |
+| `.padEnd(len, fill)`    | Pad at end           | `'5'.padEnd(3, '0')` → '500'           |
+| `.repeat(n)`            | Repeat string        | `'ha'.repeat(3)` → 'hahaha'            |
+| `.replace(old, new)`    | Replace first        | `'aa'.replace('a', 'b')` → 'ba'        |
+| `.replaceAll(old, new)` | Replace all          | `'aa'.replaceAll('a', 'b')` → 'bb'     |
+| `.trim()`               | Remove whitespace    | `'  hi  '.trim()` → 'hi'               |
+| `.indexOf(str)`         | Find position        | `'hello'.indexOf('l')` → 2             |
+
+---
+
+# CODING CHALLENGES SUMMARY
+
+## Challenge 1: Destructuring & Spread
+
+- Extract arrays from objects using destructuring
+- Merge arrays using spread operator
+- Use rest parameters in functions
+- Combine spread and destructuring
+
+## Challenge 2: For-Of & Object Methods
+
+- Loop with for-of and .entries()
+- Use Object.keys(), .values(), .entries()
+- Use destructuring in loops
+- Apply logical operators for conditions
+
+## Challenge 3: Sets & Maps
+
+- Create Sets and remove duplicates
+- Map operations (set, get, delete)
+- Convert objects to maps
+- Iterate over maps with for-of
+
+## Challenge 4: String Methods & DOM
+
+- Parse and transform strings
+- Use string methods for validation
+- Handle input from textarea
+- Apply case conversion and padding
+
+---
+
+This guide covers everything from script1, script2, script3, script4, and all coding challenges! Use it for quick revision and reference. 📚
