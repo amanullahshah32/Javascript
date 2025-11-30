@@ -287,14 +287,30 @@ const checkBaggage = function (items) {
   const baggage = items.toLowerCase();
   if (baggage.includes("knife") || baggage.includes("gun")) {
     console.log("You are NOT allowed on board");
-  }
-  else{
+  } else {
     console.log("Welcome aboard!");
   }
 };
 
-checkBaggage(' I have a laptop, some Food and a pocket Knife');
-checkBaggage('Socks and camera');
-checkBaggage('Got some snacks and a gun for protection');
+checkBaggage(" I have a laptop, some Food and a pocket Knife");
+checkBaggage("Socks and camera");
+checkBaggage("Got some snacks and a gun for protection");
 
+// string method practice
+console.log(`\n--- String Method Practice ---\n`);
+const flightData =
+  "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
+for (const flight of flightData.split("+")) {
+  // console.log(flight);
+  let [type, from, to, time] = flight.split(";");
+  type = type.replaceAll("_", " ").trim();
+  from = from.slice(0, 3).toUpperCase();
+  to = to.slice(0, 3).toUpperCase();
+  // console.log(type);
+  console.log(
+    `${type.startsWith("Delayed") ? "🔴 Delayed" : type}  from ${from} to ${to.padStart(
+      4
+    )} at (${time.replace(":", "h")})`
+  );
+}
