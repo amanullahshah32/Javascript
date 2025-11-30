@@ -217,3 +217,9 @@ for( const [key, value] of gameEvents.entries())
   // }
 }
 
+
+// coding challenge 4
+console.log(`\n--- coding challenge 4 ---\n`);
+
+document.body.append(document.createElement('textarea'));
+ document.body.append(document.createElement('button'));
