@@ -223,3 +223,30 @@ console.log(`\n--- coding challenge 4 ---\n`);
 
 document.body.append(document.createElement('textarea'));
  document.body.append(document.createElement('button'));
+
+ // 1. select the elements
+ const textarea = document.querySelector('textarea');
+ const button = document.querySelector('button');
+
+ // 2. add event listener to the button
+ button.addEventListener('click', function()
+{
+  // 3. get the data from the text area when the button is clicked
+  const data = textarea.value;
+  console.log(data);
+  camelCaseConverter(data);
+})
+
+const camelCaseConverter = function(inputText)
+{
+  const rows = inputText.split('\n'); // split by new line
+  console.log(rows);
+  for(const [index, row] of rows.entries())
+  {
+    const [first, second] = row.toLowerCase().trim().split('_'); // split by underscore
+    // convert to camel Case
+    const camelCase = first + second.replace(second[0], second[0].toUpperCase());
+    console.log(camelCase);
+    console.log(`${camelCase.padEnd(20)} ${'🟢'.repeat(index+1)}`)
+  }
+}
