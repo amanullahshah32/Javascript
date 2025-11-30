@@ -187,3 +187,59 @@ checkMiddleSeat('3E');
 console.log(new String('aman')); // returns object
 console.log(typeof new String('aman')); // returns object
 console.log(typeof new String('aman').slice(1)); // returns primitive string
+
+
+// split and join
+
+console.log(' a + very + nice + string'.split('+'));
+console.log('Aman Ullah'.split(' '));
+
+const [firstName, lastName] = 'Amanullah Shah'.split(' ');
+console.log(firstName, lastName);
+
+const newName = ['Mr. ' , firstName, lastName].join(' ');
+console.log(newName);
+
+const capitalizeName = (nameString) =>
+{
+  const names = nameString.split(' ');
+  const namesUpper = [];
+  for(const n of names)
+  {
+    namesUpper.push(n[0].toUpperCase() + n.slice(1))
+  }
+  console.log(namesUpper.join(' '));
+}
+capitalizeName('Amanullah Shah');
+capitalizeName('noshin amar sharmila');
+capitalizeName('aman noshin sharmila shah');
+
+// padding
+const message = 'go to gate 23!';
+console.log(message.padStart(25, '+'));
+console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+const maskedCreditCard = function(num)
+{
+  const str = String(num);
+  console.log(typeof(str));
+
+  const last = str.slice(-4);
+  const padding = str.padStart(last.length, '#');
+  console.log(last);
+
+  const hiddenCard = last.padStart(str.length - last.length, '*');
+  console.log(hiddenCard);
+}
+
+maskedCreditCard(1234567890123456);
+
+// repeat method
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInLine = function(n)
+{
+  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
+}
+planesInLine(5);
