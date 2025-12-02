@@ -198,3 +198,30 @@ lufthansa.buyPlane = function () {
 document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane.bind(lufthansa)); // binding 'this' keyword to lufthansa object
 console.log(`number of planes of: ${lufthansa.airline} is ${lufthansa.planes}`);
 
+// partial application
+const addTax = (rate, value) => value + value * rate;
+console.log(`rate: ${0.1} and value is: ${200} and total tax: ${addTax(0.1, 200)}`);
+
+// using bind to create a new function with preset rate argument
+const addVat = addTax.bind(1,  0.23); // 'this' keyword is not used in addTax function, so we can pass null
+// addVat = value => value + value * 0.23 
+console.log(addVat); // currently empty
+console.log(addVat(100)); // 100 + 23 = 123
+
+// challenge: using closures to create a function that adds tax
+const addTaxRate = function (rate)
+{
+    return function(value)
+    {
+        return value + value * rate;
+    }
+}
+
+console.log(addTaxRate(0.4)(400)); // 400 + 160 = 560
+const addVat2 = addTaxRate(0.15); // 15% vat
+
+console.log(addVat2(200)); // 200 + 30 = 230
+console.log(addVat2(1000)); // 1000 + 150 = 1150
+
+// const addVat3 = addTaxRate.bind(null, 0.18); // using bind to create a new function with preset rate argument
+// console.log(addVat3(500)); // 500 + 90 = 590
