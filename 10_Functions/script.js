@@ -63,3 +63,31 @@ const newPassport = function(person)
 
 newPassport(Aman);
 checkIn(flight, Aman);
+
+// functions accepting callback functions
+
+console.log(`-----Functions Accepting Callback Functions-----`);
+
+const oneWord = function(str)
+{
+    return str.replaceAll(' ', '').toLowerCase();
+    
+}
+
+const upperFirstWord = function(str)
+{
+
+    const [first, ...others]=str.split(' ');
+    return[first.toUpperCase(), ...others].join(' ');
+}
+
+// higher order function
+const transformer = function(str, fn)
+{
+    console.log(`Original String: ${str}`);
+    console.log(`Transformed String: ${fn(str)} `);
+    console.log(`transformed by: ${fn.name}`)
+}
+
+transformer('JavaScript is the best!', upperFirstWord);
+transformer('JavaScript is the best!', oneWord);
