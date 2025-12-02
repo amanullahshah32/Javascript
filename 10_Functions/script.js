@@ -176,3 +176,17 @@ swiss.iatacode = 'LX';
 book.call(swiss, 567, 'Aman Swiss');
 book.call(swiss, 567, 'Aman Noshin');
 console.log(swiss);
+
+
+// apply method
+
+// apply doesnt recieve list of arguments after 'this' keyword, instead it takes an array of arguments
+const flightData = [583, 'Mary Cooper'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.apply(swiss, [345, 'John Wick']); // using apply method with array literal
+// modern way of using apply method is to use call method with spread operator
+book.call(lufthansa, ...flightData); // using spread operator to pass array elements as individual arguments
+console.log(lufthansa);
+
