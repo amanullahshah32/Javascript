@@ -68,7 +68,7 @@ As I continue my JavaScript learning, I plan to explore:
 - DOM manipulation and events
 - Asynchronous JavaScript (callbacks, promises, async/await)
 - Error handling and debugging
-- Modern JavaScript features (ES6+ modules, classes)
+- Modern JavaScript features (ES6+ modules, classes).
 
 ## How to Open Modules in the Browser Console
 
