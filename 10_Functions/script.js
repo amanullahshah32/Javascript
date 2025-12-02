@@ -91,3 +91,37 @@ const transformer = function(str, fn)
 
 transformer('JavaScript is the best!', upperFirstWord);
 transformer('JavaScript is the best!', oneWord);
+
+const high5 = function()
+{
+    console.log('👋');
+}
+
+document.body.addEventListener('click', high5); // when clicked, it will call high5 function
+
+['AMan', 'Noshin', 'SHarmila'].forEach(high5); // for each element in the array, it will call high5 function
+
+// functions returning functions
+
+const greet = function(greeting)
+{
+    return function(name)
+    {
+        console.log(`${greeting} ${name}`);
+    }
+}
+
+greet('hello'); // wont work since it wants another function to return
+
+const greetHey = greet('hey');
+greetHey('Aman');
+greetHey('Noshin');
+
+greet('Assalamaualikum')('Amanullah');
+
+// challenge: functions returning functions using arrow functions
+
+const greetArrow = greeting => name => console.log(`using arrow functions: ${greeting} ${name}`); // the greeting is the first function that
+// // returns another function which takes name as parameter
+
+greetArrow('Salam')('Noshin');
