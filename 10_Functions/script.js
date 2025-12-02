@@ -125,3 +125,54 @@ const greetArrow = greeting => name => console.log(`using arrow functions: ${gre
 // // returns another function which takes name as parameter
 
 greetArrow('Salam')('Noshin');
+
+
+// the call and apply methods
+
+console.log(`-----The Call and Apply Methods-----`);
+
+
+const lufthansa = {
+    airline: 'lufthansa',
+    iatacode : 'LH',
+    bookings: [],
+    book: function(flightNum=124, passengerName)
+    {
+        console.log(`${passengerName} booked a seat on ${this.airline} flight  
+            ${this.iatacode}${flightNum}`);
+
+        this.bookings.push({flight: `${this.iatacode}${flightNum}`, name: passengerName});
+    }
+    
+}
+
+lufthansa.book(164, 'Aman Ullah');
+lufthansa.book(undefined, 'Aman Ullah'); // to skip flightNum and use default value
+console.log(lufthansa);
+
+const eurowings = {
+    airline: 'Eurowings',
+    iatacode: 'EW',
+    bookings: [],
+}
+
+const book = lufthansa.book; // extracting book method from lufthansa object
+
+
+// call method for setting 'this' keyword manually
+book.call(eurowings, 24, 'Noshin Akter'); // using call method to set 'this' keyword to eurowings object
+console.log(eurowings);
+
+// book(lufthansa, 23, 'SHarmila'); // this will not work as expected since 'this' keyword will be undefined in strict mode
+book.call(lufthansa, 26, 'SHarmila');
+
+// book.call(eurowings, 45, 'Tarik Anam');
+
+const swiss = {...eurowings}; // using spread operator to copy eurowings object
+swiss.bookings = []; // resetting bookings array
+swiss.airline = 'Swiss Air Lines';
+swiss.iatacode = 'LX';
+
+book.call(swiss, 567, 'Aman Swiss');
+book.call(swiss, 567, 'Aman Noshin');
+console.log(swiss);
