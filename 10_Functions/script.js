@@ -276,3 +276,55 @@ booker();
 booker();
 
 console.dir(booker); // to see the closure in console
+
+// more about closures
+// example  1
+console.log(`---Example `);
+
+let f;
+
+const g = function () {
+  const a = 23;
+  f = function () {
+    console.log(a * 2);
+  };
+};
+
+g(); // g is called here, so f is now assigned
+f(); // f is called here, it has access to a variable of g function
+// f is the closure here
+
+const h = function () {
+  const b = 5;
+  f = function () {
+    console.log(`this is under h function: ${b * 2}`);
+  };
+};
+
+g(); // f is now assigned to g function
+f(); // f is called here, it has access to a variable of g function
+console.dir(f);
+// re assigning the f function under the h function
+
+h(); // f is now assigned to h function
+f(); // f is called here, it has access to a variable of h function
+
+console.dir(f);
+
+// exaple 2
+const boardPassengers = function (number, wait) {
+  const perGroup = number / 3;
+  // timeer
+  setTimeout(function () {
+    console.log(`We are now boarding all ${number} passengers`);
+    console.log(`There are 3 groups, each with ${perGroup} passengers`);
+  }, 4000);
+  console.log(`Will start boarding in ${wait} seconds  `);
+};
+
+// setTimeout(function () { // this will popup after 3 seconds
+//   console.log("this is timer");
+// }, 3000);
+
+const perGroup = 1000; // this variable is in global scope, but the closure will use the perGroup variable of boardPassengers function
+boardPassengers(180, 3); // calling boardPassengers function
