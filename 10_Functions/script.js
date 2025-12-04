@@ -225,3 +225,34 @@ console.log(addVat2(1000)); // 1000 + 150 = 1150
 
 // const addVat3 = addTaxRate.bind(null, 0.18); // using bind to create a new function with preset rate argument
 // console.log(addVat3(500)); // 500 + 90 = 590
+
+
+// immediately invoked function expressions (IIFE)
+
+console.log(`-----Immediately Invoked Function Expressions (IIFE)-----`);
+
+const runOnce = function ()
+{
+  console.log('This will never run again');
+}
+runOnce(); // normal function call
+
+(function()
+{
+  console.log('This will never run again');
+  const isPrivate = 23;
+})(); // IIFE this will never run again. it call once only. 
+// console.log(isPrivate); // error: isPrivate is not defined
+(() => {
+  console.log('this is arrow function and it will never run again;');
+})(); // IIFE arrow function
+
+// variable declared inside IIFE are not accessible from outside
+
+{
+  console.log('This is block scope');
+  const isBlock = 45;
+  var notBlock = 67;
+}
+// console.log(isBlock); // error: isBlock is not defined
+console.log(notBlock); // this can run coz it was declared as var
