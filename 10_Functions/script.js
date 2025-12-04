@@ -195,27 +195,29 @@ lufthansa.buyPlane = function () {
   console.log(this.planes);
 };
 
-document.querySelector(".buy").addEventListener("click", lufthansa.buyPlane.bind(lufthansa)); // binding 'this' keyword to lufthansa object
+document
+  .querySelector(".buy")
+  .addEventListener("click", lufthansa.buyPlane.bind(lufthansa)); // binding 'this' keyword to lufthansa object
 console.log(`number of planes of: ${lufthansa.airline} is ${lufthansa.planes}`);
 
 // partial application
 const addTax = (rate, value) => value + value * rate;
-console.log(`rate: ${0.1} and value is: ${200} and total tax: ${addTax(0.1, 200)}`);
+console.log(
+  `rate: ${0.1} and value is: ${200} and total tax: ${addTax(0.1, 200)}`
+);
 
 // using bind to create a new function with preset rate argument
-const addVat = addTax.bind(1,  0.23); // 'this' keyword is not used in addTax function, so we can pass null
-// addVat = value => value + value * 0.23 
+const addVat = addTax.bind(1, 0.23); // 'this' keyword is not used in addTax function, so we can pass null
+// addVat = value => value + value * 0.23
 console.log(addVat); // currently empty
 console.log(addVat(100)); // 100 + 23 = 123
 
 // challenge: using closures to create a function that adds tax
-const addTaxRate = function (rate)
-{
-    return function(value)
-    {
-        return value + value * rate;
-    }
-}
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
 
 console.log(addTaxRate(0.4)(400)); // 400 + 160 = 560
 const addVat2 = addTaxRate(0.15); // 15% vat
@@ -226,33 +228,51 @@ console.log(addVat2(1000)); // 1000 + 150 = 1150
 // const addVat3 = addTaxRate.bind(null, 0.18); // using bind to create a new function with preset rate argument
 // console.log(addVat3(500)); // 500 + 90 = 590
 
-
 // immediately invoked function expressions (IIFE)
 
 console.log(`-----Immediately Invoked Function Expressions (IIFE)-----`);
 
-const runOnce = function ()
-{
-  console.log('This will never run again');
-}
+const runOnce = function () {
+  console.log("This will never run again");
+};
 runOnce(); // normal function call
 
-(function()
-{
-  console.log('This will never run again');
+(function () {
+  console.log("This will never run again");
   const isPrivate = 23;
-})(); // IIFE this will never run again. it call once only. 
+})(); // IIFE this will never run again. it call once only.
 // console.log(isPrivate); // error: isPrivate is not defined
 (() => {
-  console.log('this is arrow function and it will never run again;');
+  console.log("this is arrow function and it will never run again;");
 })(); // IIFE arrow function
 
 // variable declared inside IIFE are not accessible from outside
 
 {
-  console.log('This is block scope');
+  console.log("This is block scope");
   const isBlock = 45;
   var notBlock = 67;
 }
 // console.log(isBlock); // error: isBlock is not defined
 console.log(notBlock); // this can run coz it was declared as var
+
+// closures
+
+console.log(`-----Closures-----\n`);
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} total passengers`);
+  };
+};
+
+const booker = secureBooking(); // booker is now a closure
+booker(12); // parameter wont work as the function doesnt taking any parameter
+booker();
+booker();
+booker();
+
+console.dir(booker); // to see the closure in console
