@@ -117,3 +117,30 @@ console.log(arr3.at(-1)); // getting the last element using at method
 // at method on string
 console.log('aman'.at(0))
 console.log('aman'[1]);
+
+
+// For each method
+console.log(`----FOR EACH METHOD----`);
+const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// typical for of loop
+
+for(const movement of movements2)
+{
+  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
+}
+
+// using forEach
+console.log(`----USING FOREACH METHOD----`);
+movements2.forEach(function(movement)
+{
+  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
+})
+
+// forEach method with map
+console.log(`----USING FOREACH METHOD WITH MAP----`);
+console.log(`----USING FOREACH METHOD----`);
+movements2.forEach(function(movement, indx, arr)
+{
+  movement>0 ? console.log(`Movement ${indx +1} : You deposited ${movement}`) : console.log(`Movement ${indx +1} :You withdrew ${Math.abs(movement)}`);
+})
