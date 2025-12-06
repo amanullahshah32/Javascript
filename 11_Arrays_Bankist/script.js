@@ -137,10 +137,36 @@ movements2.forEach(function(movement)
   movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
 })
 
-// forEach method with map
-console.log(`----USING FOREACH METHOD WITH MAP----`);
+// forEach method with index and array
+console.log(`----USING FOREACH METHOD WITH index and array----`);
 console.log(`----USING FOREACH METHOD----`);
 movements2.forEach(function(movement, indx, arr)
 {
   movement>0 ? console.log(`Movement ${indx +1} : You deposited ${movement}`) : console.log(`Movement ${indx +1} :You withdrew ${Math.abs(movement)}`);
+})
+
+// forEach method with maps and sets
+
+const currencies2 = new Map([
+  ["USD", "United States dollar"],
+  ["EUR", "Euro"],
+  ["GBP", "Pound sterling"],
+]);
+console.log(`for each method with maps`);
+
+currencies2.forEach(function(value, key, map) // value: each element, key: key of each element, map: the entire map
+{
+  console.log(`${key} : ${value}`);
+});
+
+// forEach method with sets
+const currenciesUnique = new Set(['USD', 'BDT', 'EUR', 'BDT', 'USD']);
+console.log(`for each method with sets`);
+console.log(currenciesUnique);
+console.log(currenciesUnique.size);
+
+currenciesUnique.forEach(function(value, _, set) // _ is used to ignore the first parameter since in sets there is no key
+{
+  console.log(`${value} : ${value}`); // in sets key and value are same, a set does not have keys
+  // console.log(set); // the entire set
 })
