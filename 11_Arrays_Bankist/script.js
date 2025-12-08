@@ -193,3 +193,10 @@ movements3.forEach(function(move)
   return forEachUSD.push(move * 1.2);
 })
 console.log(` using the for each method ${forEachUSD}`);
+
+const movementDescription =   movements3.map((move, index, array) => {
+    const type = move > 0 ? 'deposited' : 'withdrew';
+    return `\n Movement ${index + 1}: you ${type} ${Math.abs(move)}\n`;
+});
+
+console.log(movementDescription);
