@@ -78,6 +78,10 @@ const displayMovements = function (movements, sort = false){
 }
 
 displayMovements(account1.movements);
+
+
+
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
