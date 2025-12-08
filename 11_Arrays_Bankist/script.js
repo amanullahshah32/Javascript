@@ -200,3 +200,28 @@ const movementDescription =   movements3.map((move, index, array) => {
 });
 
 console.log(movementDescription);
+
+// computing usernames
+console.log(`----COMPUTING USERNAMES----`);
+
+// Computing usernames
+const user = 'Steven Thomas Williams'; // initials: stw in lowercase
+
+const createUsernames = function (user){
+  const username = user.toLowerCase().split(' ').map(function(name)
+{
+  return name[0];
+}).join('');
+return username;
+}
+console.log(createUsernames(user));
+// now i have to work with all the accounts, and make their usernames
+
+const allUserNames = [];
+accounts.forEach(function(accnt)
+{
+  allUserNames.push(createUsernames(accnt.owner));
+  accnt.username = createUsernames(accnt.owner);
+})
+console.log(allUserNames);
+console.log(accounts);
