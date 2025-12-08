@@ -225,3 +225,18 @@ accounts.forEach(function(accnt)
 })
 console.log(allUserNames);
 console.log(accounts);
+
+
+// filter method
+console.log(`----FILTER METHOD----`);
+
+let movements4 = [...movements]; 
+movements4 = movements4.filter(function(move) // filter method mutates the original array
+{ 
+  return move > 0;
+})
+console.log(movements);
+console.log(movements4);
+
+const withdrawals2 = movements.filter((moveNeg) => moveNeg< 0);
+console.log(`WIthdrawals using array method and filter: ${withdrawals2}`);

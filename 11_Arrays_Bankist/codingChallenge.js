@@ -24,3 +24,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
 };
 
 checkDogs(juliaData, kateData);
+
+
+console.log(`----CODING CHALLENGE SOLUTION---- 02`);
+
