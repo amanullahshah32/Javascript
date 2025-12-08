@@ -170,3 +170,26 @@ currenciesUnique.forEach(function(value, _, set) // _ is used to ignore the firs
   console.log(`${value} : ${value}`); // in sets key and value are same, a set does not have keys
   // console.log(set); // the entire set
 })
+
+
+// Data transformation: map, filter, reduce
+console.log(`----DATA TRANSFORMATION: MAP, FILTER, REDUCE----`);
+
+const movements3 = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const euroToUSD = 1.1;
+
+const usdMovements3 = movements3.map((moves) => {
+
+  return `using arrow function ${moves * euroToUSD}`;
+})
+
+console.log(movements3);
+console.log(usdMovements3);
+
+// using for each method , similar to the map method
+const forEachUSD = [];
+movements3.forEach(function(move)
+{
+  return forEachUSD.push(move * 1.2);
+})
+console.log(` using the for each method ${forEachUSD}`);
