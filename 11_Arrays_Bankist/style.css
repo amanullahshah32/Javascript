@@ -94,7 +94,7 @@ nav {
   gap: 2rem;
 
   /* NOTE This creates the fade in/out anumation */
-  opacity: 0;
+  /* opacity: 0; */
   transition: all 1s;
 }
 
@@ -126,7 +126,7 @@ nav {
 .movements {
   grid-row: 2 / span 3;
   background-color: #fff;
-  border-radius: 1rem;
+  border-radius: 2rem;
   overflow: scroll;
 }
 
@@ -140,11 +140,13 @@ nav {
 .movements__type {
   font-size: 1.1rem;
   text-transform: uppercase;
+  min-width: 100px;
   font-weight: 500;
   color: #fff;
   padding: 0.1rem 1rem;
   border-radius: 10rem;
   margin-right: 2rem;
+  text-align: center;
 }
 
 .movements__date {
@@ -164,7 +166,9 @@ nav {
 
 .movements__value {
   font-size: 1.7rem;
+  text-align: left;
   margin-left: auto;
+  /* margin-right: auto; */
 }
 
 /* SUMMARY */
