@@ -271,3 +271,17 @@ let balance2 = 0;
 for (const bal of movements)
   balance2 += bal; // balance2 = balance2 + bal
 console.log(`Balance using for of loop is : ${balance2}`);
+
+  
+
+//  maximum value in the array using reduce method
+console.log(`maximum value in the array using reduce method`);
+
+const maxValue = movements.reduce((accu, cur) => 
+{
+  let max = accu;
+  cur > max ? max = cur : max = accu;
+  return max;
+}, 0 );
+
+console.log(`Maximum value in the array is : ${maxValue}`);
