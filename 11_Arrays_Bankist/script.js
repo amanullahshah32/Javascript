@@ -62,6 +62,14 @@ const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
 
+// prining the total balance [labelBalance]
+const calcDisplayBalance = function(movements)
+{
+  const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+  return labelBalance.textContent = `$ ${balance} USD`
+}
+calcDisplayBalance(account1.movements);
+
 // project bankist app
 const displayMovements = function (movements, sort = false){
   containerMovements.innerHTML = ''; // clearing the container before adding new elements
@@ -78,6 +86,7 @@ const displayMovements = function (movements, sort = false){
 }
 
 displayMovements(account1.movements);
+
 
 
 
