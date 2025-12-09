@@ -240,3 +240,34 @@ console.log(movements4);
 
 const withdrawals2 = movements.filter((moveNeg) => moveNeg< 0);
 console.log(`WIthdrawals using array method and filter: ${withdrawals2}`);
+
+// the reduce method
+console.log(`----THE REDUCE METHOD----`);
+
+console.log(movements);
+
+// const balance = movements.reduce(function(accumulator, current, index, array)
+// {
+//   // accumulato -> snowball
+//   console.log(`Iteration ${index}: accumulator = ${accumulator}, current = ${current}`);
+//   return accumulator + current;
+// }, 0); // 0 is the initial value of accumulator
+
+// console.log(`Balance is : ${balance}`);
+
+// using the arrow function
+const balance3 = movements.reduce((acc, cur, i, arr) => 
+{
+  // accumulato -> snowball
+  console.log(`Iteration ${i}: accumulator = ${acc}, current = ${cur}`);
+  return acc + cur;
+}, 0);
+console.log(balance3);
+
+
+
+// using for of loop
+let balance2 = 0;
+for (const bal of movements)
+  balance2 += bal; // balance2 = balance2 + bal
+console.log(`Balance using for of loop is : ${balance2}`);
