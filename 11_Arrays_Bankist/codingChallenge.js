@@ -28,7 +28,7 @@ checkDogs(juliaData, kateData);
 
 console.log(`----CODING CHALLENGE SOLUTION---- 02`);
 
-const calcAverageHumanAge = function (dogsAges)
+const calcAverageHumanAge = function ([...dogsAges]) // spread operator to create a shallow copy
 {
     const humanAges = dogsAges.map(function(newAge)
     {
