@@ -88,7 +88,23 @@ const displayMovements = function (movements, sort = false){
 displayMovements(account1.movements);
 
 
+// Display Labels of summary
+const calcDisplaySummary = function(movements){
+  const incomes = movements.filter(mov => mov > 0).
+  reduce((acc, mov) => acc+ mov, 0)
+  labelSumIn.textContent = `$ ${incomes} USD`;
 
+  // outgoings
+  const outgoings = movements.filter(mov => mov < 0).
+  reduce((accu, mov) => accu + mov, 0);
+  labelSumOut.textContent = `$ ${Math.abs(outgoings)} USD`
+
+  // Interest
+  const interest = incomes * 1.2 / 100;
+  labelSumInterest.textContent = `$ ${interest} USD`
+
+}
+calcDisplaySummary(account1.movements);
 
 
 /////////////////////////////////////////////////
@@ -200,3 +216,11 @@ currenciesUnique.forEach(function(value, _, set) // _ is used to ignore the firs
   console.log(`${value} : ${value}`); // in sets key and value are same, a set does not have keys
   // console.log(set); // the entire set
 })
+
+
+// the magic of chaining methods
+console.log(`----THE MAGIC OF CHAINING METHODS----`);
+// PIPELINE: 
+const totalDepositsUSD = movements2.filter((money) => money > 0).map(money => money * 1.1).
+reduce((acc, money) => acc + money, 0);
+console.log(totalDepositsUSD);
