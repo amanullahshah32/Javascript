@@ -51,3 +51,15 @@ const calcAverageHumanAge = function ([...dogsAges]) // spread operator to creat
 }
 calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+
+// coding challenge 3
+console.log(`----CODING CHALLENGE SOLUTION---- 03`);
+// same as challenge 2 but using arrow functions and using the chaining
+const calcAverageHumanAgeArrow =  ([...dogsAges]) => // spread operator to create a shallow copy
+{
+    const humanAge = dogsAges.map((age)=> age<=2? 2*age : Number(16 + (age*4))).filter
+    ((age) => age >= 18).reduce((accu, age, index, arr) => accu + age / arr.length, 0);
+    console.log(`average age of adult dogs using arrow function and chaining: ${humanAge}`);
+}
+calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
+calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
