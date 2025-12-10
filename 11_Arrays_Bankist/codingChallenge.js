@@ -28,3 +28,26 @@ checkDogs(juliaData, kateData);
 
 console.log(`----CODING CHALLENGE SOLUTION---- 02`);
 
+const calcAverageHumanAge = function (dogsAges)
+{
+    const humanAges = dogsAges.map(function(newAge)
+    {
+        return newAge <= 2 ? 2*newAge : (16 + (newAge*4));
+    })
+
+    console.log(humanAges);
+    // filter dogs less than 18 human years old
+    const adultDogs = humanAges.filter(function(age)
+    {
+        return age >= 18; 
+    })
+    console.log(`adult dogs ages:  ${adultDogs}`);
+    // calculate average human age of adult dogs
+    const averageAgeOfDogs = adultDogs.reduce(function(accu, age, index, arr)
+    {
+        return accu + age / arr.length;
+    },0);
+    console.log(`average age of adult dogs: ${averageAgeOfDogs}`);
+}
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
