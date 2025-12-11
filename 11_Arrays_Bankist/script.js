@@ -167,11 +167,10 @@ const calcDisplaySummary = function (movements) {
 btnTransfer.addEventListener("click", function (event) {
   event.preventDefault();
   console.log(`transfer button clicked`);
-  const transferTo = accounts.username.find(
-    (accUser) => accUser === inputTransferTo.value
+  const transferTo = accounts.find(
+    (accUser) => accUser.username === inputTransferTo.value
   );
   const amount = Number(inputTransferAmount.value);
-  console.log(`transfer to account: `, transferTo);
 
   // check the validity of transfer
   if (
@@ -185,8 +184,18 @@ btnTransfer.addEventListener("click", function (event) {
     currentAccount.movements.push(-amount); // adding the withdrawal movement to the sender account
     transferTo.movements.push(amount); // adding the deposit movement to the receiver account
 
+    // update the UI
+    // display current balance
+    calcDisplayBalance(currentAccount.movements);
+    // display movements
+    calcDisplaySummary(currentAccount.movements);
+    // dispaly the summary
+    displayMovements(currentAccount.movements);
+
     // hide the input details
     inputTransferTo.value = inputTransferAmount.value = "***";
+
+    console.log(`transfer to account: `, transferTo.owner);
   }
 });
 // Test after user logs in
