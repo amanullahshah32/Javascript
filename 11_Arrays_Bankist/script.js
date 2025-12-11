@@ -35,6 +35,29 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
+
+// computing usernames
+console.log(`----COMPUTING USERNAMES----`);
+
+// now i have to work with all the accounts, and make their usernames
+
+const createUsernames = function (user){
+  const username = user.toLowerCase().split(' ').map(function(name)
+{
+  return name[0];
+}).join('');
+return username;
+};
+
+
+accounts.forEach(function(accnt)
+{
+  accnt.username = createUsernames(accnt.owner);
+});
+// console.log(accounts);
+
+
+
 // Elements
 const labelWelcome = document.querySelector(".welcome");
 const labelDate = document.querySelector(".date");
@@ -105,6 +128,44 @@ const calcDisplaySummary = function(movements){
 
 }
 calcDisplaySummary(account1.movements);
+
+// login functionality
+
+let currentAccount;
+btnLogin.addEventListener('click', function(event)
+{
+  // prevent form from submitting
+  event.preventDefault();
+  console.log(`login button clicked`);
+  const username = inputLoginUsername.value;
+  const pin = Number(inputLoginPin.value);
+
+  currentAccount = accounts.find( acc => acc.username === username && acc.pin === pin);
+  console.log(currentAccount);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /////////////////////////////////////////////////
