@@ -82,7 +82,16 @@ const inputClosePin = document.querySelector(".form__input--pin");
 let currentAccount; // holds the current logged in account
 
 containerApp.style.opacity = 0; // making the app  invisible initially
-
+//Update UI function
+const updateUI = function (account) {
+  // update the UI
+  // display current balance
+  calcDisplayBalance(currentAccount.movements);
+  // display movements
+  calcDisplaySummary(currentAccount.movements);
+  // dispaly the summary
+  displayMovements(currentAccount.movements);
+};
 // login functionality
 btnLogin.addEventListener("click", function (event) {
   // prevent form from submitting
@@ -184,13 +193,7 @@ btnTransfer.addEventListener("click", function (event) {
     currentAccount.movements.push(-amount); // adding the withdrawal movement to the sender account
     transferTo.movements.push(amount); // adding the deposit movement to the receiver account
 
-    // update the UI
-    // display current balance
-    calcDisplayBalance(currentAccount.movements);
-    // display movements
-    calcDisplaySummary(currentAccount.movements);
-    // dispaly the summary
-    displayMovements(currentAccount.movements);
+    updateUI(currentAccount);
 
     // hide the input details
     inputTransferTo.value = inputTransferAmount.value = "";
@@ -227,6 +230,33 @@ btnLoan.addEventListener("click", function (event) {
     console.log("loan request denied");
   }
 });
+
+// close account functionality
+console.log(`----CLOSE ACCOUNT FUNCTIONALITY----`);
+btnClose.addEventListener("click", function (event) {
+  event.preventDefault();
+  const closeUser = inputCloseUsername.value;
+  const closePin = Number(inputClosePin.value);
+
+  if (
+    closeUser === currentAccount.username &&
+    closePin === currentAccount.pin
+  ) {
+    console.log(`closing button pressed`);
+    console.log(`closing account for ${currentAccount.owner}`);
+
+    const indexDel = accounts.findIndex((acc) => acc.username === closeUser);
+    console.log(`index to be deleted: ${indexDel}`);
+
+    accounts.pop(indexDel); // it deleted the last element, not the element at indexDel
+    accounts.splice(indexDel, 1); // correct way to delete the element at indexDel
+    // hide the UI
+    containerApp.style.opacity = 0;
+  } else {
+    console.log(`wrong credentials for closing account`);
+  }
+});
+
 // Test after user logs in
 // setTimeout(() => {
 //   console.log(currentAccount); // Will show account after login
@@ -358,3 +388,6 @@ const totalDepositsUSD = movements2
   .map((money) => money * 1.1)
   .reduce((acc, money) => acc + money, 0);
 console.log(totalDepositsUSD);
+
+// find index method
+console.log(`----FIND INDEX METHOD----`);
