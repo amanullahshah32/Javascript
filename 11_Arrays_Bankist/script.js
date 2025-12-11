@@ -83,6 +83,7 @@ let currentAccount; // holds the current logged in account
 
 containerApp.style.opacity = 0; // making the app  invisible initially
 
+// login functionality
 btnLogin.addEventListener("click", function (event) {
   // prevent form from submitting
   event.preventDefault();
@@ -93,7 +94,7 @@ btnLogin.addEventListener("click", function (event) {
 
   // find the account
   currentAccount = accounts.find(
-    (acc) => acc.username === username?. && acc.pin === pin
+    (acc) => acc.username === username && acc.pin === pin
   );
   // console.log(" current account: ", currentAccount);
 
@@ -122,8 +123,8 @@ btnLogin.addEventListener("click", function (event) {
 
 // prining the total balance [labelBalance]
 const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
-  return (labelBalance.textContent = `$ ${balance} USD`);
+  currentAccount.balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+  return (labelBalance.textContent = `$ ${currentAccount.balance} USD`);
 };
 
 // project bankist app
@@ -144,8 +145,6 @@ const displayMovements = function (movements, sort = false) {
   });
 };
 
-// displayMovements(account1.movements);
-
 // Display Labels of summary
 const calcDisplaySummary = function (movements) {
   const incomes = movements
@@ -164,8 +163,32 @@ const calcDisplaySummary = function (movements) {
   labelSumInterest.textContent = `$ ${interest} USD`;
 };
 
-// login functionality
+// transfer money functionality
+btnTransfer.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(`transfer button clicked`);
+  const transferTo = accounts.username.find(
+    (accUser) => accUser === inputTransferTo.value
+  );
+  const amount = Number(inputTransferAmount.value);
+  console.log(`transfer to account: `, transferTo);
 
+  // check the validity of transfer
+  if (
+    transferTo &&
+    amount > 0 &&
+    amount <= currentAccount.balance &&
+    currentAccount.username !== inputTransferTo.value
+  ) {
+    currentAccount.balance -= amount; // deduct aamount from the sender account
+    // add the movements to the rows
+    currentAccount.movements.push(-amount); // adding the withdrawal movement to the sender account
+    transferTo.movements.push(amount); // adding the deposit movement to the receiver account
+
+    // hide the input details
+    inputTransferTo.value = inputTransferAmount.value = "***";
+  }
+});
 // Test after user logs in
 // setTimeout(() => {
 //   console.log(currentAccount); // Will show account after login
