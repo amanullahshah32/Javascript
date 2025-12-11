@@ -35,28 +35,23 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
-
 // computing usernames
 console.log(`----COMPUTING USERNAMES----`);
 
 // now i have to work with all the accounts, and make their usernames
 
-const createUsernames = function (user){
-  const username = user.toLowerCase().split(' ').map(function(name)
-{
-  return name[0];
-}).join('');
-return username;
+const createUsernames = function (user) {
+  const username = user
+    .toLowerCase()
+    .split(" ")
+    .map((name) => name[0])
+    .join("");
+  return username;
 };
-
-
-accounts.forEach(function(accnt)
-{
+accounts.forEach(function (accnt) {
   accnt.username = createUsernames(accnt.owner);
 });
-// console.log(accounts);
-
-
+console.log(accounts);
 
 // Elements
 const labelWelcome = document.querySelector(".welcome");
@@ -84,89 +79,83 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+let currentAccount; // holds the current logged in account
 
-// prining the total balance [labelBalance]
-const calcDisplayBalance = function(movements)
-{
-  const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
-  return labelBalance.textContent = `$ ${balance} USD`
-}
-calcDisplayBalance(account1.movements);
-
-// project bankist app
-const displayMovements = function (movements, sort = false){
-  containerMovements.innerHTML = ''; // clearing the container before adding new elements
-   movements.forEach(function(mov, index)
-  {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
-    const html = `<div class="movements__row">
-                    <div class="movements__type movements__type--${type}">${index + 1}: ${type}</div>
-                    <div class="movements__value"> $ ${mov<0 ? (Math.abs(mov)) : mov}</div>
-                  </div>`;
-
-    containerMovements.insertAdjacentHTML("afterbegin", html);
-  })
-}
-
-displayMovements(account1.movements);
-
-
-// Display Labels of summary
-const calcDisplaySummary = function(movements){
-  const incomes = movements.filter(mov => mov > 0).
-  reduce((acc, mov) => acc+ mov, 0)
-  labelSumIn.textContent = `$ ${incomes} USD`;
-
-  // outgoings
-  const outgoings = movements.filter(mov => mov < 0).
-  reduce((accu, mov) => accu + mov, 0);
-  labelSumOut.textContent = `$ ${Math.abs(outgoings)} USD`
-
-  // Interest
-  const interest = incomes * 1.2 / 100;
-  labelSumInterest.textContent = `$ ${interest} USD`
-
-}
-calcDisplaySummary(account1.movements);
-
-// login functionality
-
-let currentAccount;
-btnLogin.addEventListener('click', function(event)
-{
+containerApp.app.opacity = 100;
+btnLogin.addEventListener("click", function (event) {
   // prevent form from submitting
   event.preventDefault();
   console.log(`login button clicked`);
   const username = inputLoginUsername.value;
   const pin = Number(inputLoginPin.value);
 
-  currentAccount = accounts.find( acc => acc.username === username && acc.pin === pin);
-  console.log(currentAccount);
+  currentAccount = accounts.find(
+    (acc) => acc.username === username && acc.pin === pin
+  );
+  // console.log(" current account: ", currentAccount);
 
+  // display current balance
+  calcDisplayBalance(currentAccount.movements);
+  // display movements
+  calcDisplaySummary(currentAccount.movements);
+  // dispaly the summary
+  displayMovements(currentAccount.movements);
+
+  // invisible the login info
+  inputLoginUsername.value = inputLoginPin.value = "";
+  inputLoginPin.blur(); //
 });
 
+// prining the total balance [labelBalance]
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+  return (labelBalance.textContent = `$ ${balance} USD`);
+};
 
+// project bankist app
+const displayMovements = function (movements, sort = false) {
+  containerMovements.innerHTML = ""; // clearing the container before adding new elements
+  movements.forEach(function (mov, index) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+    const html = `<div class="movements__row">
+                    <div class="movements__type movements__type--${type}">${
+      index + 1
+    }: ${type}</div>
+                    <div class="movements__value"> $ ${
+                      mov < 0 ? Math.abs(mov) : mov
+                    }</div>
+                  </div>`;
 
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
 
+// displayMovements(account1.movements);
 
+// Display Labels of summary
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter((mov) => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `$ ${incomes} USD`;
 
+  // outgoings
+  const outgoings = movements
+    .filter((mov) => mov < 0)
+    .reduce((accu, mov) => accu + mov, 0);
+  labelSumOut.textContent = `$ ${Math.abs(outgoings)} USD`;
 
+  // Interest
+  const interest = (incomes * 1.2) / 100;
+  labelSumInterest.textContent = `$ ${interest} USD`;
+};
 
+// login functionality
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Test after user logs in
+// setTimeout(() => {
+//   console.log(currentAccount); // Will show account after login
+// }, 5000);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -222,9 +211,8 @@ console.log(arr3.slice(-1)[0]); // using slice method
 console.log(arr3.at(-1)); // getting the last element using at method
 
 // at method on string
-console.log('aman'.at(0))
-console.log('aman'[1]);
-
+console.log("aman".at(0));
+console.log("aman"[1]);
 
 // For each method
 console.log(`----FOR EACH METHOD----`);
@@ -232,25 +220,28 @@ const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // typical for of loop
 
-for(const movement of movements2)
-{
-  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
+for (const movement of movements2) {
+  movement > 0
+    ? console.log(`You deposited ${movement}`)
+    : console.log(`You withdrew ${Math.abs(movement)}`);
 }
 
 // using forEach
 console.log(`----USING FOREACH METHOD----`);
-movements2.forEach(function(movement)
-{
-  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
-})
+movements2.forEach(function (movement) {
+  movement > 0
+    ? console.log(`You deposited ${movement}`)
+    : console.log(`You withdrew ${Math.abs(movement)}`);
+});
 
 // forEach method with index and array
 console.log(`----USING FOREACH METHOD WITH index and array----`);
 console.log(`----USING FOREACH METHOD----`);
-movements2.forEach(function(movement, indx, arr)
-{
-  movement>0 ? console.log(`Movement ${indx +1} : You deposited ${movement}`) : console.log(`Movement ${indx +1} :You withdrew ${Math.abs(movement)}`);
-})
+movements2.forEach(function (movement, indx, arr) {
+  movement > 0
+    ? console.log(`Movement ${indx + 1} : You deposited ${movement}`)
+    : console.log(`Movement ${indx + 1} :You withdrew ${Math.abs(movement)}`);
+});
 
 // forEach method with maps and sets
 
@@ -261,27 +252,34 @@ const currencies2 = new Map([
 ]);
 console.log(`for each method with maps`);
 
-currencies2.forEach(function(value, key, map) // value: each element, key: key of each element, map: the entire map
-{
+currencies2.forEach(function (
+  value,
+  key,
+  map // value: each element, key: key of each element, map: the entire map
+) {
   console.log(`${key} : ${value}`);
 });
 
 // forEach method with sets
-const currenciesUnique = new Set(['USD', 'BDT', 'EUR', 'BDT', 'USD']);
+const currenciesUnique = new Set(["USD", "BDT", "EUR", "BDT", "USD"]);
 console.log(`for each method with sets`);
 console.log(currenciesUnique);
 console.log(currenciesUnique.size);
 
-currenciesUnique.forEach(function(value, _, set) // _ is used to ignore the first parameter since in sets there is no key
-{
+currenciesUnique.forEach(function (
+  value,
+  _,
+  set // _ is used to ignore the first parameter since in sets there is no key
+) {
   console.log(`${value} : ${value}`); // in sets key and value are same, a set does not have keys
   // console.log(set); // the entire set
-})
-
+});
 
 // the magic of chaining methods
 console.log(`----THE MAGIC OF CHAINING METHODS----`);
-// PIPELINE: 
-const totalDepositsUSD = movements2.filter((money) => money > 0).map(money => money * 1.1).
-reduce((acc, money) => acc + money, 0);
+// PIPELINE:
+const totalDepositsUSD = movements2
+  .filter((money) => money > 0)
+  .map((money) => money * 1.1)
+  .reduce((acc, money) => acc + money, 0);
 console.log(totalDepositsUSD);
