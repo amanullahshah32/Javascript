@@ -81,29 +81,43 @@ const inputClosePin = document.querySelector(".form__input--pin");
 
 let currentAccount; // holds the current logged in account
 
-containerApp.app.opacity = 100;
+containerApp.style.opacity = 0; // making the app  invisible initially
+
 btnLogin.addEventListener("click", function (event) {
   // prevent form from submitting
   event.preventDefault();
   console.log(`login button clicked`);
+
   const username = inputLoginUsername.value;
   const pin = Number(inputLoginPin.value);
 
+  // find the account
   currentAccount = accounts.find(
-    (acc) => acc.username === username && acc.pin === pin
+    (acc) => acc.username === username?. && acc.pin === pin
   );
   // console.log(" current account: ", currentAccount);
 
-  // display current balance
-  calcDisplayBalance(currentAccount.movements);
-  // display movements
-  calcDisplaySummary(currentAccount.movements);
-  // dispaly the summary
-  displayMovements(currentAccount.movements);
+  if (currentAccount) {
+    // display UI and welcome message
+    document.querySelector(".welcome").textContent = `WELCOME BACK, ${
+      currentAccount.owner.split(" ")[0]
+    }`;
+    containerApp.style.opacity = 1; // making the app  invisible initially
 
-  // invisible the login info
-  inputLoginUsername.value = inputLoginPin.value = "";
-  inputLoginPin.blur(); //
+    // display current balance
+    calcDisplayBalance(currentAccount.movements);
+    // display movements
+    calcDisplaySummary(currentAccount.movements);
+    // dispaly the summary
+    displayMovements(currentAccount.movements);
+
+    // invisible the login info
+    inputLoginUsername.value = inputLoginPin.value = "";
+    inputLoginPin.blur(); //
+  } else {
+    console.log(`invalid username or pin`);
+    alert(`wrong credentials`);
+  }
 });
 
 // prining the total balance [labelBalance]
