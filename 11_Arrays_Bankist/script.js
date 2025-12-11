@@ -193,9 +193,38 @@ btnTransfer.addEventListener("click", function (event) {
     displayMovements(currentAccount.movements);
 
     // hide the input details
-    inputTransferTo.value = inputTransferAmount.value = "***";
+    inputTransferTo.value = inputTransferAmount.value = "";
+    inputTransferAmount.blur();
 
     console.log(`transfer to account: `, transferTo.owner);
+  }
+});
+
+// request loan functionality
+btnLoan.addEventListener("click", function (event) {
+  event.preventDefault();
+  console.log(`loan button clicked`);
+  const loanAmount = Number(inputLoanAmount.value);
+
+  // loan verification: at least one deposit with 10% of the requested loan amount
+  if (loanAmount > 0 && loanAmount <= currentAccount.balance * 10) {
+    // add the loan amount to the current account movements
+    currentAccount.movements.push(loanAmount);
+    // update the total balance
+    currentAccount.balance += loanAmount;
+    calcDisplayBalance(currentAccount.movements);
+
+    // show updated movements
+    displayMovements(currentAccount.movements);
+    // show updated summary
+    calcDisplaySummary(currentAccount.movements);
+
+    // hide the input details
+    inputLoanAmount.value = "";
+    inputLoanAmount.blur();
+    console.log("load amount approved:", loanAmount);
+  } else {
+    console.log("loan request denied");
   }
 });
 // Test after user logs in
