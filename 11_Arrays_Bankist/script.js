@@ -285,3 +285,24 @@ const maxValue = movements.reduce((accu, cur) =>
 }, 0 );
 
 console.log(`Maximum value in the array is : ${maxValue}`);
+
+// find method
+console.log(  `\n----FIND METHOD----`);
+const findMethod = movements.find(function(move)
+{
+  return move < 0;
+})
+console.log(findMethod); // returns the first element that satisfies the condition
+
+const FindAccount = accounts.find(acc => acc.owner === 'Jessica Davis'); // returns the first account that satisfies the condition
+console.log(FindAccount);
+
+// using the for of loop
+console.log(`\n----USING FOR OF LOOP----`);
+for (const acc of accounts) {
+  if (acc.owner === 'Sarah Smith') {
+    console.log(`Account found using for of loop:`);
+    console.log(acc);  // Use console.log() directly for objects
+    break;
+  }
+}
