@@ -362,3 +362,32 @@ const totalPositiveBalance2 = accounts
 console.log(
   `Total positive balance of all accounts is using flatMap : ${totalPositiveBalance2}`
 );
+
+// sorting arrays
+console.log(`----SORTING ARRAYS----`);
+
+// strings
+const owners = accounts.map((acc) => acc.owner.split(" ")[0]);
+console.log(owners.sort()); // mutates the original array
+
+// arrays
+console.log(movements);
+// console.log(movements.sort()); // it converts the elements to strings and then sorts them
+
+movements.sort((cur, next) => {
+  if (cur > next) return 1;
+  if (cur < next) return -1;
+});
+console.log(movements); // sorted in ascending order
+
+const descendingOrder = movements.sort((cur, next) => {
+  if (cur < next) return 1;
+  if (cur > next) return -1;
+});
+console.log(descendingOrder); // sorted in descending order
+
+// using just subtraction
+movements.sort((a, b) => a - b); // ascending order
+console.log(movements);
+movements.sort((a, b) => b - a); // descending order
+console.log(movements);
