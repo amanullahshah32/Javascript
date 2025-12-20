@@ -115,9 +115,8 @@ console.log(arr3.slice(-1)[0]); // using slice method
 console.log(arr3.at(-1)); // getting the last element using at method
 
 // at method on string
-console.log('aman'.at(0))
-console.log('aman'[1]);
-
+console.log("aman".at(0));
+console.log("aman"[1]);
 
 // For each method
 console.log(`----FOR EACH METHOD----`);
@@ -125,25 +124,28 @@ const movements2 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // typical for of loop
 
-for(const movement of movements2)
-{
-  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
+for (const movement of movements2) {
+  movement > 0
+    ? console.log(`You deposited ${movement}`)
+    : console.log(`You withdrew ${Math.abs(movement)}`);
 }
 
 // using forEach
 console.log(`----USING FOREACH METHOD----`);
-movements2.forEach(function(movement)
-{
-  movement>0 ? console.log(`You deposited ${movement}`) : console.log(`You withdrew ${Math.abs(movement)}`);
-})
+movements2.forEach(function (movement) {
+  movement > 0
+    ? console.log(`You deposited ${movement}`)
+    : console.log(`You withdrew ${Math.abs(movement)}`);
+});
 
 // forEach method with index and array
 console.log(`----USING FOREACH METHOD WITH index and array----`);
 console.log(`----USING FOREACH METHOD----`);
-movements2.forEach(function(movement, indx, arr)
-{
-  movement>0 ? console.log(`Movement ${indx +1} : You deposited ${movement}`) : console.log(`Movement ${indx +1} :You withdrew ${Math.abs(movement)}`);
-})
+movements2.forEach(function (movement, indx, arr) {
+  movement > 0
+    ? console.log(`Movement ${indx + 1} : You deposited ${movement}`)
+    : console.log(`Movement ${indx + 1} :You withdrew ${Math.abs(movement)}`);
+});
 
 // forEach method with maps and sets
 
@@ -154,23 +156,28 @@ const currencies2 = new Map([
 ]);
 console.log(`for each method with maps`);
 
-currencies2.forEach(function(value, key, map) // value: each element, key: key of each element, map: the entire map
-{
+currencies2.forEach(function (
+  value,
+  key,
+  map // value: each element, key: key of each element, map: the entire map
+) {
   console.log(`${key} : ${value}`);
 });
 
 // forEach method with sets
-const currenciesUnique = new Set(['USD', 'BDT', 'EUR', 'BDT', 'USD']);
+const currenciesUnique = new Set(["USD", "BDT", "EUR", "BDT", "USD"]);
 console.log(`for each method with sets`);
 console.log(currenciesUnique);
 console.log(currenciesUnique.size);
 
-currenciesUnique.forEach(function(value, _, set) // _ is used to ignore the first parameter since in sets there is no key
-{
+currenciesUnique.forEach(function (
+  value,
+  _,
+  set // _ is used to ignore the first parameter since in sets there is no key
+) {
   console.log(`${value} : ${value}`); // in sets key and value are same, a set does not have keys
   // console.log(set); // the entire set
-})
-
+});
 
 // Data transformation: map, filter, reduce
 console.log(`----DATA TRANSFORMATION: MAP, FILTER, REDUCE----`);
@@ -179,24 +186,22 @@ const movements3 = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const euroToUSD = 1.1;
 
 const usdMovements3 = movements3.map((moves) => {
-
   return `using arrow function ${moves * euroToUSD}`;
-})
+});
 
 console.log(movements3);
 console.log(usdMovements3);
 
 // using for each method , similar to the map method
 const forEachUSD = [];
-movements3.forEach(function(move)
-{
+movements3.forEach(function (move) {
   return forEachUSD.push(move * 1.2);
-})
+});
 console.log(` using the for each method ${forEachUSD}`);
 
-const movementDescription =   movements3.map((move, index, array) => {
-    const type = move > 0 ? 'deposited' : 'withdrew';
-    return `\n Movement ${index + 1}: you ${type} ${Math.abs(move)}\n`;
+const movementDescription = movements3.map((move, index, array) => {
+  const type = move > 0 ? "deposited" : "withdrew";
+  return `\n Movement ${index + 1}: you ${type} ${Math.abs(move)}\n`;
 });
 
 console.log(movementDescription);
@@ -205,40 +210,42 @@ console.log(movementDescription);
 console.log(`----COMPUTING USERNAMES----`);
 
 // Computing usernames
-const user = 'Steven Thomas Williams'; // initials: stw in lowercase
+const user = "Steven Thomas Williams"; // initials: stw in lowercase
 
-const createUsernames = function (user){
-  const username = user.toLowerCase().split(' ').map(function(name)
-{
-  return name[0];
-}).join('');
-return username;
-}
+const createUsernames = function (user) {
+  const username = user
+    .toLowerCase()
+    .split(" ")
+    .map(function (name) {
+      return name[0];
+    })
+    .join("");
+  return username;
+};
 console.log(createUsernames(user));
 // now i have to work with all the accounts, and make their usernames
 
 const allUserNames = [];
-accounts.forEach(function(accnt)
-{
+accounts.forEach(function (accnt) {
   allUserNames.push(createUsernames(accnt.owner));
   accnt.username = createUsernames(accnt.owner);
-})
+});
 console.log(allUserNames);
 console.log(accounts);
-
 
 // filter method
 console.log(`----FILTER METHOD----`);
 
-let movements4 = [...movements]; 
-movements4 = movements4.filter(function(move) // filter method mutates the original array
-{ 
+let movements4 = [...movements];
+movements4 = movements4.filter(function (
+  move // filter method mutates the original array
+) {
   return move > 0;
-})
+});
 console.log(movements);
 console.log(movements4);
 
-const withdrawals2 = movements.filter((moveNeg) => moveNeg< 0);
+const withdrawals2 = movements.filter((moveNeg) => moveNeg < 0);
 console.log(`WIthdrawals using array method and filter: ${withdrawals2}`);
 
 // the reduce method
@@ -256,53 +263,65 @@ console.log(movements);
 // console.log(`Balance is : ${balance}`);
 
 // using the arrow function
-const balance3 = movements.reduce((acc, cur, i, arr) => 
-{
+const balance3 = movements.reduce((acc, cur, i, arr) => {
   // accumulato -> snowball
   console.log(`Iteration ${i}: accumulator = ${acc}, current = ${cur}`);
   return acc + cur;
 }, 0);
 console.log(balance3);
 
-
-
 // using for of loop
 let balance2 = 0;
-for (const bal of movements)
-  balance2 += bal; // balance2 = balance2 + bal
+for (const bal of movements) balance2 += bal; // balance2 = balance2 + bal
 console.log(`Balance using for of loop is : ${balance2}`);
-
-  
 
 //  maximum value in the array using reduce method
 console.log(`maximum value in the array using reduce method`);
 
-const maxValue = movements.reduce((accu, cur) => 
-{
+const maxValue = movements.reduce((accu, cur) => {
   let max = accu;
-  cur > max ? max = cur : max = accu;
+  cur > max ? (max = cur) : (max = accu);
   return max;
-}, 0 );
+}, 0);
 
 console.log(`Maximum value in the array is : ${maxValue}`);
 
 // find method
-console.log(  `\n----FIND METHOD----`);
-const findMethod = movements.find(function(move)
-{
+console.log(`\n----FIND METHOD----`);
+const findMethod = movements.find(function (move) {
   return move < 0;
-})
+});
 console.log(findMethod); // returns the first element that satisfies the condition
 
-const FindAccount = accounts.find(acc => acc.owner === 'Jessica Davis'); // returns the first account that satisfies the condition
+const FindAccount = accounts.find((acc) => acc.owner === "Jessica Davis"); // returns the first account that satisfies the condition
 console.log(FindAccount);
 
 // using the for of loop
 console.log(`\n----USING FOR OF LOOP----`);
 for (const acc of accounts) {
-  if (acc.owner === 'Sarah Smith') {
+  if (acc.owner === "Sarah Smith") {
     console.log(`Account found using for of loop:`);
-    console.log(acc);  // Use console.log() directly for objects
+    console.log(acc); // Use console.log() directly for objects
     break;
   }
 }
+
+// includes method
+console.log(`\n----INCLUDES METHOD----`);
+console.log(movements.includes(-130)); // its check the equality
+
+// SOME: Condition type
+console.log(`\n----SOME METHOD----`);
+const anyDeposits = movements.some((move) => move > 0);
+console.log(anyDeposits);
+
+// EVERY: Condition type
+console.log(`\n----EVERY METHOD----`);
+const everyDeposit = account4.movements.every((mov) => mov > 0); // checks if all movements are deposits (positive)
+console.log(everyDeposit);
+
+// separate callback
+const deposit = (move) => move > 0;
+console.log(movements.some(deposit)); // at least one deposit
+console.log(movements.filter(deposit)); // all deposits
+console.log(movements.every(deposit)); // are all deposits
