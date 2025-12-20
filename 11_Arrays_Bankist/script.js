@@ -139,7 +139,10 @@ const calcDisplayBalance = function (movements) {
 // project bankist app
 const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ""; // clearing the container before adding new elements
-  movements.forEach(function (mov, index) {
+  const movs = sort
+    ? movements.slice().sort((cur, next) => cur - next)
+    : movements;
+  movs.forEach(function (mov, index) {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const html = `<div class="movements__row">
                     <div class="movements__type movements__type--${type}">${
@@ -257,6 +260,15 @@ btnClose.addEventListener("click", function (event) {
   }
 });
 
+// sort functionality
+let sorted = false; // state variable to track sort status
+
+btnSort.addEventListener("click", function (event) {
+  event.preventDefault();
+  sorted = !sorted; // toggle the state on each click
+  console.log(`sort button clicked, sorted: ${sorted}`);
+  displayMovements(currentAccount.movements, sorted);
+});
 // Test after user logs in
 // setTimeout(() => {
 //   console.log(currentAccount); // Will show account after login
