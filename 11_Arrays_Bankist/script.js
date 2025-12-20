@@ -248,7 +248,7 @@ btnClose.addEventListener("click", function (event) {
     const indexDel = accounts.findIndex((acc) => acc.username === closeUser);
     console.log(`index to be deleted: ${indexDel}`);
 
-    accounts.pop(indexDel); // it deleted the last element, not the element at indexDel
+    // accounts.pop(indexDel); // it deleted the last element, not the element at indexDel
     accounts.splice(indexDel, 1); // correct way to delete the element at indexDel
     // hide the UI
     containerApp.style.opacity = 0;
