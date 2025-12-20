@@ -325,3 +325,40 @@ const deposit = (move) => move > 0;
 console.log(movements.some(deposit)); // at least one deposit
 console.log(movements.filter(deposit)); // all deposits
 console.log(movements.every(deposit)); // are all deposits
+
+// FLAT AND FLATMAP METHODS
+console.log(`----FLAT AND FLATMAP METHODS----`);
+const arr1 = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr1.flat()); // flattens the array by one level
+
+const arr4 = [[1, [2, [3, 34]]], [4, 5, 6], 7, 8];
+console.log(arr4.flat(3)); // flattens the array by two levels
+
+const accountsMovements = accounts.map((acc) => acc.movements);
+console.log(accountsMovements);
+// flat the array
+const allMovements = accountsMovements.flat();
+console.log(allMovements);
+
+// now calculate the overall balance of all the accounts
+const totalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+console.log(totalBalance);
+
+// chaining the methods
+const totalPositiveBalance = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .filter((move) => move > 0)
+  .reduce((acc, move) => acc + move, 0);
+console.log(
+  `Total positive balance of all accounts is : ${totalPositiveBalance}`
+);
+
+// flatmap method
+const totalPositiveBalance2 = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((move) => move > 0)
+  .reduce((acc, move) => acc + move, 0);
+console.log(
+  `Total positive balance of all accounts is using flatMap : ${totalPositiveBalance2}`
+);
