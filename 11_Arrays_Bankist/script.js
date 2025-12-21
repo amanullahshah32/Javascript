@@ -403,3 +403,17 @@ console.log(totalDepositsUSD);
 
 // find index method
 console.log(`----FIND INDEX METHOD----`);
+
+// Array.from method
+//
+const movementUI = Array.from(document.querySelectorAll(".movements_value"));
+console.log(movementUI);
+
+labelBalance.addEventListener("click", function () {
+  console.log("clicked");
+  const movementUI = Array.from(document.querySelectorAll(".movements_value"));
+  console.log(movementUI.map((el) => el.textContent.replace("$", "")));
+
+  const movementUI2 = [...document.querySelectorAll(".movements_value")];
+  console.log(movementUI2);
+});
