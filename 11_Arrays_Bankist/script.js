@@ -391,3 +391,30 @@ movements.sort((a, b) => a - b); // ascending order
 console.log(movements);
 movements.sort((a, b) => b - a); // descending order
 console.log(movements);
+
+// More ways of creating and filling arrays
+console.log(`----MORE WAYS OF CREATING AND FILLING ARRAYS----`);
+console.log(new Array(1, 2, 3, 4, 5)); // array literal
+const x = new Array(7); // creates an array of length 7 with empty slots
+console.log(x);
+console.log(x.map(() => 5)); // does not work as expected because the array has empty slots
+
+// FILLING
+x.fill(1); // fills all slots with 1
+console.log(x);
+x.fill(2, 3, 5); // fills from index 3 to index 5 with 2 // 5 wont be included
+console.log(x);
+
+//Array.from method
+console.log(Array.from({ length: 10 }, (ele, index) => index * 1 + 1)); // creates an array of length 10 with values from 1 to 10
+
+const z = Array.from({ length: 8 }, (cur, i) => i + 2);
+console.log(z);
+
+// generate 100 random dice rolls using Array.from
+console.log(Math.floor(Math.random() * 6) + 1);
+const diceRolls = Array.from(
+  { length: 100 },
+  () => Math.floor(Math.random() * 6) + 1
+);
+console.log(diceRolls);
