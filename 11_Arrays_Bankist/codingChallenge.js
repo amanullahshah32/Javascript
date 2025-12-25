@@ -91,3 +91,7 @@ console.log(ownersEatTooMuch);
 
 const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recommendedFood).map(dog => dog.owners).flat();
 console.log(ownersEatTooLittle);
+
+// 4. log strings
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`    );
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`    );
