@@ -94,4 +94,22 @@ console.log(ownersEatTooLittle);
 
 // 4. log strings
 console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`    );
-console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`    );
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!` );
+
+
+// 5. check if any dog is eating exactly the recommended amount of food
+const eatingExact = dogs.some(dog => dog.curFood === dog.recommendedFood);
+console.log(`is any dog eating exactly the recommended amount of food? ${eatingExact}`);
+
+// 6. check if any dog is eating an okay amount of food
+const eatingOkay = dogs.some(dog => dog.curFood > (dog.recommendedFood * .90) && dog.curFood < (dog.recommendedFood * 1.10));
+console.log(`is any dog eating an okay amount of food? ${eatingOkay}`);
+
+// 7. array of dogs that are eating an okay amount of food
+const eatingOkayDogs = dogs.filter(dog => dog.curFood > (dog.recommendedFood * .90) && dog.curFood < (dog.recommendedFood * 1.10)).flatMap(dog => dog.owners);
+console.log(`is any dog eating an okay amount of food? ${eatingOkayDogs}`);
+
+// 8. sort dogs by recommended food portion in ascending order
+const dogsSorted = dogs.slice().sort((cur, next)=> cur.recommendedFood - next.recommendedFood);
+console.log('dogs sorted by recommended food portion in ascending order:');
+console.log(dogsSorted);
