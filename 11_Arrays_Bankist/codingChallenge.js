@@ -63,3 +63,31 @@ const calcAverageHumanAgeArrow =  ([...dogsAges]) => // spread operator to creat
 }
 calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
 calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
+
+// coding challenge 4
+console.log(`----CODING CHALLENGE SOLUTION---- 04`);
+
+const dogs = [
+ { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+ { weight: 8, curFood: 200, owners: ['Matilda'] },
+ { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+ { weight: 32, curFood: 340, owners: ['Michael'] },
+ ];
+
+// 1. calculate recommended food portion
+dogs.forEach(dog => dog.recommendedFood = Number((dog.weight ** 0.75 * 28).toFixed(0))); // in grams`
+console.log(dogs);
+
+// 2. find sarah's dog and log if it's eating too much or too little
+const sarahDos = dogs.find(dog => dog.owners.includes('Sarah')); // it returns the object
+console.log(sarahDos);
+
+const eatingStatus = sarahDos.curFood>sarahDos.recommendedFood? 'eating too much' : 'eating too little';
+console.log(`Sarah's dog is ${eatingStatus}`);
+
+// 3. create array of owners of dogs who eat too much or too little
+const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedFood).map(dog => dog.owners).flat();
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recommendedFood).map(dog => dog.owners).flat();
+console.log(ownersEatTooLittle);
