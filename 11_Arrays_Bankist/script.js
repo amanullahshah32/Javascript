@@ -133,7 +133,7 @@ btnLogin.addEventListener("click", function (event) {
 // prining the total balance [labelBalance]
 const calcDisplayBalance = function (movements) {
   currentAccount.balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
-  return (labelBalance.textContent = `$ ${currentAccount.balance} USD`);
+  return (labelBalance.textContent = `$ ${currentAccount.balance.toFixed(2)} USD`);
 };
 
 // project bankist app
@@ -149,7 +149,7 @@ const displayMovements = function (movements, sort = false) {
       index + 1
     }: ${type}</div>
                     <div class="movements__value"> $ ${
-                      mov < 0 ? Math.abs(mov) : mov
+                      mov < 0 ? Math.abs(mov.toFixed(2)) : mov.toFixed(2)
                     }</div>
                   </div>`;
 
@@ -162,17 +162,17 @@ const calcDisplaySummary = function (movements) {
   const incomes = movements
     .filter((mov) => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `$ ${incomes} USD`;
+  labelSumIn.textContent = `$ ${incomes.toFixed(2)} USD`;
 
   // outgoings
   const outgoings = movements
     .filter((mov) => mov < 0)
     .reduce((accu, mov) => accu + mov, 0);
-  labelSumOut.textContent = `$ ${Math.abs(outgoings)} USD`;
+  labelSumOut.textContent = `$ ${Math.abs(outgoings.toFixed(2))} USD`;
 
   // Interest
   const interest = (incomes * 1.2) / 100;
-  labelSumInterest.textContent = `$ ${interest} USD`;
+  labelSumInterest.textContent = `$ ${interest.toFixed(2)} USD`;
 };
 
 // transfer money functionality
@@ -210,7 +210,7 @@ btnTransfer.addEventListener("click", function (event) {
 btnLoan.addEventListener("click", function (event) {
   event.preventDefault();
   console.log(`loan button clicked`);
-  const loanAmount = Number(inputLoanAmount.value);
+  const loanAmount = Math.floor(Number(inputLoanAmount.value));
 
   // loan verification: at least one deposit with 10% of the requested loan amount
   if (loanAmount > 0 && loanAmount <= currentAccount.balance * 10) {
