@@ -251,3 +251,31 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+
+console.log(23 === 23.0 );
+console.log(0.1 + 0.2 );
+
+// conversion
+console.log(23);
+console.log(+'23'); // Type coercion
+
+// Parsing
+console.log(Number.parseInt('30px', 10));
+console.log(Number.parseInt('e23', 10));
+
+console.log(Number.parseFloat('2.5rem',10));
+console.log(parseFloat('6.5refm',10));
+
+console.log(Number.isNaN(20));
+console.log(Number.isNaN(-20));
+console.log(Number.isNaN('20px'));
+console.log(Number.isNaN(23/0));
+
+console.log(Number.isFinite(20  ));
+console.log(Number.isFinite(20/0  ));
+console.log(Number.isFinite('20'  ));
+// console.log(Number..parseInt('20px'  ).isFinite());
+
+console.log(Number.isInteger(23  ));
+console.log(Number.isInteger(23.2  ));
