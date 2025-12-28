@@ -323,5 +323,24 @@ console.log((2.345).toFixed(6));
 console.log(+(2.345).toFixed(6));
 
 // remainder operator
+console.log(`Remainder operator\n`);
 console.log(5%2);
 console.log(5/2);
+
+// even odd check
+const isEven = n => n%2 === 0? 'Even' : 'Odd';
+console.log(isEven(8));
+console.log(isEven(23));
+console.log(isEven(514));
+
+labelBalance.addEventListener('click', function()
+{
+  
+  [...document.querySelectorAll('.movements__row')].forEach(function(row, index)
+  {
+    if(index % 2 === 0)
+      row.style.backgroundColor = 'orangered';
+    else
+      row.style.backgroundColor = 'blue';
+  })
+});
