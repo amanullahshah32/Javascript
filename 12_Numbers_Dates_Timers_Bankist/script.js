@@ -321,3 +321,7 @@ console.log(Number((2.7).toFixed(3)));
 
 console.log((2.345).toFixed(6));
 console.log(+(2.345).toFixed(6));
+
+// remainder operator
+console.log(5%2);
+console.log(5/2);
