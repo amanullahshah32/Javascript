@@ -66,6 +66,11 @@ message.innerHTML = 'We use cookies for imporved functionality and analytics. <b
 header.prepend(message); // adds the message element as the first child of the header element
 header.append(message); // moves the message element as the last child of the header element
 
+// DEMO: insertAdjacentHTML usage
+// This will insert a new paragraph at the top of the header
+// header.insertAdjacentHTML('afterbegin', '<p style="color: blue; font-weight: bold;">This is a demo of insertAdjacentHTML!</p> <button class="btn btn--close-cookie"> CLOSE </button>');
+// Try changing 'afterbegin' to 'beforeend', 'beforebegin', or 'afterend' to see different results.
+
 document.querySelector('.btn--close-cookie').addEventListener('click', function(e){
   e.preventDefault();
   message.remove();
@@ -94,3 +99,27 @@ btnScrollTo.addEventListener('click', function(e){
   // modern way
   section1.scrollIntoView({behavior: 'smooth' }); // scrolls to section1 smoothly and its so easy :)
 })
+
+// element.insertAdjacentHTML('beforeend', '<p>Hello!</p>');
+
+
+const h1 = document.querySelector('h1');
+
+// h1.addEventListener('mouseenter', function(e)
+// {
+//   alert('You are reading the heading by enterin the mouse:D');
+// });
+
+// h1.onmouseenter = function(e)
+// {
+//   alert('You are reading the heading by onmouseenter property:D');
+// }
+
+const h1Alerts = function(e) {
+  alert('You are reading the heading by addEventListener:D')
+  h1.removeEventListener('mouseenter', h1Alerts);
+};
+  
+h1.addEventListener('mouseenter', h1Alerts);
+
+// setTimeout( ()=> h1.removeEventListener('mouseenter', h1Alerts), 3000);
