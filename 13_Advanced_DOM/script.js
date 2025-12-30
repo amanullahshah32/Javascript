@@ -71,3 +71,26 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
   message.remove();
   message.parentElement.removeChild(message); // old way of removing an element
 })
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function(e){
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  console.log(e.target.getBoundingClientRect(   ));
+
+  console.log('current scroll (x/y', window.pageXOffset, window.pageYOffset  );
+  console.log('height/width viewpost', document.documentElement.clientHeight, document.documentElement.clientWidth );
+
+  // // scrooling
+  // window.scrollTo(s1coords.left + window.pageXOffset , s1coords.top + window.pageYOffset);
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset ,
+  //   top:  s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+  // modern way
+  section1.scrollIntoView({behavior: 'smooth' }); // scrolls to section1 smoothly and its so easy :)
+})
