@@ -240,3 +240,29 @@ tabsContainer.addEventListener('click', function(e)
     if (content) content.classList.add('operations__content--active');
     // console.log(content.textContent);
 })
+
+////////////////////////////////////////////////
+// Menu fade animation
+const handleHover = function(e, opacity)
+{
+  if(e.target.classList.contains('nav__link'))
+  {
+    const link = e.target;
+    // console.log(link.textContent);
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
+    const logo = link.closest('.nav').querySelector('img');
+    // console.log(siblings);
+    siblings.forEach(function(el){
+      if(el !== link)
+      {
+        el.style.opacity = opacity;
+        logo.style.opacity = opacity;
+      }
+    })
+
+  }
+}
+
+const nav = document.querySelector('.nav');
+nav.addEventListener('mouseover', handleHover(e , 0.5));
+nav.addEventListener('mouseout', handleHover(e , 1));
