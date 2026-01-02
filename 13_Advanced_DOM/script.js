@@ -245,6 +245,7 @@ tabsContainer.addEventListener('click', function(e)
 // Menu fade animation
 const handleHover = function(e, opacity)
 {
+  console.log(this);
   if(e.target.classList.contains('nav__link'))
   {
     const link = e.target;
@@ -264,5 +265,13 @@ const handleHover = function(e, opacity)
 }
 
 const nav = document.querySelector('.nav');
-nav.addEventListener('mouseover', handleHover(e , 0.5));
-nav.addEventListener('mouseout', handleHover(e , 1));
+// nav.addEventListener('mouseover', function(e){
+//   handleHover(e, 0.5);
+// });
+
+// nav.addEventListener('mouseout', function(e){
+//   handleHover(e, 1);
+// });
+// using bind to pass 'argument' to event handler
+nav.addEventListener('mouseover', e => handleHover.bind( 0.5));
+nav.addEventListener('mouseout', e => handleHover(e, 1));
