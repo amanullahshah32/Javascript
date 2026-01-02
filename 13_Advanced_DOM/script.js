@@ -115,77 +115,73 @@ btnScrollTo.addEventListener("click", function (e) {
 //   });
 // });
 
-
 // Event delegation for smooth scrolling on feature links
 // 1. add event listener to common parent elements
 // 2. determine what element originated the event
 
-document.querySelector('.nav__links').addEventListener('click', function(e){
+document.querySelector(".nav__links").addEventListener("click", function (e) {
   e.preventDefault();
   console.log(e.target);
   console.log(this);
 
   // matching strategy
-  if(e.target.classList.contains('nav__link'))
-  {
+  if (e.target.classList.contains("nav__link")) {
     // e.preventDefault();
     // console.log(this);
     const id = e.target.getAttribute("href");
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
-};
+  }
 });
-
 
 // element.insertAdjacentHTML('beforeend', '<p>Hello!</p>');
 
-
 // h1.addEventListener('mouseenter', function(e)
 // {
-  //   alert('You are reading the heading by enterin the mouse:D');
-  // });
-  
-  // h1.onmouseenter = function(e)
-  // {
-    //   alert('You are reading the heading by onmouseenter property:D');
-    // }
-    
-    // const h1Alerts = function(e) {
-      //   alert('You are reading the heading by addEventListener:D')
-      //   h1.removeEventListener('mouseenter', h1Alerts);
-      // };
-      
-      // h1.addEventListener('mouseenter', h1Alerts);
-      
-      // setTimeout( ()=> h1.removeEventListener('mouseenter', h1Alerts), 3000);
-      
-      // random colors
-      
+//   alert('You are reading the heading by enterin the mouse:D');
+// });
+
+// h1.onmouseenter = function(e)
+// {
+//   alert('You are reading the heading by onmouseenter property:D');
+// }
+
+// const h1Alerts = function(e) {
+//   alert('You are reading the heading by addEventListener:D')
+//   h1.removeEventListener('mouseenter', h1Alerts);
+// };
+
+// h1.addEventListener('mouseenter', h1Alerts);
+
+// setTimeout( ()=> h1.removeEventListener('mouseenter', h1Alerts), 3000);
+
+// random colors
+
 const randomInt = (min, max) =>
-        Math.floor(Math.random() * (max - min + 1) + min);
-      const randomColor = () =>
-        `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
-      
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
 console.log(randomColor());
-      
-      // document.querySelector(".nav__link").addEventListener("click", function (e) {
-        //   console.log("clicked");
-        //   this.style.backgroundColor = randomColor();
-        //   // console.log("link", e.target, e.currentTarget);
-        
-        //   e.stopPropagation(); // stops the event bubbling
-        // });
-        // document.querySelector(".nav__links").addEventListener("click", function (e) {
-          //   this.style.backgroundColor = randomColor();
-          //   // console.log("container", e.target, e.currentTarget);
-          //   // e.stopPropagation(); // stops the event bubbling
-          // });
-          // document.querySelector(".nav").addEventListener("click", function (e) {
-            //   console.log("clicked");
-            //   this.style.backgroundColor = randomColor();
-            //   // console.log("nav", e.target, e.currentTarget);
-            // }); // 'true' capturing phase)
-/////////////////////////////////////////////////////////////////////////            
-            
+
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+//   console.log("clicked");
+//   this.style.backgroundColor = randomColor();
+//   // console.log("link", e.target, e.currentTarget);
+
+//   e.stopPropagation(); // stops the event bubbling
+// });
+// document.querySelector(".nav__links").addEventListener("click", function (e) {
+//   this.style.backgroundColor = randomColor();
+//   // console.log("container", e.target, e.currentTarget);
+//   // e.stopPropagation(); // stops the event bubbling
+// });
+// document.querySelector(".nav").addEventListener("click", function (e) {
+//   console.log("clicked");
+//   this.style.backgroundColor = randomColor();
+//   // console.log("nav", e.target, e.currentTarget);
+// }); // 'true' capturing phase)
+/////////////////////////////////////////////////////////////////////////
+
 // const h1 = document.querySelector("h1");
 // console.log(h1.parentElement);
 // console.log(h1.childNodes);
@@ -209,62 +205,61 @@ console.log(randomColor());
 
 // console.log(h1.parentElement.children);
 // [...h1.parentElement.children].forEach(function(el){
-//   if(el !== h1) 
+//   if(el !== h1)
 //     el.style.transform = 'scale(1.1)';
 // })
 ///////////////////////////////////////////////
 
 // Tabbed Component
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabsContent = document.querySelectorAll('.operations__content');
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContainer = document.querySelector(".operations__tab-container");
+const tabsContent = document.querySelectorAll(".operations__content");
 
 // use event delegation
-tabsContainer.addEventListener('click', function(e)
-{
-  const clicked = e.target.closest('.operations__tab');
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
   // console.log(clicked.textContent);
 
-  if (!clicked) return;    
-                    // guard against null
-                    // active tabs
-    // remove active state from all tabs
-    tabs.forEach(t => t.classList.remove('operations__tab--active'));
-    // add active state to clicked tab
-    clicked.classList.add('operations__tab--active');
-    console.log(clicked?.textContent);
+  if (!clicked) return;
+  // guard against null
+  // active tabs
+  // remove active state from all tabs
+  tabs.forEach((t) => t.classList.remove("operations__tab--active"));
+  // add active state to clicked tab
+  clicked.classList.add("operations__tab--active");
+  console.log(clicked?.textContent);
 
-    // Activate content areas
-    tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-    const content = document.querySelector(`.operations__content--${clicked.dataset.tab}`);
-    if (content) content.classList.add('operations__content--active');
-    // console.log(content.textContent);
-})
+  // Activate content areas
+  tabsContent.forEach((c) => c.classList.remove("operations__content--active"));
+  const content = document.querySelector(
+    `.operations__content--${clicked.dataset.tab}`
+  );
+  if (content) content.classList.add("operations__content--active");
+  // console.log(content.textContent);
+});
 
 ////////////////////////////////////////////////
 // Menu fade animation
-const handleHover = function(e, opacity)
-{
-  console.log(this);
-  if(e.target.classList.contains('nav__link'))
-  {
+
+const nav = document.querySelector(".nav");
+const handleHover = function (e) {
+  const opacity = this; // ← read opacity from 'this'
+  console.log(opacity);
+
+  if (e.target.classList.contains("nav__link")) {
     const link = e.target;
-    // console.log(link.textContent);
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-    // console.log(siblings);
-    siblings.forEach(function(el){
-      if(el !== link)
-      {
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector("img");
+
+    siblings.forEach(function (el) {
+      if (el !== link) {
         el.style.opacity = opacity;
         logo.style.opacity = opacity;
       }
-    })
-
+    });
   }
-}
+};
 
-const nav = document.querySelector('.nav');
 // nav.addEventListener('mouseover', function(e){
 //   handleHover(e, 0.5);
 // });
@@ -273,5 +268,5 @@ const nav = document.querySelector('.nav');
 //   handleHover(e, 1);
 // });
 // using bind to pass 'argument' to event handler
-nav.addEventListener('mouseover', e => handleHover.bind( 0.5));
-nav.addEventListener('mouseout', e => handleHover(e, 1));
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+nav.addEventListener("mouseout", handleHover.bind(1));
