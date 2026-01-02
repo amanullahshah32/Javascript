@@ -274,23 +274,27 @@ h4 {
   max-width: 100rem;
   margin: 12rem auto 0 auto;
 
-  background-color: #fff;
+  background-color: #e6e4e4;
 }
 
 .operations__tab-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .operations__tab {
   margin-right: 2.5rem;
   transform: translateY(-50%);
+  padding: 1.5rem 3.5rem;
+  border-radius: 3rem;
 }
 
 .operations__tab span {
-  margin-right: 1rem;
+  margin-right: 2rem;
   font-weight: 600;
   display: inline-block;
+  vertical-align: middle;
 }
 
 .operations__tab--1 {

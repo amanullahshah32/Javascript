@@ -186,29 +186,42 @@ console.log(randomColor());
             // }); // 'true' capturing phase)
 /////////////////////////////////////////////////////////////////////////            
             
-const h1 = document.querySelector("h1");
-console.log(h1.parentElement);
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color = "white";
-h1.lastElementChild.style.color = "orangered";
+// const h1 = document.querySelector("h1");
+// console.log(h1.parentElement);
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color = "white";
+// h1.lastElementChild.style.color = "orangered";
 
-// Goind upwards: parent
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// // Goind upwards: parent
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// h1.closest('h1').style.background = 'var(--gradient-primary)';
 
-// Goind sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// // Goind sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function(el){
-  if(el !== h1) 
-    el.style.transform = 'scale(1.1)';
+// console.log(h1.parentElement.children);
+// [...h1.parentElement.children].forEach(function(el){
+//   if(el !== h1) 
+//     el.style.transform = 'scale(1.1)';
+// })
+///////////////////////////////////////////////
+
+// Tabbed Component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// use event delegation
+tabsContainer.addEventListener('click', function(e)
+{
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked.textContent);
 })
