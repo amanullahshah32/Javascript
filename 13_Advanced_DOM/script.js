@@ -224,4 +224,11 @@ tabsContainer.addEventListener('click', function(e)
 {
   const clicked = e.target.closest('.operations__tab');
   console.log(clicked.textContent);
+  
+  if (!clicked) return;                      // guard against null
+    // remove active state from all tabs
+    tabs.forEach(t => t.classList.remove('operations__tab--active'));
+    // add active state to clicked tab
+    clicked.classList.add('operations__tab--active');
+
 })

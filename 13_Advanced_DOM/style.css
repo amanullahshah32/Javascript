@@ -26,11 +26,21 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   color: #444;
   line-height: 1.9;
   background-color: #f3f3f3;
+}
+
+.bg {
+  background: #43c1f7; /* fallback */
+  background: linear-gradient(
+    90deg,
+    rgba(67, 193, 247, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
 }
 
 /* GENERAL ELEMENTS */
@@ -216,7 +226,7 @@ h4 {
 
 .highlight::after {
   display: block;
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -316,6 +326,12 @@ h4 {
 
 .operations__tab--active {
   transform: translateY(-66%);
+  background: linear-gradient(
+    90deg,
+    rgba(67, 193, 247, 1) 0%,
+    rgba(87, 199, 133, 1) 50%,
+    rgba(237, 221, 83, 1) 100%
+  );
 }
 
 .operations__content {
@@ -474,7 +490,7 @@ h4 {
 }
 
 .testimonial::before {
-  content: '\201C';
+  content: "\201C";
   position: absolute;
   top: -5.7rem;
   left: -6.8rem;
