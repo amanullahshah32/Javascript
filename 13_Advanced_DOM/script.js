@@ -223,12 +223,20 @@ const tabsContent = document.querySelectorAll('.operations__content');
 tabsContainer.addEventListener('click', function(e)
 {
   const clicked = e.target.closest('.operations__tab');
-  console.log(clicked.textContent);
-  
-  if (!clicked) return;                      // guard against null
+  // console.log(clicked.textContent);
+
+  if (!clicked) return;    
+                    // guard against null
+                    // active tabs
     // remove active state from all tabs
     tabs.forEach(t => t.classList.remove('operations__tab--active'));
     // add active state to clicked tab
     clicked.classList.add('operations__tab--active');
+    console.log(clicked?.textContent);
 
+    // Activate content areas
+    tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+    const content = document.querySelector(`.operations__content--${clicked.dataset.tab}`);
+    if (content) content.classList.add('operations__content--active');
+    // console.log(content.textContent);
 })
