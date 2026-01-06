@@ -288,34 +288,26 @@ const navbar = document.querySelector(".nav");
 
 // Sticky Navigation: Intersection Observer API
 
-// Get the header element to observe
-const header2 = document.querySelector(".header");
 
-// Options for the observer
+const sections = document.querySelectorAll(".section");
 const options = {
-  root: null, // Use the viewport as root (null = browser viewport)
-  rootMargin: "-90px", // Trigger 90px before header completely leaves viewport
-  threshold: 0, // Trigger when 0% of header is visible (completely out of view)
-};
+  root: document.querySelector('.section--1'), // null means viewport
+  threshold: 0, 
+  rootMargin: "0px",
+  scrollMargin: "0px",
+}
+const observer = new IntersectionObserver(function(entries, observer)
+{
+  entries.forEach(entry => {
+    console.log(entry);
+    if(!entry.isIntersecting)
+    {
+      navbar.classList.add('sticky');
+    }
+    else{
+      navbar.classList.remove('sticky');
+    }
+  })
+}, options);
 
-// Callback function that runs when intersection changes
-const navCallback = function (entries) {
-  // entries is an array of IntersectionObserverEntry objects
-  console.log(entries);
-  const [entry] = entries; // Get the first (and only) entry
-  console.log(entry);
-  // isIntersecting is true when target is visible, false when not visible
-  if (!entry.header2) {
-    // Header is NOT visible (out of viewport) → Add sticky nav
-    navbar.classList.add("sticky");
-  } else {
-    // Header IS visible (in viewport) → Remove sticky nav
-    navbar.classList.remove("sticky");
-  }
-};
-
-// Create the observer with our callback and options
-const sectionObserver = new IntersectionObserver(navCallback, options);
-const target = document.querySelector("#section--1");
-// Start observing the header element
-sectionObserver.observe(target);
+sections.forEach(section => observer.observe(section));
