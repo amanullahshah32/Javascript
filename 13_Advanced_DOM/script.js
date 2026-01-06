@@ -263,25 +263,39 @@ const handleHover = function (e) {
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
-// Sticky Navigation
-window.onscroll = function () {
-  stickyNav();
-};
+// // Sticky Navigation
+// window.onscroll = function () {
+//   stickyNav();
+// };
 
-// Get the navbar element from the DOM
-const navbar = document.querySelector(".nav");
-// Get section 1 element to use its offset position
-const section_1 = document.querySelector("#section--1");
-// get the initial offset position of section 1
-const stickyOffset = section_1.offsetTop;
+// // Get the navbar element from the DOM
+// const navbar = document.querySelector(".nav");
+// // Get section 1 element to use its offset position
+// const section_1 = document.querySelector("#section--1");
+// // get the initial offset position of section 1
+// const stickyOffset = section_1.offsetTop;
 
-console.log(window.pageYOffset);
-// the functions that toggles the sticky class on scroll
-function stickyNav() {
-  if (window.pageYOffset >= stickyOffset) {
-    navbar.classList.add("sticky");
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
+// console.log(window.pageYOffset);
+// // the functions that toggles the sticky class on scroll
+// function stickyNav() {
+//   if (window.pageYOffset >= stickyOffset) {
+//     navbar.classList.add("sticky");
+//   } else {
+//     navbar.classList.remove("sticky");
+//   }
+// }
 /////////////
+
+// Sticky Navigation: Intersection Observer API
+
+
+const options = {
+  root: document.querySelector('.section--1'),
+  rootMargin: '0px', 
+  scrollMargin: '0px',
+  threshold: 1, 
+}; 
+
+const observer = new IntersectionObserver( entries => {
+  console.log(entries);
+}, options);
