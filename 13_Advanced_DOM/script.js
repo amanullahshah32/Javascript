@@ -288,26 +288,22 @@ const navbar = document.querySelector(".nav");
 
 // Sticky Navigation: Intersection Observer API
 
-
-const sections = document.querySelectorAll(".section");
-const options = {
-  root: document.querySelector('.section--1'), // null means viewport
-  threshold: 0, 
-  rootMargin: "0px",
-  scrollMargin: "0px",
-}
-const observer = new IntersectionObserver(function(entries, observer)
-{
-  entries.forEach(entry => {
+const navHeight = navbar.getBoundingClientRect().height;
+const options ={
+  root: null, // viewport
+  threshold: 0.2, // 10% of the section is visible
+  rootMargin: `-${navHeight}px`, // margin around the root
+};
+const obsCallback = function(entries, observer){
+  entries.forEach(entry =>{
     console.log(entry);
-    if(!entry.isIntersecting)
-    {
-      navbar.classList.add('sticky');
-    }
-    else{
-      navbar.classList.remove('sticky');
+    if (entry.isIntersecting === false){
+      navbar.classList.add("sticky");
+    } else {
+      navbar.classList.remove("sticky");
     }
   })
-}, options);
+};
+const observer = new IntersectionObserver(obsCallback, options);
 
-sections.forEach(section => observer.observe(section));
+observer.observe(header);
