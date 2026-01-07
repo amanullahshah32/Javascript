@@ -2,21 +2,25 @@
 
 console.log(`Amanullah LeetCode`);
 
-const twoSum = function (nums, target) {
+const twoSum = function (numbers, target) {
   let result = [];
-  
-  // Using map method with all three parameters: value, index, array
-  nums.map((value, index, array) => {
-    // Use map again to check against remaining elements
-    array.slice(index + 1).map((nextValue, nextIndex) => {
-      if (value + nextValue === target && result.length === 0) {
-        result = [index, nextIndex + index + 1];
-      }
-      return null; // map requires a return value
-    });
-    return null; // map requires a return value
+
+  // Use map with all parameters: value, index, array
+  numbers.map((num, index, array) => {
+    // Calculate what number we need to find
+    const complement = target - num;
+
+    // Search for complement in remaining part of array
+    const complementIndex = array.indexOf(complement, index + 1);
+
+    // If complement found and we haven't found result yet
+    if (complementIndex !== -1 && result.length === 0) {
+      result = [index, complementIndex];
+    }
+
+    return null; // map needs return value
   });
-  
+
   return result;
 };
 
