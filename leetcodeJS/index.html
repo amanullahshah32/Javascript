@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetCode Practice - Amanullah</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header Section -->
+      <header class="header">
+        <h1>🚀 LeetCode Practice</h1>
+        <p class="subtitle">Amanullah's JavaScript Solutions</p>
+      </header>
+
+      <!-- Problem Info Section -->
+      <section class="problem-section">
+        <div class="problem-header">
+          <h2 class="problem-title">Problem: Two Sum</h2>
+          <span class="difficulty easy">Easy</span>
+        </div>
+
+        <div class="problem-description">
+          <h3>Description:</h3>
+          <p>
+            Given an array of integers <code>nums</code> and an integer
+            <code>target</code>, return indices of the two numbers such that
+            they add up to <code>target</code>.
+          </p>
+
+          <h3>Example:</h3>
+          <div class="example">
+            <p><strong>Input:</strong> nums = [2,7,11,15], target = 9</p>
+            <p><strong>Output:</strong> [0,1]</p>
+            <p>
+              <strong>Explanation:</strong> Because nums[0] + nums[1] == 9, we
+              return [0, 1]
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Code Editor Section -->
+      <section class="code-section">
+        <div class="code-header">
+          <h3>💻 Your Solution</h3>
+          <button class="btn-run" onclick="runCode()">▶ Run Code</button>
+        </div>
+
+        <div class="code-editor">
+          <pre><code id="solution">const twoSum = function(nums, target) {
+    let result = [];
+    
+    nums.map((num, index, array) => {
+        const complement = target - num;
+        const complementIndex = array.indexOf(complement, index + 1);
+        
+        if (complementIndex !== -1 && result.length === 0) {
+            result = [index, complementIndex];
+        }
+        
+        return null;
+    });
+    
+    return result;
+};
+
+// Test Cases
+const nums = [2, 7, 11, 15];
+const target = 9;
+const result = twoSum(nums, target);
+console.log(result);</code></pre>
+        </div>
+      </section>
+
+      <!-- Output Section -->
+      <section class="output-section">
+        <h3>📊 Output</h3>
+        <div class="output-console" id="output">
+          <p class="output-placeholder">
+            Click "Run Code" to see the output...
+          </p>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats-section">
+        <div class="stat-card">
+          <h4>Problems Solved</h4>
+          <p class="stat-number">1</p>
+        </div>
+        <div class="stat-card">
+          <h4>Current Streak</h4>
+          <p class="stat-number">1 🔥</p>
+        </div>
+        <div class="stat-card">
+          <h4>Total Time</h4>
+          <p class="stat-number">Today</p>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      function runCode() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = "";
+
+        // Capture console.log
+        const originalLog = console.log;
+        const logs = [];
+        console.log = function (...args) {
+          logs.push(
+            args
+              .map((arg) =>
+                typeof arg === "object" ? JSON.stringify(arg) : String(arg)
+              )
+              .join(" ")
+          );
+          originalLog.apply(console, args);
+        };
+
+        try {
+          // Execute the code
+          const twoSum = function (nums, target) {
+            let result = [];
+
+            nums.map((num, index, array) => {
+              const complement = target - num;
+              const complementIndex = array.indexOf(complement, index + 1);
+
+              if (complementIndex !== -1 && result.length === 0) {
+                result = [index, complementIndex];
+              }
+
+              return null;
+            });
+
+            return result;
+          };
+
+          const nums = [2, 7, 11, 15];
+          const target = 9;
+          const result = twoSum(nums, target);
+          console.log(`✅ Result: [${result}]`);
+          console.log(`✅ Test Passed!`);
+        } catch (error) {
+          logs.push(`❌ Error: ${error.message}`);
+        }
+
+        // Restore console.log
+        console.log = originalLog;
+
+        // Display output
+        outputDiv.innerHTML = logs.map((log) => `<p>${log}</p>`).join("");
+      }
+    </script>
+    <script src="problems/twoSum.js"></script>
+  </body>
+</html>
