@@ -310,18 +310,26 @@ observer.observe(header);
 
 
 // Reveal sections on scroll
+console.log(`reveal sections on scroll`);
 const allSections = document.querySelectorAll('.section')
 
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.15,
-})
 
 
 const revealSection = function(entries, observer){
-
-
+  const [entry] = entries; // destructuring assignment
+  // console.log(entry);
+  console.log(entry);
+  if(entry.isIntersecting === false) return; // guard clause
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+  
 }
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.25,
+});
+
 allSections.forEach(function(section){
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
