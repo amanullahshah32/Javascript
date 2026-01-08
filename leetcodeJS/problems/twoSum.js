@@ -2,35 +2,59 @@
 
 console.log(`Two Sum - LeetCode Problem`);
 
-const twoSum = function (nums, target) {
-  let result = [];
+// const twoSum = function (nums, target) {
+//   let result = [];
 
-  // Use map with all parameters: value, index, array
-  nums.map((num, index, array) => {
-    // Calculate what number we need to find
-    const complement = target - num;
+//   // Use map with all parameters: value, index, array
+//   nums.map((num, index, array) => {
+//     // Calculate what number we need to find
+//     const complement = target - num;
 
-    // Search for complement in remaining part of array
-    const complementIndex = array.indexOf(complement, index + 1);
+//     // Search for complement in remaining part of array
+//     const complementIndex = array.indexOf(complement, index + 1);
 
-    // If complement found and we haven't found result yet
-    if (complementIndex !== -1 && result.length === 0) {
-      result = [index, complementIndex];
+//     // If complement found and we haven't found result yet
+//     if (complementIndex !== -1 && result.length === 0) {
+//       result = [index, complementIndex];
+//     }
+
+//     return null; // map needs return value
+//   });
+
+//   return result;
+// };
+
+// // Test Cases
+// const nums = [2, 7, 11, 15];
+// const target = 9;
+// const result = twoSum(nums, target);
+// console.log(`Result: [${result}]`);
+// console.log(
+//   `✅ Test Passed: nums[${result[0]}] + nums[${result[1]}] = ${
+//     nums[result[0]]
+//   } + ${nums[result[1]]} = ${target}`
+// );
+
+
+
+
+// Problem 2: Palindrome Number
+
+const isPalindrome = function(...number) {
+    let inputNumber = number.toString();
+    let length = inputNumber.length;
+    for(const num of inputNumber){
+        if( num === inputNumber[length - 1]) // how to take the value of last element
+        {length -= 1;
+            continue;
+        }
+        else
+            return false;
     }
-
-    return null; // map needs return value
-  });
-
-  return result;
+    return true;
 };
 
-// Test Cases
-const nums = [2, 7, 11, 15];
-const target = 9;
-const result = twoSum(nums, target);
-console.log(`Result: [${result}]`);
-console.log(
-  `✅ Test Passed: nums[${result[0]}] + nums[${result[1]}] = ${
-    nums[result[0]]
-  } + ${nums[result[1]]} = ${target}`
-);
+// Test cases
+const x = 11211;
+const palindromeResult = isPalindrome(x);
+console.log(palindromeResult); // Should output true because 121 is a palindrome
