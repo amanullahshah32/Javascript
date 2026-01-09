@@ -318,7 +318,7 @@ const allSections = document.querySelectorAll('.section')
 const revealSection = function(entries, observer){
   const [entry] = entries; // destructuring assignment
   // console.log(entry);
-  console.log(entry);
+  // console.log(entry);
   if(entry.isIntersecting === false) return; // guard clause
   entry.target.classList.remove('section--hidden');
   observer.unobserve(entry.target);
@@ -334,3 +334,20 @@ allSections.forEach(function(section){
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 })
+
+
+// Lazy loading images
+const imgTargets = document.querySelectorAll('img[data-src]');
+// console.log(imgTargets);
+
+const loadingImg = function(entries, observer){
+  const [entry] = entries;
+}
+const imgObserver =  new IntersectionObserver(loadingImg, options);
+const options ={
+  root: null,
+   threshold: 0.2;
+  rootMargin: '200px',
+}
+
+imgTargets.forEach( img => )
