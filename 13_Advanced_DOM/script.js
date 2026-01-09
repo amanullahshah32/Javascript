@@ -342,12 +342,24 @@ const imgTargets = document.querySelectorAll('img[data-src]');
 
 const loadingImg = function(entries, observer){
   const [entry] = entries;
-}
-const imgObserver =  new IntersectionObserver(loadingImg, options);
-const options ={
-  root: null,
-   threshold: 0.2;
-  rootMargin: '200px',
-}
+  console.log(entry);
+  if(entry.isIntersecting === false) return; // guard clause
+  // replace src with data-src
+  // entry.target.classList.remove('lazy-img');
+  entry.target.src = entry.target.dataset.src; // dataset.src gets the value of data-src attribute
+  
+  entry.target.addEventListener('load', function(){
+    entry.target.classList.remove('lazy-img');
+  })
+  observer.unobserve(entry.target);
 
-imgTargets.forEach( img => )
+
+}
+const imgOptions = {
+  root: null,
+  threshold: 0,
+  rootMargin: '-200px',
+}
+const imgObserver = new IntersectionObserver(loadingImg, imgOptions);
+
+imgTargets.forEach( img => imgObserver.observe(img));
