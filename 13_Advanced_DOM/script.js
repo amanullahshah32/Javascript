@@ -363,3 +363,11 @@ const imgOptions = {
 const imgObserver = new IntersectionObserver(loadingImg, imgOptions);
 
 imgTargets.forEach( img => imgObserver.observe(img));
+
+
+// Slider component
+const slides = document.querySelectorAll('.slide');
+slides.forEach((slide, index) => {
+  slide.style.transform = `translateX(${100 * index}%)`
+  // 0%, 100%, 200%, 300%
+})
