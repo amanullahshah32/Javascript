@@ -374,13 +374,13 @@ let curSlide = 0;
 const maxSlide = slides.length;
 
 const slider = document.querySelector('.slider');
-slider.style.transform = 'scale(0.4) translateX(-800px)';
-slider.style.overflow = 'visible';
+// slider.style.transform = 'scale(0.4) translateX(-800px)';
+// slider.style.overflow = 'visible';
 
-slides.forEach((slide, index) => {
-  slide.style.transform = `translateX(${100 * index}%)`
-  // 0%, 100%, 200%, 300%
-})
+// slides.forEach((slide, index) => {
+//   slide.style.transform = `translateX(${100 * index}%)`
+//   // 0%, 100%, 200%, 300%
+// })
 
 
 const goToSlide = function(slide){
