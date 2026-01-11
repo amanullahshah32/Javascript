@@ -35,5 +35,80 @@
 //   } + ${nums[result[1]]} = ${target}`
 // );
 
+// // 13. Roman to Integer
+// const romanToInt = function (string) {
+//   let total = 0;
+//   const romanChar = string.split(""); // Don't skip first character
 
-// 13. Roman to Integer
+//   romanChar.forEach((char, indexOfChar) => {
+//     const currentValue = symbols[char];
+//     const nextValue = symbols[romanChar[indexOfChar + 1]];
+
+//     // Key logic: If current < next, subtract; otherwise add
+//     if (nextValue && currentValue < nextValue) {
+//       total -= currentValue; // Subtract (like I in IV)
+//     } else {
+//       total += currentValue; // Add normally
+//     }
+//   });
+
+//   return total;
+// };
+
+// const symbols = {
+//   I: 1,
+//   V: 5,
+//   X: 10,
+//   L: 50,
+//   C: 100,
+//   D: 500,
+//   M: 1000,
+// };
+// console.log(romanToInt("MCMXCIV")); // 58
+
+// // console.log(romanToInt("LVIII")); // 58
+// console.log(romanToInt("LVIII")); // 58
+
+
+// 14. Longest Common Prefix
+// const longestCommonPrefix = function(strs) {
+//   if (strs.length === 0) return "";
+  
+//   let prefix = strs[0];  // Start with first string as prefix
+//   // console.log(strs[1].indexOf(prefix));
+//   for (let i = 1; i < strs.length; i++) {
+//     while (strs[i].indexOf(prefix) !== 0) {
+//       prefix = prefix.slice(0, -1);  // Remove last character
+//       if (prefix === "") return "";
+//     }
+//   }
+  
+//   return prefix;
+// };
+
+// const strings = ["flower", "flow", "flight"];
+// console.log(longestCommonPrefix(strings)); // "fl"
+
+
+// 11. Container With Most Water
+console.log(`Container With Most Water - LeetCode Problem 11`);
+
+const maxArea = function(height) {
+    const sortedHeight = height.sort((a,b)=> b-a); // Sort in descending order
+    console.log(sortedHeight);
+    let maxArea = 0; 
+
+    sortedHeight.forEach((heightValue, index)=>{
+      if(heightValue === sortedHeight[ index + 1])
+      {
+        maxArea=  heightValue ** 2; // Skip duplicates
+      }
+      else if(heightValue > sortedHeight[ index + 1]){
+        maxArea = (sortedHeight[index + 1] ** 2); 
+
+      }
+    })
+    return maxArea;
+};
+
+console.log(maxArea([1,8,6,2,5,4,8,3,7])); // 49
