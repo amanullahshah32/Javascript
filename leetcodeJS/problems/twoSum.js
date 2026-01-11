@@ -94,21 +94,29 @@
 console.log(`Container With Most Water - LeetCode Problem 11`);
 
 const maxArea = function(height) {
-    const sortedHeight = height.sort((a,b)=> b-a); // Sort in descending order
-    console.log(sortedHeight);
-    let maxArea = 0; 
 
-    sortedHeight.forEach((heightValue, index)=>{
-      if(heightValue === sortedHeight[ index + 1])
-      {
-        maxArea=  heightValue ** 2; // Skip duplicates
-      }
-      else if(heightValue > sortedHeight[ index + 1]){
-        maxArea = (sortedHeight[index + 1] ** 2); 
+  const length = height.length;
+  let maxArea = 0;
+  let left = 0;
+  let right = length - 1;
 
-      }
-    })
-    return maxArea;
+  while (left < right){
+    let width = right - left; 
+    const currentHeight = Math.min(height[left] , height[right]);
+    const area = width * currentHeight; 
+    maxArea = Math.max(maxArea, area);
+
+    // move to the right 
+    if(height[left] < height [right])
+      left ++; 
+    else
+      right --;
+    
+  }
+  return maxArea;
+
 };
 
-console.log(maxArea([1,8,6,2,5,4,8,3,7])); // 49
+console.log(maxArea([1,8,6,2,5,4,8,3,7])); // 49  // 0 to 8
+console.log(maxArea([1,1])); // 1  // 0 to 1
+console.log(maxArea([1,2,1])); // 1  // 0 to 1
