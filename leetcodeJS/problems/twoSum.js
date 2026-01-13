@@ -152,3 +152,183 @@
 // 21. Merge Two Sorted Lists
 console.log(`Merge Two Sorted Lists - LeetCode Problem 21`);
 
+/* 
+════════════════════════════════════════════════════════════════════════════════
+📚 UNDERSTANDING LINKED LISTS - Complete Guide
+════════════════════════════════════════════════════════════════════════════════
+
+1️⃣ WHAT IS A LINKED LIST?
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+A Linked List is a data structure where each element (node) contains:
+- A VALUE (the data)
+- A POINTER to the NEXT node
+
+Structure of a Node:
+    {
+      val: 1,           // The data stored
+      next: {           // Pointer to next node
+        val: 2,
+        next: {
+          val: 3,
+          next: null    // Last node points to null
+        }
+      }
+    }
+
+Visual Representation:
+    [1] → [2] → [3] → null
+    
+Each box is a node, arrows (→) represent the "next" pointer.
+
+
+2️⃣ HOW IS IT DIFFERENT FROM AN ARRAY?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Array:        [1, 2, 3]  → All elements stored together in memory
+Linked List:  1 → 2 → 3 → null  → Each element can be anywhere in memory
+
+
+3️⃣ WHY CAN'T WE USE ARRAY METHODS?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- .concat() works on arrays, NOT on linked list nodes
+- .sort() works on arrays, NOT on linked list nodes
+- We must traverse node by node using .next pointer
+
+
+4️⃣ THE MERGE PROBLEM
+━━━━━━━━━━━━━━━━━━━━
+Given two SORTED linked lists:
+    list1: 1 → 2 → 4 → null
+    list2: 1 → 3 → 4 → null
+
+Goal: Merge them into ONE sorted list:
+    result: 1 → 1 → 2 → 3 → 4 → 4 → null
+
+════════════════════════════════════════════════════════════════════════════════
+*/
+
+/**
+ * ✅ SOLUTION: Merge Two Sorted Lists
+ *
+ * @param {ListNode} list1 - First sorted linked list
+ * @param {ListNode} list2 - Second sorted linked list
+ * @return {ListNode} - Merged sorted linked list
+ */
+
+class ListNode {
+  constructor(){
+    this.val = 0;
+    this.next = null;
+  }
+}
+var mergeTwoLists = function (list1, list2) {
+
+  const dummy = new ListNode();
+
+  let current = dummy;
+
+
+  while (list1 !== null && list2 !== null) {
+    // Compare the current values of both lists
+    if (list1.val <= list2.val) {
+      // list1's value is smaller or equal, so pick it
+      current.next = list1; // Attach list1's current node
+      list1 = list1.next; // Move list1 pointer to next node
+    } else {
+      // list2's value is smaller, so pick it
+      current.next = list2; // Attach list2's current node
+      list2 = list2.next; // Move list2 pointer to next node
+    }
+
+    // Move our construction pointer forward
+    // (Go to the node we just attached)
+    current = current.next;
+  }
+
+  if (list1 !== null) {
+    current.next = list1;
+  }
+
+  // If list2 has remaining nodes, attach them all
+  if (list2 !== null) {
+    current.next = list2;
+  }
+
+  return console.log(dummy.next);
+};
+
+/* 
+════════════════════════════════════════════════════════════════════════════════
+🧪 TESTING THE SOLUTION
+════════════════════════════════════════════════════════════════════════════════
+*/
+
+// Helper function: Create a linked list from an array
+function createLinkedList(arr) {
+  if (arr.length === 0) return null;
+
+  // Create first node (head)
+  const head = { val: arr[0], next: null };
+  let current = head;
+
+  // Create remaining nodes
+  for (let i = 1; i < arr.length; i++) {
+    current.next = { val: arr[i], next: null };
+    current = current.next; // Move to the newly created node
+  }
+
+  return head;
+}
+
+// Helper function: Convert linked list back to array for easy viewing
+function linkedListToArray(head) {
+  const result = [];
+  let current = head;
+
+  // Traverse the list and collect values
+  while (current !== null) {
+    result.push(current.val);
+    current = current.next; // Move to next node
+  }
+
+  return result;
+}
+
+// Test Case 1
+const list1 = createLinkedList([1, 2, 4]);
+const list2 = createLinkedList([1, 3, 4]);
+const merged = mergeTwoLists(list1, list2);
+console.log("Test 1:", linkedListToArray(merged)); // [1, 1, 2, 3, 4, 4]
+
+// Test Case 2: Empty lists
+const list3 = createLinkedList([]);
+const list4 = createLinkedList([0]);
+const merged2 = mergeTwoLists(list3, list4);
+console.log("Test 2:", linkedListToArray(merged2)); // [0]
+
+/* 
+════════════════════════════════════════════════════════════════════════════════
+⏱️ TIME & SPACE COMPLEXITY
+════════════════════════════════════════════════════════════════════════════════
+
+TIME COMPLEXITY: O(n + m)
+- n = length of list1
+- m = length of list2
+- We visit each node exactly once
+
+SPACE COMPLEXITY: O(1)
+- We only use a few pointers (dummy, current)
+- We're NOT creating new nodes, just rearranging existing ones!
+- The merged list reuses the nodes from list1 and list2
+
+════════════════════════════════════════════════════════════════════════════════
+🎯 KEY TAKEAWAYS FOR LINKED LISTS
+════════════════════════════════════════════════════════════════════════════════
+
+1. Use node.next to traverse (like i++ in arrays)
+2. Use dummy nodes to simplify edge cases
+3. Always move pointers forward carefully
+4. Check for null to avoid errors
+5. You can't use array methods on linked lists!
+
+════════════════════════════════════════════════════════════════════════════════
+*/
