@@ -150,7 +150,7 @@
 // console.log(isValid("()[]{}")); // true
 
 // 21. Merge Two Sorted Lists
-console.log(`Merge Two Sorted Lists - LeetCode Problem 21`);
+// console.log(`Merge Two Sorted Lists - LeetCode Problem 21`);
 
 /* 
 ════════════════════════════════════════════════════════════════════════════════
@@ -206,61 +206,78 @@ Goal: Merge them into ONE sorted list:
 ════════════════════════════════════════════════════════════════════════════════
 */
 
-/**
- * ✅ SOLUTION: Merge Two Sorted Lists
- *
- * @param {ListNode} list1 - First sorted linked list
- * @param {ListNode} list2 - Second sorted linked list
- * @return {ListNode} - Merged sorted linked list
- */
+// /**
+//  * ✅ SOLUTION: Merge Two Sorted Lists
+//  *
+//  * @param {ListNode} list1 - First sorted linked list
+//  * @param {ListNode} list2 - Second sorted linked list
+//  * @return {ListNode} - Merged sorted linked list
+//  */
 
-class ListNode {
-  constructor(val = 0, next = null){
-    this.val = val;      // Assign the value passed to constructor
-    this.next = next;    // Assign the next node (default is null)
+// class ListNode {
+//   constructor(val = 0, next = null){
+//     this.val = val;      // Assign the value passed to constructor
+//     this.next = next;    // Assign the next node (default is null)
+//   }
+// }
+// var mergeTwoLists = function (list1, list2) {
+//   console.log(`list1: ${list1}`);
+//   const dummy = new ListNode();
+
+//   let current = dummy;
+//   console.log(current);
+
+//   while (list1 !== null && list2 !== null) {
+//     // Compare the current values of both lists
+//     if (list1.val <= list2.val) {
+//       // list1's value is smaller or equal, so pick it
+//       current.next = list1; // Attach list1's current node
+//       list1 = list1.next; // Move list1 pointer to next node
+//     } else {
+//       // list2's value is smaller, so pick it
+//       current.next = list2; // Attach list2's current node
+//       list2 = list2.next; // Move list2 pointer to next node
+//     }
+
+//     // Move our construction pointer forward
+//     // (Go to the node we just attached)
+//     current = current.next;
+//   }
+
+//   if (list1 !== null) {
+//     current.next = list1;
+//   }
+
+//   // If list2 has remaining nodes, attach them all
+//   if (list2 !== null) {
+//     current.next = list2;
+//   }
+
+//   return console.log(dummy.next);
+// };
+
+// // Test Case 1
+// const list1 = ([1, 2, 4]);
+// const list2 = ([1, 3, 4]);
+// const merged = mergeTwoLists(list1, list2);
+
+// 41. First Missing Positive
+console.log(`First Missing Positive - LeetCode Problem 41`);
+var firstMissingPositive = function (nums) {
+  console.log(`Given numbers are: ${nums}`);
+  const sortedNums = nums.sort((a, b) => a - b).filter(num => num > 0);
+  console.log(`Sorted positive numbers: ${sortedNums}`);
+  let minPositive = sortedNums[0];
+  console.log(`minimum positive number: ${minPositive}`);
+  let expectedNumber = 1;
+  while( sortedNums.indexOf(expectedNumber) !== -1){  
+    expectedNumber ++;
   }
-}
-var mergeTwoLists = function (list1, list2) {
-  console.log(`list1: ${list1}`);
-  const dummy = new ListNode();
 
-  let current = dummy;
-  console.log(current);
+  return expectedNumber;
 
-  while (list1 !== null && list2 !== null) {
-    // Compare the current values of both lists
-    if (list1.val <= list2.val) {
-      // list1's value is smaller or equal, so pick it
-      current.next = list1; // Attach list1's current node
-      list1 = list1.next; // Move list1 pointer to next node
-    } else {
-      // list2's value is smaller, so pick it
-      current.next = list2; // Attach list2's current node
-      list2 = list2.next; // Move list2 pointer to next node
-    }
 
-    // Move our construction pointer forward
-    // (Go to the node we just attached)
-    current = current.next;
-  }
-
-  if (list1 !== null) {
-    current.next = list1;
-  }
-
-  // If list2 has remaining nodes, attach them all
-  if (list2 !== null) {
-    current.next = list2;
-  }
-
-  return console.log(dummy.next);
 };
 
-
-
-// Test Case 1
-const list1 = ([1, 2, 4]);
-const list2 = ([1, 3, 4]);
-const merged = mergeTwoLists(list1, list2);
-
-
+const nums = [1,2,0];
+console.log(firstMissingPositive(nums)); // 2
