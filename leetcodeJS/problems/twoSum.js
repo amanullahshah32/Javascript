@@ -261,47 +261,70 @@ Goal: Merge them into ONE sorted list:
 // const list2 = ([1, 3, 4]);
 // const merged = mergeTwoLists(list1, list2);
 
-// 27. Remove Element
-console.log(`Remove Element - LeetCode Problem 27`);
+// // 27. Remove Element
+// console.log(`Remove Element - LeetCode Problem 27`);
 
-// Solution 1: Using indexOf and splice
-var removeElement = function (nums, val) {
-  // Keep removing while the element exists
-  while (nums.indexOf(val) !== -1) {
-    const index = nums.indexOf(val);
-    nums.splice(index, 1); // Remove 1 element at index
-  }
-  return nums.length;
-};
+// // Solution 1: Using indexOf and splice
+// var removeElement = function (nums, val) {
+//   // Keep removing while the element exists
+//   while (nums.indexOf(val) !== -1) {
+//     const index = nums.indexOf(val);
+//     nums.splice(index, 1); // Remove 1 element at index
+//   }
+//   return nums.length;
+// };
 
-// Solution 2: Using includes and splice
-var removeElement2 = function (nums, val) {
-  // Loop backwards to avoid index shifting issues
-  for (let i = nums.length - 1; i >= 0; i--) {
-    if (nums[i] === val) {
-      nums.splice(i, 1);
-    }
-  }
-  return nums.length;
-};
+// // Solution 2: Using includes and splice
+// var removeElement2 = function (nums, val) {
+//   // Loop backwards to avoid index shifting issues
+//   for (let i = nums.length - 1; i >= 0; i--) {
+//     if (nums[i] === val) {
+//       nums.splice(i, 1);
+//     }
+//   }
+//   return nums.length;
+// };
 
-// another solve i submitted using only filter:
-var removeElement = function(nums, val) {
-    const newArray = nums.filter((num) => num !== val);
-    // modifying the original array:
-    for(let i =0; i< newArray.length; i++)
-      {
-        nums[i] = newArray[i];
-      }
+// // another solve i submitted using only filter:
+// var removeElement = function(nums, val) {
+//     const newArray = nums.filter((num) => num !== val);
+//     // modifying the original array:
+//     for(let i =0; i< newArray.length; i++)
+//       {
+//         nums[i] = newArray[i];
+//       }
 
     
-    return newArray.length;
+//     return newArray.length;
+// };
+
+// const arr = [3, 2, 2, 3];
+// console.log(removeElement(arr, 3)); // 2
+// console.log(arr); // [2, 2]
+
+// const arr2 = [0, 1, 2, 2, 3, 0, 4, 2];
+// console.log(removeElement2(arr2, 2)); // 5
+// console.log(arr2); // [0,1,3,0,4]
+
+
+// 28. FInd the Index of the First Occurrence in a String
+console.log(`Find the Index of the First Occurrence in a String - LeetCode Problem 28`);
+
+var strStr = function(haystack, needle) {
+  let occurence = 0;
+  const index = haystack.indexOf(needle );
+  // console.log(index);
+  if(index!== -1)
+  {
+    occurence = index;
+    return occurence;
+  }
+  else{
+    return -1;
+  }
+    
 };
 
-const arr = [3, 2, 2, 3];
-console.log(removeElement(arr, 3)); // 2
-console.log(arr); // [2, 2]
-
-const arr2 = [0, 1, 2, 2, 3, 0, 4, 2];
-console.log(removeElement2(arr2, 2)); // 5
-console.log(arr2); // [0,1,3,0,4]
+const haystack = "sadbutsad";
+const needle = "sad";
+console.log(strStr(haystack, needle)); // 2
