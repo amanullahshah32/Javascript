@@ -262,20 +262,35 @@ Goal: Merge them into ONE sorted list:
 // const merged = mergeTwoLists(list1, list2);
 
 // 41. First Missing Positive
-console.log(`First Missing Positive - LeetCode Problem 41`);
-var firstMissingPositive = function (nums) {
-  console.log(`Given numbers are: ${nums}`);
-  const sortedNums = new Set(nums.filter(num => num > 0));
+// console.log(`First Missing Positive - LeetCode Problem 41`);
+// var firstMissingPositive = function (nums) {
+//   console.log(`Given numbers are: ${nums}`);
+//   const sortedNums = new Set(nums.filter(num => num > 0));
 
-  let expectedNumber = 1;
-  while( sortedNums.has(expectedNumber)){  
-    expectedNumber ++;
+//   let expectedNumber = 1;
+//   while( sortedNums.has(expectedNumber)){
+//     expectedNumber ++;
+//   }
+
+//   return expectedNumber;
+
+// };
+
+// const nums = [1,2,0];
+// console.log(firstMissingPositive(nums)); // 2
+
+// 26. Remove Duplicates from Sorted Array
+console.log(`Remove Duplicates from Sorted Array - LeetCode Problem 26`);
+var removeDuplicates = function (nums) {
+  const sortedWithoutDuplicates = [...new Set(nums)];
+  
+  // Copy the unique elements back into the original array
+  for (let i = 0; i < sortedWithoutDuplicates.length; i++) {
+    nums[i] = sortedWithoutDuplicates[i];
   }
-
-  return expectedNumber;
-
-
+  
+  return sortedWithoutDuplicates.length;
 };
 
-const nums = [1,2,0];
-console.log(firstMissingPositive(nums)); // 2
+const nums = [1,1,2];
+console.log(removeDuplicates(nums)); // 2
