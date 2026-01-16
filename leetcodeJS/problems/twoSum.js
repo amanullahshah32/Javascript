@@ -265,12 +265,10 @@ Goal: Merge them into ONE sorted list:
 console.log(`First Missing Positive - LeetCode Problem 41`);
 var firstMissingPositive = function (nums) {
   console.log(`Given numbers are: ${nums}`);
-  const sortedNums = nums.sort((a, b) => a - b).filter(num => num > 0);
-  console.log(`Sorted positive numbers: ${sortedNums}`);
-  let minPositive = sortedNums[0];
-  console.log(`minimum positive number: ${minPositive}`);
+  const sortedNums = new Set(nums.filter(num => num > 0));
+
   let expectedNumber = 1;
-  while( sortedNums.indexOf(expectedNumber) !== -1){  
+  while( sortedNums.has(expectedNumber)){  
     expectedNumber ++;
   }
 
