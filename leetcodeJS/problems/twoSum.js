@@ -150,7 +150,7 @@
 // console.log(isValid("()[]{}")); // true
 
 // 21. Merge Two Sorted Lists
-console.log(`Merge Two Sorted Lists - LeetCode Problem 21`);
+// console.log(`Merge Two Sorted Lists - LeetCode Problem 21`);
 
 /* 
 ════════════════════════════════════════════════════════════════════════════════
@@ -206,61 +206,102 @@ Goal: Merge them into ONE sorted list:
 ════════════════════════════════════════════════════════════════════════════════
 */
 
-/**
- * ✅ SOLUTION: Merge Two Sorted Lists
- *
- * @param {ListNode} list1 - First sorted linked list
- * @param {ListNode} list2 - Second sorted linked list
- * @return {ListNode} - Merged sorted linked list
- */
+// /**
+//  * ✅ SOLUTION: Merge Two Sorted Lists
+//  *
+//  * @param {ListNode} list1 - First sorted linked list
+//  * @param {ListNode} list2 - Second sorted linked list
+//  * @return {ListNode} - Merged sorted linked list
+//  */
 
-class ListNode {
-  constructor(val = 0, next = null){
-    this.val = val;      // Assign the value passed to constructor
-    this.next = next;    // Assign the next node (default is null)
+// class ListNode {
+//   constructor(val = 0, next = null){
+//     this.val = val;      // Assign the value passed to constructor
+//     this.next = next;    // Assign the next node (default is null)
+//   }
+// }
+// var mergeTwoLists = function (list1, list2) {
+//   console.log(`list1: ${list1}`);
+//   const dummy = new ListNode();
+
+//   let current = dummy;
+//   console.log(current);
+
+//   while (list1 !== null && list2 !== null) {
+//     // Compare the current values of both lists
+//     if (list1.val <= list2.val) {
+//       // list1's value is smaller or equal, so pick it
+//       current.next = list1; // Attach list1's current node
+//       list1 = list1.next; // Move list1 pointer to next node
+//     } else {
+//       // list2's value is smaller, so pick it
+//       current.next = list2; // Attach list2's current node
+//       list2 = list2.next; // Move list2 pointer to next node
+//     }
+
+//     // Move our construction pointer forward
+//     // (Go to the node we just attached)
+//     current = current.next;
+//   }
+
+//   if (list1 !== null) {
+//     current.next = list1;
+//   }
+
+//   // If list2 has remaining nodes, attach them all
+//   if (list2 !== null) {
+//     current.next = list2;
+//   }
+
+//   return console.log(dummy.next);
+// };
+
+// // Test Case 1
+// const list1 = ([1, 2, 4]);
+// const list2 = ([1, 3, 4]);
+// const merged = mergeTwoLists(list1, list2);
+
+// 27. Remove Element
+console.log(`Remove Element - LeetCode Problem 27`);
+
+// Solution 1: Using indexOf and splice
+var removeElement = function (nums, val) {
+  // Keep removing while the element exists
+  while (nums.indexOf(val) !== -1) {
+    const index = nums.indexOf(val);
+    nums.splice(index, 1); // Remove 1 element at index
   }
-}
-var mergeTwoLists = function (list1, list2) {
-  console.log(`list1: ${list1}`);
-  const dummy = new ListNode();
-
-  let current = dummy;
-  console.log(current);
-
-  while (list1 !== null && list2 !== null) {
-    // Compare the current values of both lists
-    if (list1.val <= list2.val) {
-      // list1's value is smaller or equal, so pick it
-      current.next = list1; // Attach list1's current node
-      list1 = list1.next; // Move list1 pointer to next node
-    } else {
-      // list2's value is smaller, so pick it
-      current.next = list2; // Attach list2's current node
-      list2 = list2.next; // Move list2 pointer to next node
-    }
-
-    // Move our construction pointer forward
-    // (Go to the node we just attached)
-    current = current.next;
-  }
-
-  if (list1 !== null) {
-    current.next = list1;
-  }
-
-  // If list2 has remaining nodes, attach them all
-  if (list2 !== null) {
-    current.next = list2;
-  }
-
-  return console.log(dummy.next);
+  return nums.length;
 };
 
+// Solution 2: Using includes and splice
+var removeElement2 = function (nums, val) {
+  // Loop backwards to avoid index shifting issues
+  for (let i = nums.length - 1; i >= 0; i--) {
+    if (nums[i] === val) {
+      nums.splice(i, 1);
+    }
+  }
+  return nums.length;
+};
 
+// another solve i submitted using only filter:
+var removeElement = function(nums, val) {
+    const newArray = nums.filter((num) => num !== val);
+    // modifying the original array:
+    for(let i =0; i< newArray.length; i++)
+      {
+        nums[i] = newArray[i];
+      }
 
-// Test Case 1
-const list1 = ([1, 2, 4]);
-const list2 = ([1, 3, 4]);
-const merged = mergeTwoLists(list1, list2);
+    
+    return newArray.length;
+};
 
+const arr = [3, 2, 2, 3];
+console.log(removeElement(arr, 3)); // 2
+console.log(arr); // [2, 2]
 
+const arr2 = [0, 1, 2, 2, 3, 0, 4, 2];
+console.log(removeElement2(arr2, 2)); // 5
+console.log(arr2); // [0,1,3,0,4]
