@@ -279,18 +279,62 @@ Goal: Merge them into ONE sorted list:
 // const nums = [1,2,0];
 // console.log(firstMissingPositive(nums)); // 2
 
-// 26. Remove Duplicates from Sorted Array
-console.log(`Remove Duplicates from Sorted Array - LeetCode Problem 26`);
-var removeDuplicates = function (nums) {
-  const sortedWithoutDuplicates = [...new Set(nums)];
-  
-  // Copy the unique elements back into the original array
-  for (let i = 0; i < sortedWithoutDuplicates.length; i++) {
-    nums[i] = sortedWithoutDuplicates[i];
+// // 26. Remove Duplicates from Sorted Array
+// console.log(`Remove Duplicates from Sorted Array - LeetCode Problem 26`);
+// var removeDuplicates = function (nums) {
+//   const sortedWithoutDuplicates = [...new Set(nums)];
+
+//   // Copy the unique elements back into the original array
+//   for (let i = 0; i < sortedWithoutDuplicates.length; i++) {
+//     nums[i] = sortedWithoutDuplicates[i];
+//   }
+
+//   return sortedWithoutDuplicates.length;
+// };
+
+// const nums = [1,1,2];
+// console.log(removeDuplicates(nums)); // 2
+
+// 30. Substring with Concatenation of All Words
+console.log(`Substring with Concatenation of All Words - LeetCode Problem 30`);
+
+const findSubstring = function (str, words) {
+  if (words.length === 0 || str.length === 0) return [];
+
+  const wordLength = words[0].length;
+  const splitWords = chunkString(str, wordLength);
+  console.log(splitWords.length);
+
+  let indexes = [];
+  let foundWords = 0;
+  for (let i = 0; i < splitWords.length; i++) {
+    // console.log(splitWords[i]);
+    for (let secLoop = 0; secLoop < words.length; secLoop++) {
+      if (splitWords[i] === words[secLoop]) {
+        console.log(`found : $${words[secLoop]} at index ${i * wordLength}`);
+        indexes.push(i * wordLength);
+      }
+    }
   }
-  
-  return sortedWithoutDuplicates.length;
+  console.log(indexes);
+  for (let strIndex = 0; strIndex < indexes.length; strIndex++) {
+    for (let wrdIndex = 0; wrdIndex < words.length; wrdIndex++) {
+      if (splitWords[indexes[strIndex]] === words[wrdIndex]) {
+        foundWords++;
+        console.log(splitWords[indexes[strIndex]]);
+      }
+    }
+  }
 };
 
-const nums = [1,1,2];
-console.log(removeDuplicates(nums)); // 2
+const chunkString = function (str, length) {
+  const chunks = [];
+  for (let i = 0; i < str.length; i += length) {
+    chunks.push(str.slice(i, i + length));
+  }
+  return chunks;
+};
+
+const string = "barfoothefoobarmana";
+const wordsArray = ["foo", "bar"];
+console.log(findSubstring(string, wordsArray));
