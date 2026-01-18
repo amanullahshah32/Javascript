@@ -308,44 +308,31 @@ const findSubstring = function (str, words) {
   let indexes = [];
   let foundWords = 0;
   let resultIndexes = [];
+
+  // Check each starting position
   for (let i = 0; i < splitWords.length; i++) {
-    // console.log(splitWords[i]);
-    for (let secLoop = 0; secLoop < words.length; secLoop++) {
-      if (splitWords[i] === words[secLoop]) {
-        console.log(`found : ${words[secLoop]} at index ${i * wordLength}`);
-        indexes.push(i * wordLength);
-      }
-    }
-  }
-  
-  // Remove duplicate indexes
-  indexes = [...new Set(indexes)];
-  console.log(indexes);
+    foundWords = 0;
+    // shallow copy of words to track what we need to find
+    const wordsToFind = [...words];
 
-  // Check each starting index to see if all words match consecutively
-  for (let strIndex = 0; strIndex < indexes.length; strIndex++) {
-    foundWords = 0; // Reset counter for each starting position
-    const startIdx = indexes[strIndex] / wordLength; // Convert string index to chunk index
-    const wordsCopy = [...words]; // Create a copy to track which words we've found
-
-    // Check consecutive chunks starting from this index
+    // Check consecutive chunks starting from position i
     for (let j = 0; j < words.length; j++) {
-      const chunkIdx = startIdx + j;
-      if (chunkIdx >= splitWords.length) break; // Out of bounds
+      const chunkIndex = i + j;
+      if (chunkIndex >= splitWords.length) break; // Out of bounds
 
-      const currentChunk = splitWords[chunkIdx];
-      const wordIdx = wordsCopy.indexOf(currentChunk);
+      const currentChunk = splitWords[chunkIndex];
+      const wordIndex = wordsToFind.indexOf(currentChunk);
 
-      if (wordIdx !== -1) {
+      if (wordIndex !== -1) {
         foundWords++;
-        wordsCopy.splice(wordIdx, 1); // Remove found word to handle duplicates
+        wordsToFind.splice(wordIndex, 1); // Remove found word to handle duplicates
       } else {
         break; // Word not found or already used
       }
     }
 
     if (foundWords === words.length) {
-      resultIndexes.push(indexes[strIndex]);
+      resultIndexes.push(i * wordLength);
     }
   }
   return resultIndexes;
@@ -359,6 +346,6 @@ const chunkString = function (str, length) {
   return chunks;
 };
 
-const string = "wordgoodgoodgoodbestword";
-const wordsArray = ["word","good","best","good"];
+const string = "lingmindraboofooowingdingbarrwingmonkeypoundcake";
+const wordsArray = ["fooo","barr","wing","ding","wing"];
 console.log(findSubstring(string, wordsArray));
