@@ -307,24 +307,48 @@ const findSubstring = function (str, words) {
 
   let indexes = [];
   let foundWords = 0;
+  let resultIndexes = [];
   for (let i = 0; i < splitWords.length; i++) {
     // console.log(splitWords[i]);
     for (let secLoop = 0; secLoop < words.length; secLoop++) {
       if (splitWords[i] === words[secLoop]) {
-        console.log(`found : $${words[secLoop]} at index ${i * wordLength}`);
+        console.log(`found : ${words[secLoop]} at index ${i * wordLength}`);
         indexes.push(i * wordLength);
       }
     }
   }
+  
+  // Remove duplicate indexes
+  indexes = [...new Set(indexes)];
   console.log(indexes);
+
+  // Check each starting index to see if all words match consecutively
   for (let strIndex = 0; strIndex < indexes.length; strIndex++) {
-    for (let wrdIndex = 0; wrdIndex < words.length; wrdIndex++) {
-      if (splitWords[indexes[strIndex]] === words[wrdIndex]) {
+    foundWords = 0; // Reset counter for each starting position
+    const startIdx = indexes[strIndex] / wordLength; // Convert string index to chunk index
+    const wordsCopy = [...words]; // Create a copy to track which words we've found
+
+    // Check consecutive chunks starting from this index
+    for (let j = 0; j < words.length; j++) {
+      const chunkIdx = startIdx + j;
+      if (chunkIdx >= splitWords.length) break; // Out of bounds
+
+      const currentChunk = splitWords[chunkIdx];
+      const wordIdx = wordsCopy.indexOf(currentChunk);
+
+      if (wordIdx !== -1) {
         foundWords++;
-        console.log(splitWords[indexes[strIndex]]);
+        wordsCopy.splice(wordIdx, 1); // Remove found word to handle duplicates
+      } else {
+        break; // Word not found or already used
       }
     }
+
+    if (foundWords === words.length) {
+      resultIndexes.push(indexes[strIndex]);
+    }
   }
+  return resultIndexes;
 };
 
 const chunkString = function (str, length) {
@@ -335,6 +359,6 @@ const chunkString = function (str, length) {
   return chunks;
 };
 
-const string = "barfoothefoobarmana";
-const wordsArray = ["foo", "bar"];
+const string = "wordgoodgoodgoodbestword";
+const wordsArray = ["word","good","best","good"];
 console.log(findSubstring(string, wordsArray));
