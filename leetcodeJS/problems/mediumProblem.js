@@ -59,3 +59,19 @@
 
 // const nums = [0,0,0];
 // console.log(threeSum(nums)); // [[-1,-1,2],[-1,0,1]]
+
+// 55. Jump Game
+console.log(`Jump Game\n`);
+var canJump = function(numbers) {
+  const length = numbers.length;
+  console.log(`length is: ${length}`);
+  let index1 = numbers[1];
+  console.log(`index 1 is; ${index1}`);
+  if(index1 === length -1) return true;
+  else{
+    return false;
+  }
+    
+};
+const nums = [2,3,1,1,4];;
+console.log(canJump(nums)); // true
