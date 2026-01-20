@@ -62,18 +62,31 @@
 // 55. Jump Game
 console.log(`Jump Game\n`);
 var canJump = function (numbers) {
-  const arrLength = numbers.length;
-  let maxReachableIndex = 0;
-
-  let curIndex = 0;
-
-  for (let index = 1; index < curValue; index++) {
-    const indexPlusCurValue = index + numbers[index];
-    const maxReach = indexPlusCurValue + curValue;
-
-    maxReach >= arrLength ? console.log(`treu`) : null;
+  let arrLength = numbers.length;
+  if (numbers[arrLength - 1] === 0 && arrLength > 1) {
+    numbers.pop();
+    arrLength--;
+    // arrLength === 0? true : false;
   }
-  curIndex++;
+  if (numbers.length === 1 && numbers[0] >= 0) return true;
+
+  let curValue = numbers[0];
+  let valueItCanJump = [];
+
+  for (let index = 1; index <= curValue; index++) {
+    if (index >= arrLength) break;
+
+    const jumpToIndex = index + numbers[index];
+    console.log(`jumpToIndex: ${jumpToIndex}`);
+
+    valueItCanJump.push(jumpToIndex);
+  }
+  const result = Math.max(...valueItCanJump) >= arrLength - 1 ? true : false;
+  return result;
 };
-const nums = [3, 2, 1, 0, 4];
+// const nums = [3, 2, 1, 0, 4];
+// const nums = [1,2];
+// const nums = [2, 0];
+const nums = [0];
+// const nums = [1,1,1,0];
 console.log(canJump(nums)); // true
