@@ -59,34 +59,71 @@
 // const nums = [0,0,0];
 // console.log(threeSum(nums)); // [[-1,-1,2],[-1,0,1]]
 
-// 55. Jump Game
-console.log(`Jump Game\n`);
-var canJump = function (numbers) {
-  let arrLength = numbers.length;
-  if (numbers[arrLength - 1] === 0 && arrLength > 1) {
-    numbers.pop();
-    arrLength--;
-    // arrLength === 0? true : false;
+// // 55. Jump Game
+// console.log(`Jump Game\n`);
+// var canJump = function (numbers) {
+//   let arrLength = numbers.length;
+//   if (numbers[arrLength - 1] === 0 && arrLength > 1) {
+//     numbers.pop();
+//     arrLength--;
+//     // arrLength === 0? true : false;
+//   }
+//   if (numbers.length === 1 && numbers[0] >= 0) return true;
+
+//   let curValue = numbers[0];
+//   let valueItCanJump = [];
+
+//   for (let index = 1; index <= curValue; index++) {
+//     if (index >= arrLength) break;
+
+//     const jumpToIndex = index + numbers[index];
+//     console.log(`jumpToIndex: ${jumpToIndex}`);
+
+//     valueItCanJump.push(jumpToIndex);
+//   }
+//   const result = Math.max(...valueItCanJump) >= arrLength - 1 ? true : false;
+//   return result;
+// };
+// // const nums = [3, 2, 1, 0, 4];
+// // const nums = [1,2];
+// // const nums = [2, 0];
+// const nums = [0];
+// // const nums = [1,1,1,0];
+// console.log(canJump(nums)); // true
+
+// 128. Longest Consecutive Sequence
+console.log(`Longest Consecutive Sequence\n`);
+
+var longestConsecutive = function (nums) {
+  let sortedNums = new Set(nums.sort((a, b) => a - b));
+  sortedNums = Array.from(sortedNums);
+  console.log(`sortedNums: ${sortedNums}`);
+
+  if (sortedNums.length === 0) return 0;
+  if (sortedNums.length === 1) return 1;
+
+  let maxLength = 1;
+  let currentLength = 1;
+
+  for (let i = 0; i < sortedNums.length - 1; i++) {
+    if (sortedNums[i] === sortedNums[i + 1] - 1) {
+      currentLength++;
+    } else {
+      if (currentLength > maxLength) {
+        maxLength = currentLength;
+      }
+      currentLength = 1;
+    }
   }
-  if (numbers.length === 1 && numbers[0] >= 0) return true;
 
-  let curValue = numbers[0];
-  let valueItCanJump = [];
-
-  for (let index = 1; index <= curValue; index++) {
-    if (index >= arrLength) break;
-
-    const jumpToIndex = index + numbers[index];
-    console.log(`jumpToIndex: ${jumpToIndex}`);
-
-    valueItCanJump.push(jumpToIndex);
+  if (currentLength > maxLength) {
+    maxLength = currentLength;
   }
-  const result = Math.max(...valueItCanJump) >= arrLength - 1 ? true : false;
-  return result;
+
+  console.log(`maxLength: ${maxLength}`);
+  return maxLength;
 };
-// const nums = [3, 2, 1, 0, 4];
-// const nums = [1,2];
-// const nums = [2, 0];
-const nums = [0];
-// const nums = [1,1,1,0];
-console.log(canJump(nums)); // true
+
+// const numbers = [100,4,200,1,3,2];
+const numbers = [1, 2, 6, 7, 8];
+console.log(longestConsecutive(numbers)); // 4
