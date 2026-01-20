@@ -22,7 +22,6 @@
 // const target = 9;
 // console.log(twoSum(numbers, target)); // [1,2
 
-
 // // 15. 3Sum  // incomplete // completed
 // var threeSum = function(nums) {
 //   const sortedNums =  nums.sort((a,b) => a -b);
@@ -54,7 +53,7 @@
 //   let uniqueResult = Array.from(new Set(result.map(JSON.stringify))).map(JSON.parse);
 //   // console.log(uniqueResult);
 //   return uniqueResult;
-    
+
 // };
 
 // const nums = [0,0,0];
@@ -62,16 +61,19 @@
 
 // 55. Jump Game
 console.log(`Jump Game\n`);
-var canJump = function(numbers) {
-  const length = numbers.length;
-  console.log(`length is: ${length}`);
-  let index1 = numbers[1];
-  console.log(`index 1 is; ${index1}`);
-  if(index1 === length -1) return true;
-  else{
-    return false;
+var canJump = function (numbers) {
+  const arrLength = numbers.length;
+  let maxReachableIndex = 0;
+
+  let curIndex = 0;
+
+  for (let index = 1; index < curValue; index++) {
+    const indexPlusCurValue = index + numbers[index];
+    const maxReach = indexPlusCurValue + curValue;
+
+    maxReach >= arrLength ? console.log(`treu`) : null;
   }
-    
+  curIndex++;
 };
-const nums = [2,3,1,1,4];;
+const nums = [3, 2, 1, 0, 4];
 console.log(canJump(nums)); // true
