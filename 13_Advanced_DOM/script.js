@@ -460,3 +460,19 @@ dotContainer.addEventListener("click", function (e) {
 });
 }
 slider();
+
+// dom content loaded event
+document.addEventListener("DOMContentLoaded", function(e){
+  console.log("HTML parsed and DOM tree built!", e);
+})
+
+window.addEventListener('load', function(e){
+  console.log('page fully loaded', e);
+});
+
+// before unload event
+window.addEventListener('beforeunload', function(e){
+  e.preventDefault();
+  console.log('page is about to be unloaded', e);
+  // e.returnValue = '';
+})
