@@ -42,12 +42,35 @@
 // 217. Contains Duplicate
 console.log(`contains duplicate`);
 
-const    containsDuplicate = function(nums) {
+const containsDuplicate = function(nums) {
   let uniqueNums = new Set(nums);
   uniqueNums = Array.from(uniqueNums);
-  return nums.length !== uniqueNums.length? true : false;
-
+  return nums.length !== uniqueNums.length ? true : false;
 }
 
 const array = [1, 2, 3, 4];
 console.log(containsDuplicate(array)); // false
+
+
+// // 66. Plus One
+// console.log(`Plus One - LeetCode Problem 66`);
+
+// var plusOne = function(digits) {
+//   let numberString = '';
+//   while(digits.length !== 0)
+//   {
+//     numberString += digits.shift().toString();
+//   }
+//   // console.log(numberString);
+//   let number = (BigInt(numberString)+1n).toString();
+//   let newNumber = [];
+//   for(let i = 0; i< number.length; i++)
+//   {
+//     newNumber.push(Number(number[i]));
+//   }
+//   // console.log(newNumber);
+//   return newNumber;     
+// };
+
+// const digits = [1,2,3];
+// console.log(plusOne(digits)); // [1,2,4]
