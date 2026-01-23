@@ -307,24 +307,53 @@ Goal: Merge them into ONE sorted list:
 // console.log(arr2); // [0,1,3,0,4]
 
 
-// 28. FInd the Index of the First Occurrence in a String
-console.log(`Find the Index of the First Occurrence in a String - LeetCode Problem 28`);
+// // 28. FInd the Index of the First Occurrence in a String
+// console.log(`Find the Index of the First Occurrence in a String - LeetCode Problem 28`);
 
-var strStr = function(haystack, needle) {
-  let occurence = 0;
-  const index = haystack.indexOf(needle );
-  // console.log(index);
-  if(index!== -1)
+// var strStr = function(haystack, needle) {
+//   let occurence = 0;
+//   const index = haystack.indexOf(needle );
+//   // console.log(index);
+//   if(index!== -1)
+//   {
+//     occurence = index;
+//     return occurence;
+//   }
+//   else{
+//     return -1;
+//   }
+    
+// };
+
+// const haystack = "sadbutsad";
+// const needle = "sad";
+// console.log(strStr(haystack, needle)); // 2
+
+
+// 7. Reverse Integer
+console.log(`Reverse Integer - LeetCode Problem 7`);
+
+var reverse = function(nums) {
+
+  let reversed = parseInt(nums.toString().split('').reverse().join(''));
+  // console.log(reversed);
+  // return parseInt(reversed); 
+
+
+  if(reversed < -(2**31) || reversed > (2**31 -1) )
+    return 0;
+  
+  if(nums < 0 )
   {
-    occurence = index;
-    return occurence;
+    return -reversed;
   }
-  else{
-    return -1;
+  else
+  {
+    return reversed;
   }
+  
     
 };
 
-const haystack = "sadbutsad";
-const needle = "sad";
-console.log(strStr(haystack, needle)); // 2
+const arr = -123;
+console.log(reverse(arr)); // 321
