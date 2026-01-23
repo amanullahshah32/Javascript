@@ -20,7 +20,6 @@
 // const string = "race a car";
 // console.log(isPalindrome(string)); // true
 
-
 // // 58. Length of Last Word
 // console.log(`length of last word`);
 // const lengthOfLastWord = function (str) {
@@ -32,25 +31,23 @@
 //   while(arrayOfWords[lastIndex].length === 0) {
 //     arrayOfWords.pop();
 //     lastIndex--;
-//   } 
+//   }
 //   return arrayOfWords[lastIndex].length;
 // }
 // const string = "Hello World  ";
 // console.log(lengthOfLastWord(string)); // 5
 
+// // 217. Contains Duplicate
+// console.log(`contains duplicate`);
 
-// 217. Contains Duplicate
-console.log(`contains duplicate`);
+// const containsDuplicate = function (nums) {
+//   let uniqueNums = new Set(nums);
+//   uniqueNums = Array.from(uniqueNums);
+//   return nums.length !== uniqueNums.length ? true : false;
+// };
 
-const containsDuplicate = function(nums) {
-  let uniqueNums = new Set(nums);
-  uniqueNums = Array.from(uniqueNums);
-  return nums.length !== uniqueNums.length ? true : false;
-}
-
-const array = [1, 2, 3, 4];
-console.log(containsDuplicate(array)); // false
-
+// const array = [1, 2, 3, 4];
+// console.log(containsDuplicate(array)); // false
 
 // // 66. Plus One
 // console.log(`Plus One - LeetCode Problem 66`);
@@ -69,7 +66,7 @@ console.log(containsDuplicate(array)); // false
 //     newNumber.push(Number(number[i]));
 //   }
 //   // console.log(newNumber);
-//   return newNumber;     
+//   return newNumber;
 // };
 
 // const digits = [1,2,3];
