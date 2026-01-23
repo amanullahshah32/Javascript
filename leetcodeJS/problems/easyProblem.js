@@ -21,19 +21,33 @@
 // console.log(isPalindrome(string)); // true
 
 
-// 58. Length of Last Word
-console.log(`length of last word`);
-const lengthOfLastWord = function (str) {
-  let arrayOfWords = str.split(' ');
-  console.log(arrayOfWords);
-  let lastIndex = arrayOfWords.length -1;
+// // 58. Length of Last Word
+// console.log(`length of last word`);
+// const lengthOfLastWord = function (str) {
+//   let arrayOfWords = str.split(' ');
+//   console.log(arrayOfWords);
+//   let lastIndex = arrayOfWords.length -1;
 
-  // remove the last empty strings in any
-  while(arrayOfWords[lastIndex].length === 0) {
-    arrayOfWords.pop();
-    lastIndex--;
-  } 
-  return arrayOfWords[lastIndex].length;
+//   // remove the last empty strings in any
+//   while(arrayOfWords[lastIndex].length === 0) {
+//     arrayOfWords.pop();
+//     lastIndex--;
+//   } 
+//   return arrayOfWords[lastIndex].length;
+// }
+// const string = "Hello World  ";
+// console.log(lengthOfLastWord(string)); // 5
+
+
+// 217. Contains Duplicate
+console.log(`contains duplicate`);
+
+const    containsDuplicate = function(nums) {
+  let uniqueNums = new Set(nums);
+  uniqueNums = Array.from(uniqueNums);
+  return nums.length !== uniqueNums.length? true : false;
+
 }
-const string = "Hello World  ";
-console.log(lengthOfLastWord(string)); // 5
+
+const array = [1, 2, 3, 4];
+console.log(containsDuplicate(array)); // false
