@@ -22,18 +22,18 @@
 
 
 // 58. Length of Last Word
-console.log(`length of last word`);
-const lengthOfLastWord = function (str) {
-  let arrayOfWords = str.split(' ');
-  console.log(arrayOfWords);
-  let lastIndex = arrayOfWords.length -1;
+// console.log(`length of last word`);
+// const lengthOfLastWord = function (str) {
+//   let arrayOfWords = str.split(' ');
+//   console.log(arrayOfWords);
+//   let lastIndex = arrayOfWords.length -1;
 
-  // remove the last empty strings in any
-  while(arrayOfWords[lastIndex].length === 0) {
-    arrayOfWords.pop();
-    lastIndex--;
-  } 
-  return arrayOfWords[lastIndex].length;
-}
-const string = "Hello World  ";
-console.log(lengthOfLastWord(string)); // 5
+//   // remove the last empty strings in any
+//   while(arrayOfWords[lastIndex].length === 0) {
+//     arrayOfWords.pop();
+//     lastIndex--;
+//   } 
+//   return arrayOfWords[lastIndex].length;
+// }
+// const string = "Hello World  ";
+// console.log(lengthOfLastWord(string)); // 5
