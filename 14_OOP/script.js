@@ -28,3 +28,26 @@ console.log(noshin);
 console.log(aman instanceof Person);
 
 // Protypes
+console.log(Person.prototype);
+Person.prototype.calcAge = function()
+{
+    console.log(2026 - this.birthYear);
+    // console.log();
+}
+
+aman.calcAge();
+noshin.calcAge();
+
+// console.log(aman.__proto__);
+// console.log(aman.__proto__ === Person.prototype);
+// console.log(Person.protototype.isPrototypeOf(aman));
+
+// .prototypeOfLinkedObjects property.  
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(aman,noshin);
+console.log(aman.species, noshin.species);
+
+console.log(aman.hasOwnProperty('firstName'));
+console.log(aman.hasOwnProperty('birthYear'));
+console.log(aman.hasOwnProperty('species'));
