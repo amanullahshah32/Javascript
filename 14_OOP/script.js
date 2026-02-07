@@ -26,3 +26,5 @@ console.log(noshin);
 
 
 console.log(aman instanceof Person);
+
+// Protypes
