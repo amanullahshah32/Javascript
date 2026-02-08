@@ -75,3 +75,37 @@ const h1 = document.querySelector('h1');
 console.dir(h1);
 
 console.dir( x => x+1);
+
+
+// class expression
+// const PersonCl = class{
+
+// }
+
+// class declaration
+class PersonCL{
+    constructor(firstName, birthYear){
+        this.firstName = firstName;
+        this.birthYear = birthYear;
+    }
+    // methods will be added to . prototype property
+    calcAge(){
+        console.log(2026 - this.birthYear);
+    }
+}
+
+const jessica = new PersonCL('Jessica', 1998);
+console.log(jessica);
+jessica.calcAge();
+
+console.log(jessica.__proto__ === PersonCL.prototype);
+
+PersonCL.prototype.greet = function()
+{
+    console.log(`hey, welcome ${this.firstName}`);
+}
+jessica.greet();
+
+// Classes are not hoisted
+// Classes are first class citizens
+// Classes are executed in strict mode
