@@ -51,3 +51,22 @@ console.log(aman.species, noshin.species);
 console.log(aman.hasOwnProperty('firstName'));
 console.log(aman.hasOwnProperty('birthYear'));
 console.log(aman.hasOwnProperty('species'));
+
+console.log(aman.__proto__);
+console.log(aman.__proto__.__proto__);
+console.log(aman.__proto__.__proto__.__proto__);
+console.log(aman);
+
+console.log(Person.prototype);
+console.log(Person.prototype.constructor);
+
+const arr = [2,5,6,87,45,4,6];
+console.log(arr.__proto__.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+Array.prototype.unique = function()
+{
+    return [...new Set(this)].sort((a,b) => a-b);
+}
+
+console.log(arr.unique());
