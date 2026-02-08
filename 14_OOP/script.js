@@ -44,59 +44,77 @@ noshin.calcAge();
 
 // .prototypeOfLinkedObjects property.  
 
-Person.prototype.species = 'Homo Sapiens';
-console.log(aman,noshin);
-console.log(aman.species, noshin.species);
+// Person.prototype.species = 'Homo Sapiens';
+// console.log(aman,noshin);
+// console.log(aman.species, noshin.species);
 
-console.log(aman.hasOwnProperty('firstName'));
-console.log(aman.hasOwnProperty('birthYear'));
-console.log(aman.hasOwnProperty('species'));
+// console.log(aman.hasOwnProperty('firstName'));
+// console.log(aman.hasOwnProperty('birthYear'));
+// console.log(aman.hasOwnProperty('species'));
 
-console.log(aman.__proto__);
-console.log(aman.__proto__.__proto__);
-console.log(aman.__proto__.__proto__.__proto__);
-console.log(aman);
+// console.log(aman.__proto__);
+// console.log(aman.__proto__.__proto__);
+// console.log(aman.__proto__.__proto__.__proto__);
+// console.log(aman);
 
-console.log(Person.prototype);
-console.log(Person.prototype.constructor);
+// console.log(Person.prototype);
+// console.log(Person.prototype.constructor);
 
-const arr = [2,5,6,87,45,4,6];
-console.log(arr.__proto__.__proto__);
-console.log(arr.__proto__ === Array.prototype);
+// const arr = [2,5,6,87,45,4,6];
+// console.log(arr.__proto__.__proto__);
+// console.log(arr.__proto__ === Array.prototype);
 
-Array.prototype.unique = function()
-{
-    return [...new Set(this)].sort((a,b) => a-b);
-}
-
-console.log(arr.unique());
-
-const h1 = document.querySelector('h1');
-console.dir(h1);
-
-console.dir( x => x+1);
-
-
-// class expression
-// const PersonCl = class{
-
+// Array.prototype.unique = function()
+// {
+//     return [...new Set(this)].sort((a,b) => a-b);
 // }
+
+// console.log(arr.unique());
+
+// const h1 = document.querySelector('h1');
+// console.dir(h1);
+
+// console.dir( x => x+1);
+
+
+// // class expression
+// // const PersonCl = class{
+
+// // }
 
 // class declaration
 class PersonCL{
-    constructor(firstName, birthYear){
-        this.firstName = firstName;
+    constructor(fullName, birthYear){
+        this.fullName = fullName;
         this.birthYear = birthYear;
     }
     // methods will be added to . prototype property
     calcAge(){
         console.log(2026 - this.birthYear);
     }
+
+    get age(){
+        return 2026 - this.birthYear;
+    }
+
+    // set a property that already exists
+    set fullName(name){
+        if(name.includes(' ')) this._fullName = name; 
+        else alert(`${name} is not a full name!`);
+    }
+
+    get fullName ()
+    {
+        return this._fullName;
+    }
+
+    // set
 }
 
-const jessica = new PersonCL('Jessica', 1998);
+const jessica = new PersonCL('Jessica Devis', 1998);
 console.log(jessica);
 jessica.calcAge();
+console.log(jessica.age);
 
 console.log(jessica.__proto__ === PersonCL.prototype);
 
@@ -106,6 +124,30 @@ PersonCL.prototype.greet = function()
 }
 jessica.greet();
 
+// new person object
+const aman2 = new PersonCL('Aman Ullah', 2001);
+console.log(aman2);
 // Classes are not hoisted
 // Classes are first class citizens
 // Classes are executed in strict mode
+
+
+// Getter and Setter method
+const account = {
+    owner : 'aman',
+    movements: [200, 530, 120, 300],
+
+    // getter
+    get latest(){
+        return this.movements.slice(-1).pop();
+    },
+
+    set latest(mov){
+        this.movements.push(mov);
+    }
+}
+
+console.log(account.latest);
+
+account.latest = 55;
+console.log(account.movements);
