@@ -1,39 +1,36 @@
 "use strict";
 
 const Person = function (firstName, birthYear) {
-//    console.log(this);
-// Instance properties
-   this.firstName = firstName; 
-    this.birthYear = birthYear;
+  //    console.log(this);
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
 
-    // // adding methods
-    // this.calcAge = function(){
-    //     console.log( 2026 - this.birthYear);
-    // }
+  // // adding methods
+  // this.calcAge = function(){
+  //     console.log( 2026 - this.birthYear);
+  // }
 };
 
-const aman = new Person('Aman', 2001); 
+const aman = new Person("Aman", 2001);
 console.log(aman);
 
-const noshin = new Person('Noshin', 2000);
+const noshin = new Person("Noshin", 2000);
 console.log(noshin);
-
 
 // 1. a new empty object {} is created
 // 2. function is called, this = nwe emplty object {}
 // 3. {} linked to prototype
 // 4. function automatically return empty object {}
 
-
 console.log(aman instanceof Person);
 
 // Protypes
 console.log(Person.prototype);
-Person.prototype.calcAge = function()
-{
-    console.log(2026 - this.birthYear);
-    // console.log();
-}
+Person.prototype.calcAge = function () {
+  console.log(2026 - this.birthYear);
+  // console.log();
+};
 
 aman.calcAge();
 noshin.calcAge();
@@ -42,7 +39,7 @@ noshin.calcAge();
 // console.log(aman.__proto__ === Person.prototype);
 // console.log(Person.protototype.isPrototypeOf(aman));
 
-// .prototypeOfLinkedObjects property.  
+// .prototypeOfLinkedObjects property.
 
 // Person.prototype.species = 'Homo Sapiens';
 // console.log(aman,noshin);
@@ -76,87 +73,107 @@ noshin.calcAge();
 
 // console.dir( x => x+1);
 
-
 // // class expression
 // // const PersonCl = class{
 
 // // }
 
 // class declaration
-class PersonCL{
-    constructor(fullName, birthYear){
-        this.fullName = fullName;
-        this.birthYear = birthYear;
-    }
-    // instance methods
-    // methods will be added to . prototype property
-    calcAge(){
-        console.log(2026 - this.birthYear);
-    }
+class PersonCL {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  // instance methods
+  // methods will be added to . prototype property
+  calcAge() {
+    console.log(2026 - this.birthYear);
+  }
 
-    get age(){
-        return 2026 - this.birthYear;
-    }
+  get age() {
+    return 2026 - this.birthYear;
+  }
 
-    // set a property that already exists
-    set fullName(name){
-        if(name.includes(' ')) this._fullName = name; 
-        else alert(`${name} is not a full name!`);
-    }
+  // set a property that already exists
+  set fullName(name) {
+    if (name.includes(" ")) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
 
-    get fullName ()
-    {
-        return this._fullName;
-    }
+  get fullName() {
+    return this._fullName;
+  }
 
-    // static method
-    static hey(){
-        console.log('hey there');
+  // static method
+  static hey() {
+    console.log("hey there");
+  }
 
-    }
-
-    // set
+  // set
 }
 
 PersonCL.hey();
 
-const jessica = new PersonCL('Jessica Devis', 1998);
+const jessica = new PersonCL("Jessica Devis", 1998);
 console.log(jessica);
 jessica.calcAge();
 console.log(jessica.age);
 
 console.log(jessica.__proto__ === PersonCL.prototype);
 
-PersonCL.prototype.greet = function()
-{
-    console.log(`hey, welcome ${this.firstName}`);
-}
+PersonCL.prototype.greet = function () {
+  console.log(`hey, welcome ${this.firstName}`);
+};
 jessica.greet();
 
 // new person object
-const aman2 = new PersonCL('Aman Ullah', 2001);
+const aman2 = new PersonCL("Aman Ullah", 2001);
 console.log(aman2);
 // Classes are not hoisted
 // Classes are first class citizens
 // Classes are executed in strict mode
 
-
 // Getter and Setter method
 const account = {
-    owner : 'aman',
-    movements: [200, 530, 120, 300],
+  owner: "aman",
+  movements: [200, 530, 120, 300],
 
-    // getter
-    get latest(){
-        return this.movements.slice(-1).pop();
-    },
+  // getter
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
 
-    set latest(mov){
-        this.movements.push(mov);
-    }
-}
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
 
 console.log(account.latest);
 
 account.latest = 55;
 console.log(account.movements);
+
+// Object.create
+const PersonProto = {
+  calcAge() {
+    console.log(2026 - this.birthYear);
+  },
+
+  init(name, birthYear)
+  {
+    this.name = name;
+    this.birthYear = birthYear;
+  }
+};
+ const shah = Object.create(PersonProto); 
+ console.log(shah);
+ shah.name = 'Amanullah';
+ shah.birthYear = 2001;
+ shah.calcAge();
+ console.log(shah);
+ console.log(shah.__proto__);
+
+ const sara = Object.create(PersonProto);
+sara.init('Sara', 1990);
+sara.calcAge();
+console.log(sara);  
