@@ -88,6 +88,7 @@ class PersonCL{
         this.fullName = fullName;
         this.birthYear = birthYear;
     }
+    // instance methods
     // methods will be added to . prototype property
     calcAge(){
         console.log(2026 - this.birthYear);
@@ -108,8 +109,16 @@ class PersonCL{
         return this._fullName;
     }
 
+    // static method
+    static hey(){
+        console.log('hey there');
+
+    }
+
     // set
 }
+
+PersonCL.hey();
 
 const jessica = new PersonCL('Jessica Devis', 1998);
 console.log(jessica);
