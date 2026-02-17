@@ -35,15 +35,18 @@ class Account {
     }
     deposit(val){
         this.#movements.push(val);
+        return this; // for chaining
     }
     withdraw(val){
         this.deposit(-val);
+        return this; // for chaining
     }
 
     requestLoan(val){
         if(this.#approveLoan(val)){
             this.deposit(val);
             console.log(`loan appoved of BDT ${val} TAKA`);
+            return this; // for chaining
         }
     }
     static helper(){
@@ -77,3 +80,7 @@ console.log(acc1.getMovements());
 // console.log(acc1.#movements); // Private fields are not accessible outside the class body
 
 Account.helper(); // only workd on the class not in the instances
+
+// chaining method
+acc1.deposit(340).deposit(450).withdraw(100).requestLoan(999).withdraw(500);
+console.log(acc1.getMovements());
