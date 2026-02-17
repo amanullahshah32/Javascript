@@ -1,5 +1,11 @@
 'use strict';
 
+// Public fields
+// Private fileds
+// Public methods
+// Private methods
+
+
 class Account {
     constructor(owner, currency, pin){
         this.owner = owner;
