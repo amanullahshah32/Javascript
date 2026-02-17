@@ -45,10 +45,12 @@ class CarCl {
   accelerate() {
     this.curSpeed += 10;
     console.log(`${this.make} is going at ${this.curSpeed} km/h`);
+    return this; // for chaining
   }
   brake() {
     this.curSpeed -= 5;
     console.log(`${this.make} is going at ${this.curSpeed} km/h`);
+    return this; // for chaining
   }
 }
 
@@ -64,3 +66,36 @@ console.log(ford);
 console.log(ford.speedUS);
 ford.speedUS = 199;
 console.log(ford);
+
+
+// coding challenge 3:
+console.log(`coding challenge 3: \n`);
+
+class  EVCl extends CarCl{
+  #charge;
+  constructor(make, speed, charge){
+    super(make, speed);
+    this.#charge = charge;
+    return this; // for chaining
+  };
+  chargeBattery(chargeTo){
+    this.#charge = chargeTo;
+    return this; // for chaining
+  }
+  accelerate(){
+    this.speed += 20;
+    this.#charge--;
+    console.log(`${this.make} is going at ${this.curSpeed} km/h, with a charge of ${this.#charge}%`);
+    return this; // for chaining
+  };
+
+}
+console.log(`evcl class ${EVCl}`);
+
+const rivian = new EVCl('Rivian', 120, 23);
+console.log(rivian);
+rivian.accelerate();
+
+rivian.brake().chargeBattery(50).accelerate();
+
+console.log(rivian.speedUS);
